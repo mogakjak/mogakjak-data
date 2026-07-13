@@ -280,7 +280,10 @@
         const item = byId.get(id);
         if (!item) return "";
         const v = resolveValue(item);
-        return `<article class="metric-card board-card">
+        const tip = metricHelp(item.name, item);
+        return `<article class="metric-card board-card" data-tip="${escapeHtml(
+          tip
+        )}" title="${escapeHtml(tip)}">
           <div class="metric-card__label">${escapeHtml(item.name)}</div>
           <div class="metric-card__value ${
           v.status === "ok" ? "" : "is-muted"
@@ -387,6 +390,60 @@
     return { text: parts.join(" "), warn };
   }
 
+  const METRIC_HELP = {
+    "총 집중": "개인·그룹 집중시간 합",
+    "개인 집중": "개인 타이머 집중시간",
+    "그룹 집중": "그룹 공유 타이머 집중",
+    "그룹 입장": "그날 그룹방 입장 건수",
+    "초대 응답률": "초대 응답÷생성 비율",
+    멤버십: "그룹 소속 관계 총건수",
+    "신규 사용자": "GA 당일 신규 유저",
+    "D1 리텐션": "전일 신규의 다음날 재방문",
+    "개인 세션": "개인 타이머 시작 건수",
+    "그룹 세션": "그룹 타이머 시작 건수",
+    생성: "그날 보낸 초대 건수",
+    응답: "그날 수락·거절 건수",
+    "응답/생성": "초대 응답÷생성 비율",
+    신규: "GA 당일 신규 유저",
+    활성: "GA 당일 활성 유저",
+    세션: "GA 앱·웹 세션 수",
+    D1: "전일 신규의 다음날 재방문",
+    D7: "신규 후 7일째 재방문",
+    D30: "신규 후 30일째 재방문",
+  };
+
+  const HELP_BY_ID = {
+    UG_USER_GROUP_LIST: "그룹 소속 관계 총건수",
+    UG_SESSION_ENTER: "그날 그룹방 입장 건수",
+    INV_CREATE: "그날 보낸 초대 건수",
+    INV_ACCEPT: "그날 수락·거절 건수",
+    KPI_DAILY_PERSONAL_FOCUS: "개인 타이머 집중시간",
+    KPI_DAILY_GROUP_FOCUS: "그룹 공유 타이머 집중",
+    KPI_DAILY_SESSION_COUNT: "타이머 세션 시작 합",
+    KPI_DAILY_MEMBERSHIP: "그룹 소속 관계 총건수",
+    KPI_DAILY_GROUP_ENTRY: "그날 그룹방 입장 건수",
+    E_TIMER_USAGE_TIME: "개인 타이머 집중시간",
+    PIPE_MEMBERSHIP_SNAPSHOT: "그룹 소속 관계 총건수",
+    PIPE_SESSION_ENTRIES: "그날 그룹방 입장 건수",
+    PIPE_INVITATIONS_CREATED: "그날 보낸 초대 건수",
+    PIPE_INVITATIONS_RESPONDED: "그날 수락·거절 건수",
+    PIPE_PERSONAL_SESSIONS: "개인 타이머 시작 건수",
+    PIPE_GROUP_SESSIONS: "그룹 타이머 시작 건수",
+    DB_FOCUS_SESSION: "개인 타이머 시작 건수",
+    DB_GROUP_FOCUS_SESSION: "그룹 타이머 시작 건수",
+  };
+
+  function metricHelp(label, item) {
+    if (item?.help) return String(item.help);
+    if (item?.id && HELP_BY_ID[item.id]) return HELP_BY_ID[item.id];
+    if (label && METRIC_HELP[label]) return METRIC_HELP[label];
+    if (item?.subcategory) {
+      const t = `${item.category || ""} ${item.subcategory}`.trim();
+      return t.length > 20 ? t.slice(0, 20) : t;
+    }
+    return "기준일 수집 지표";
+  }
+
   const CHART = {
     red: "#fa5332",
     redSoft: "rgba(250,83,50,0.45)",
@@ -420,12 +477,15 @@
         ].join(" ");
         const chipText = i.source || "";
         const aux = i.secondary || i.hint || "";
+        const tip = metricHelp(i.label, i);
         const delta = i.delta
           ? `<span class="metric-card__delta ${i.deltaTone || "flat"}">${escapeHtml(
               i.delta
             )}</span>`
           : "";
-        return `<article class="metric-card">
+        return `<article class="metric-card" data-tip="${escapeHtml(
+          tip
+        )}" title="${escapeHtml(tip)}">
           <span class="metric-card__label">${escapeHtml(i.label)}</span>
           <span class="${valueClass}">${escapeHtml(String(i.value))}</span>
           <div class="metric-card__footer">
@@ -1458,7 +1518,10 @@
         const v = resolveValue(i);
         const jLabel = JOURNEY_LABEL[i.journey] || i.journey || "-";
         const lLabel = LENS_LABEL[i.lens] || i.lens || "-";
-        return `<button type="button" class="catalog-item" data-id="${escapeHtml(i.id)}">
+        const tip = metricHelp(i.name, i);
+        return `<button type="button" class="catalog-item" data-id="${escapeHtml(
+          i.id
+        )}" title="${escapeHtml(tip)}" data-tip="${escapeHtml(tip)}">
           <span class="code">${escapeHtml(i.id)}</span>
           <span class="title">${escapeHtml(i.name)}</span>
           <span class="meta">${escapeHtml(lLabel)} · ${escapeHtml(jLabel)} · ${escapeHtml(
@@ -1491,7 +1554,10 @@
         const item = byId.get(id);
         if (!item) return "";
         const v = resolveValue(item);
-        return `<article class="metric-card board-card">
+        const tip = metricHelp(item.name, item);
+        return `<article class="metric-card board-card" data-tip="${escapeHtml(
+          tip
+        )}" title="${escapeHtml(tip)}">
           <button type="button" class="remove" data-id="${escapeHtml(id)}">×</button>
           <div class="metric-card__label">${escapeHtml(item.name)}</div>
           <div class="metric-card__value ${v.status === "ok" ? "" : "is-muted"}">${escapeHtml(v.display)}</div>

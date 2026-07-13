@@ -257,6 +257,7 @@
 }
 
 .metric-card {
+  position: relative;
   background: #fafafa;
   border: 1px solid #e6e8eb;
   border-radius: 12px;
@@ -267,6 +268,36 @@
 
 .metric-card:hover {
   border-color: #cacdd2;
+}
+
+.metric-card[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: calc(100% + 6px);
+  z-index: 5;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #121212;
+  color: #fafafa;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(18, 18, 18, 0.18);
+  pointer-events: none;
+}
+
+.metric-card[data-tip]:hover::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  bottom: calc(100% + 2px);
+  z-index: 6;
+  border: 5px solid transparent;
+  border-top-color: #121212;
+  pointer-events: none;
 }
 
 .metric-card__label {
@@ -649,6 +680,7 @@
 }
 
 .catalog-item {
+  position: relative;
   text-align: left;
   border: 1px solid #e6e8eb;
   background: #fafafa;
@@ -660,6 +692,23 @@
 
 .catalog-item:hover {
   border-color: #fb7055;
+}
+
+.catalog-item[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: calc(100% + 4px);
+  z-index: 5;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: #121212;
+  color: #fafafa;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  pointer-events: none;
 }
 
 .catalog-item .code {
