@@ -1,0 +1,133 @@
+수집목표,지표유형,업데이트구분,데이터코드,대분류,중분류,데이터명,발생조건,속성예시,현재저장위치,GA4이벤트,파이프라인,수집가능상태,수집불가사유_또는_필요조치,대시보드후보,함께보면좋은지표,비고,등록일
+수집필수,원자지표,기존,UG_USER_GROUP_LIST,그룹·멤버십,소속,유저별 보유 그룹방 목록,유저가 속한 모든 그룹(user_group),"user_id,group_id,group_name,role,joined_at",DB:user_group,,수집중(membership_snapshot),즉시수집가능(파이프라인중),이미 스냅샷으로 수집. 유저별 그룹목록 조회 가능,핵심,UG_GROUP_COUNT_PER_USER|UG_LAST_ENTERED,질문하신 상세로그 중 소속목록,2026-07-13
+수집필수,파생지표,신규,UG_GROUP_COUNT_PER_USER,그룹·멤버십,소속,유저별 보유 그룹방 개수,membership_snapshot을 user_id로 count,"user_id,group_count",파생(스냅샷),,원천있음·KPI미기재였음,즉시수집가능(파이프라인중),스냅샷에서 집계만 추가하면 됨,핵심,UG_USER_GROUP_LIST,,2026-07-13
+수집필수,원자지표,기존,UG_LAST_ENTERED,그룹·멤버십,입장,유저-그룹별 최근 입장 시각,user_group.entered_at (마지막 입장 1개),"user_id,group_id,entered_at,participation_status",DB:user_group.entered_at,,수집중(membership_snapshot+session_entries),부분수집(상태만·이력없음),마지막 입장만 있음. 입장할 때마다 쌓으려면 activity_logs 또는 enter_history 테이블 필요,핵심,UG_ENTER_HISTORY|UG_SESSION_LEAVE,,2026-07-13
+수집필수,원자지표,권장,UG_ENTER_HISTORY,그룹·멤버십,입장,그룹방 입장 이력(매번),그룹방 입장 API 호출마다 1행,"user_id,group_id,entered_at",없음(entered_at 덮어쓰기),,미수집,미수집(로그없음·BE/FE보강필요),BE에서 입장 시 history/activity_logs 기록 필요,핵심,UG_LAST_ENTERED|UG_SESSION_LEAVE|GA_GROUP_STAY,,2026-07-13
+수집필수,원자지표,기존,UG_SESSION_ENTER,그룹·멤버십,입장,그룹 세션 입장(상태변경),GET /api/groups/{id} 시 entered_at·PARTICIPATING,"group_id,entered_at",DB:user_group,,수집중(session_entries=당일),즉시수집가능(파이프라인중),당일 entered_at만 session_entries. 과거 이력은 스냅샷의 last entered,핵심,,,2026-07-13
+수집필수,원자지표,권장,UG_SESSION_LEAVE,그룹·멤버십,퇴장,그룹 세션 퇴장,DELETE /api/groups/{id}/session/me,"group_id,left_at,stay_sec",DB상태변경만(NOT_PARTICIPATING)/체류는GA,,미수집,미수집(로그없음·BE/FE보강필요),퇴장 시각·체류를 DB/activity_logs에 남기고 파이프라인 수집,핵심,GA_GROUP_STAY|UG_ENTER_HISTORY,,2026-07-13
+수집필수,원자지표,권장,UG_GROUP_JOIN,그룹·멤버십,가입,그룹 가입,초대수락·초대링크가입 등으로 user_group 생성,"user_id,group_id,joined_at,source",DB:user_group 생성(이벤트로그없음),,스냅샷diff만가능,부분수집(상태만·이력없음),activity_logs GROUP_JOIN 권장. 현재는 스냅샷 전후 비교로 추정,핵심,,,2026-07-13
+수집필수,원자지표,권장,UG_GROUP_LEAVE,그룹·멤버십,탈퇴,그룹 탈퇴,DELETE .../members/me → row hard delete,"user_id,group_id,left_at",row삭제(이력소실),,스냅샷diff로소실감지가능,미수집(로그없음·BE/FE보강필요),탈퇴 전 soft-delete 또는 activity_logs 필수,핵심,,,2026-07-13
+수집필수,원자지표,기존,UG_GROUP_CREATE,그룹·멤버십,생성,그룹 생성,POST /api/groups,"group_id,host_user_id,created_at",DB:mogak_groups,,미수집,즉시수집가능(DB있음·파이프라인확장),created_at 일별 수집 추가,핵심,,,2026-07-13
+수집필수,원자지표,기존,UG_GROUP_UPDATE,그룹·멤버십,수정,그룹 정보 수정,PUT /api/groups/{id},changed_fields,DB:mogak_groups(덮어쓰기),,미수집,부분수집(상태만·이력없음),변경 이력 필요 시 activity_logs,참고,,,2026-07-13
+수집필수,원자지표,권장,UG_MEMBER_KICK,그룹·멤버십,강퇴,멤버 강퇴,DELETE .../members/{userId},"host_id,target_user_id,group_id",row삭제,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs + FE연동여부확인,후보,,,2026-07-13
+수집필수,원자지표,기존,UG_HOST_ACK,그룹·멤버십,방장,새 방장 확인,GET/PUT .../host-ack,"group_id,user_id",DB:user_group,,미수집,즉시수집가능(DB있음·파이프라인확장),필요시 파이프라인/로그 추가,참고,,,2026-07-13
+수집필수,원자지표,기존,UG_GOAL_SET,그룹·멤버십,설정,그룹 목표 설정,PUT .../goals,goal fields,DB:mogak_groups,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,UG_NOTI_SETTING,그룹·멤버십,설정,집중체크 알림 설정 변경,PUT .../notifications,"cycle,enabled",DB:mogak_groups,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,INV_CREATE,초대,발송,메이트 초대 발송,POST .../invitations,"inviter,invitee,group_id,status",DB:invitation,,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,INV_ACCEPT,초대,응답,초대 수락,POST .../accept,invitation_id,DB:invitation,,수집중,즉시수집가능(파이프라인중),,핵심,INV_CREATE|UG_GROUP_JOIN,,2026-07-13
+수집필수,원자지표,기존,INV_DECLINE,초대,응답,초대 거절,POST .../decline,invitation_id,DB:invitation,,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,INV_LINK_CREATE,초대,링크,초대 링크 생성,POST .../url,"group_id,url",없음(URL반환만),,미수집,미수집(로그없음·BE/FE보강필요),activity_logs INVITE_LINK_CREATE,후보,,,2026-07-13
+수집필수,원자지표,권장,INV_LINK_COPY,초대,링크,초대 링크 복사,클립보드 복사,group_id,없음,,미수집,미수집(로그없음·BE/FE보강필요),FE activity_logs/GA,핵심,,,2026-07-13
+수집필수,원자지표,기존,INV_LINK_JOIN,초대,링크,초대 링크로 가입,/invite → join,"group_id,user_id",DB:user_group,,스냅샷/세션에반영,부분수집(상태만·이력없음),가입 source=link 이벤트 명시 권장,핵심,,,2026-07-13
+수집필수,원자지표,권장,INV_LINK_JOIN_FAIL,초대,링크,초대 링크 가입 실패,만료/403 등,reason,없음,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,기존,INV_WS_RECEIVE,초대,알림,초대 WS 알림 수신,WS invitation topic,invitation_id,WS+Redis,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,권장,POKE_SEND,소셜,콕찌르기,콕 찌르기 발송,POST /api/groups/poke,"from,to,group_id",Redis+WS만,,미수집,미수집(로그없음·BE/FE보강필요),DB/activity_logs 필수(P0),핵심,,,2026-07-13
+수집필수,원자지표,권장,POKE_RECEIVE,소셜,콕찌르기,콕 알림 수신,WS poke,"from,to",WS,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,기존,POKE_RESPOND,소셜,콕찌르기,콕 응답(참여/거절),모달 accept/reject,action,GA:poke_response,poke_response,미수집,부분수집(GA만),DB에도 남기고 발송과 조인,핵심,POKE_SEND|UG_SESSION_ENTER,,2026-07-13
+수집필수,원자지표,기존,CHEER_SEND,소셜,응원,그룹 응원 발송,POST .../cheer,"group_id,from(누락)",cheerCount누적+Redis,cheer_click,미수집,부분수집(상태만·이력없음),누가→누구에게 activity_logs,핵심,,,2026-07-13
+수집필수,원자지표,권장,CHEER_RECEIVE,소셜,응원,응원 알림 수신,WS cheer,"from,to",WS+Redis,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,기존,LOUNGE_CHEER,라운지,응원,라운지 응원 발송,POST /api/lounge/cheer,"from,to",Redis,,미수집,미수집(로그없음·BE/FE보강필요),GA도 없음. activity_logs,후보,,,2026-07-13
+수집필수,원자지표,기존,TM_START_TIMER,타이머,개인,개인 일반타이머 시작,POST .../start/timer,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,TM_START_STOPWATCH,타이머,개인,개인 스톱워치 시작,POST .../start/stopwatch,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,TM_START_POMODORO,타이머,개인,개인 뽀모도로 시작,POST .../start/pomodoro,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,TM_PAUSE,타이머,개인,개인 타이머 일시정지,POST .../pause,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,TM_RESUME,타이머,개인,개인 타이머 재개,POST .../resume,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,후보,,,2026-07-13
+수집필수,원자지표,기존,TM_FINISH,타이머,개인,개인 타이머 종료,POST .../finish,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,핵심,,,2026-07-13
+수집필수,원자지표,기존,TM_NEXT_POMO,타이머,개인,뽀모도로 다음단계,POST .../next/pomodoro,,DB:focus_session(+interval),,수집중(intervals),즉시수집가능(파이프라인중),,후보,,,2026-07-13
+수집필수,원자지표,기존,TM_FINISH_ACTIVE,타이머,개인,활성세션 강제종료,POST .../finish/active,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,후보,,,2026-07-13
+수집필수,원자지표,기존,TM_VISIBILITY,타이머,개인,타이머 공개설정 변경,PUT .../visibility,,DB:focus_session(+interval),,수집중,즉시수집가능(파이프라인중),,후보,,,2026-07-13
+수집필수,원자지표,기존,TM_MODE_SELECT,타이머,UI,타이머 모드 탭 선택,탭 클릭,,GA,select_timer_mode,미수집,부분수집(GA만),,후보,,,2026-07-13
+수집필수,원자지표,기존,TM_START_FAILED,타이머,오류,타이머 시작 실패,시작 API 실패,,GA,timer_start_failed,미수집,부분수집(GA만),,참고,,,2026-07-13
+수집필수,원자지표,권장,TM_PIP,타이머,UI,PiP 모드 열기/닫기,PIP 버튼,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,기존,TM_TAB_ORDER,타이머,설정,타이머 탭 순서 변경,PATCH timer-settings,,DB:user_timer_setting,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,권장,TM_TODO_SELECT,타이머,UI,타이머용 할일 선택,selectedTodoId 변경,,localStorage,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,권장,TM_NAV_BLOCK,타이머,이탈,타이머 중 페이지/그룹 이탈 시도,navigation blocker,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,기존,GTM_START,타이머,그룹공유,그룹 타이머 시작,POST groups/.../start,,DB:group_focus_session,,수집중,즉시수집가능(파이프라인중),,핵심,,GA없음,2026-07-13
+수집필수,원자지표,기존,GTM_PAUSE,타이머,그룹공유,그룹 타이머 일시정지,pause,,DB:group_focus_session,,수집중,즉시수집가능(파이프라인중),,핵심,,GA없음,2026-07-13
+수집필수,원자지표,기존,GTM_RESUME,타이머,그룹공유,그룹 타이머 재개,resume,,DB:group_focus_session,,수집중,즉시수집가능(파이프라인중),,핵심,,GA없음,2026-07-13
+수집필수,원자지표,기존,GTM_FINISH,타이머,그룹공유,그룹 타이머 종료,finish,,DB:group_focus_session,,수집중,즉시수집가능(파이프라인중),,핵심,,GA없음,2026-07-13
+수집필수,원자지표,기존,GTM_WS_EVENT,타이머,그룹공유,그룹 타이머 WS 이벤트,START/PAUSE/RESUME/FINISH/SYNC,,Redis+WS,,미수집,부분수집(상태만·이력없음),세션DB로 충분할 수 있음. 실시간이벤트 분석시 로그,참고,,,2026-07-13
+수집필수,원자지표,기존,AUTH_LOGIN_CLICK,인증·온보딩,로그인,소셜 로그인 시도,로그인 버튼,,GA,login,미수집,부분수집(GA만),,핵심,,,2026-07-13
+수집필수,원자지표,기존,AUTH_LOGIN_SUCCESS,인증·온보딩,로그인,OAuth 로그인 성공,OAuth 콜백,,DB:user/user_provider+Redis token,,미수집,즉시수집가능(DB있음·파이프라인확장),로그인 성공 이벤트/일별 신규유저 수집,핵심,,,2026-07-13
+수집필수,원자지표,권장,AUTH_LOGIN_FAIL,인증·온보딩,로그인,OAuth 로그인 실패,failure redirect,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+선택,원자지표,기존,AUTH_TOKEN_REFRESH,인증·온보딩,세션,토큰 갱신,POST /auth/refresh,,Redis,,미수집,시스템조회(분석가치낮음),,제외,,,2026-07-13
+수집필수,원자지표,기존,AUTH_AGREEMENT,인증·온보딩,약관,약관 동의 제출,POST /api/users/agreements,,DB:user flags,,미수집,부분수집(상태만·이력없음),동의 시점 activity_logs,후보,,,2026-07-13
+수집필수,원자지표,기존,AUTH_ONBOARD_FLAG,인증·온보딩,온보딩,온보딩 첫방문 마킹,POST /users/onboarding,,DB:is_onboard,,미수집,부분수집(상태만·이력없음),,후보,,,2026-07-13
+수집필수,원자지표,기존,AUTH_ONBOARD_DONE,인증·온보딩,온보딩,온보딩 완료(로컬),튜토리얼 종료,,localStorage mg_onboarded_v1,,미수집,미수집(로그없음·BE/FE보강필요),DB 완료 API+로그,핵심,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_0,인증·온보딩,온보딩단계,온보딩 Step 0 웰컴,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,핵심,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_1,인증·온보딩,온보딩단계,온보딩 Step 1 할일안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_2,인증·온보딩,온보딩단계,온보딩 Step 2 할일폼,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_3,인증·온보딩,온보딩단계,온보딩 Step 3 타이머안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_4,인증·온보딩,온보딩단계,온보딩 Step 4 그룹생성안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_5,인증·온보딩,온보딩단계,온보딩 Step 5 그룹생성모달,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_6,인증·온보딩,온보딩단계,온보딩 Step 6 비공개안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_7,인증·온보딩,온보딩단계,온보딩 Step 7 시간기록안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_8,인증·온보딩,온보딩단계,온보딩 Step 8 목표집중체크안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_9,인증·온보딩,온보딩단계,온보딩 Step 9 초대안내,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_10,인증·온보딩,온보딩단계,온보딩 Step 10 초대모달,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,후보,,,2026-07-13
+수집필수,원자지표,권장,ONB_STEP_11,인증·온보딩,온보딩단계,온보딩 Step 11 완료,온보딩 모달 진행,,없음,,미수집,미수집(로그없음·BE/FE보강필요),activity_logs ONBOARDING_STEP,핵심,,,2026-07-13
+수집필수,원자지표,기존,AUTH_WITHDRAW,인증·온보딩,탈퇴,계정 탈퇴,DELETE /withdrawal,,DB:user soft delete,,미수집,즉시수집가능(DB있음·파이프라인확장),,핵심,,,2026-07-13
+수집필수,원자지표,권장,AUTH_WITHDRAW_REASON,인증·온보딩,탈퇴,탈퇴 사유·피드백,탈퇴 모달 입력,,UI state(API미전송),,미수집,미수집(로그없음·BE/FE보강필요),API로 reason 전송+저장,핵심,,,2026-07-13
+수집필수,원자지표,기존,AUTH_BACK,인증·온보딩,이탈,로그인/랜딩 뒤로가기,popstate,,GA,page_back_navigation,미수집,부분수집(GA만),,후보,,,2026-07-13
+수집필수,원자지표,권장,PAGE_HOME,페이지·여정,진입,홈 / 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_TODO,페이지·여정,진입,할일 /todo 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_RECORD,페이지·여정,진입,집중리포트 /record 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_MYPAGE,페이지·여정,진입,마이페이지 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_LOUNGE,페이지·여정,진입,라운지 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_LOGIN,페이지·여정,진입,로그인 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_LANDING,페이지·여정,진입,랜딩 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_AGREE,페이지·여정,진입,약관 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_ONBOARD,페이지·여정,진입,온보딩 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_INVITE,페이지·여정,진입,초대링크 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,권장,PAGE_GROUP,페이지·여정,진입,그룹방 진입,라우트 진입,,GA pageview만,,미수집,부분수집(GA만),커스텀 PAGE_VIEW/activity_logs로 파이프라인 연동,핵심,,,2026-07-13
+수집필수,원자지표,기존,PAGE_FIRST_ENTRANCE,페이지·여정,유입,세션 최초 진입,entranceTracker,,GA,first_entrance,미수집,부분수집(GA만),,핵심,,,2026-07-13
+수집필수,원자지표,권장,NAV_HEADER_CLICK,페이지·여정,네비,헤더 네비 클릭,할일/리포트 버튼,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,권장,NAV_LOGO_HOME,페이지·여정,네비,로고 홈 이동,로고 클릭,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,권장,SHARE_KAKAO_LANDING,유입,공유,랜딩 카카오 공유,KakaoShareButton,,없음(외부SDK),,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,기존,TODO_CREATE,할일,CRUD,할일 생성,POST /todos,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,기존,TODO_UPDATE,할일,CRUD,할일 수정,PUT /todos,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,기존,TODO_COMPLETE,할일,CRUD,할일 완료 토글,PATCH complete,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,기존,TODO_DELETE,할일,CRUD,할일 삭제,DELETE soft,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,기존,CAT_CREATE,할일,CRUD,카테고리 생성,POST categories,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,CAT_UPDATE,할일,CRUD,카테고리 수정,PUT,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,CAT_ORDER,할일,CRUD,카테고리 순서,PATCH order,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,CAT_DELETE,할일,CRUD,카테고리 삭제,DELETE,,DB:todo/category,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,TODO_COMPLETE_GA,할일,GA,할일 완료 클릭(GA),checkbox,,GA,todo_complete_click,미수집,부분수집(GA만),,후보,,,2026-07-13
+수집필수,원자지표,기존,TODO_DATE_PICKER,할일,GA,날짜 피커 클릭,dateField,,GA,date_picker_click,미수집,부분수집(GA만),,참고,,,2026-07-13
+수집필수,원자지표,기존,TODO_PAST_TO_TODAY,할일,GA,과거할일 오늘로,CTA,,GA,past_todo_select_to_today,미수집,부분수집(GA만),,참고,,,2026-07-13
+수집필수,원자지표,기존,TODO_DURATION_SELECT,할일,GA,목표시간 선택,addWorkForm,,GA,add_work_form_select_duration,미수집,부분수집(GA만),,참고,,,2026-07-13
+선택,원자지표,권장,TODO_DND,할일,UI,할일 DnD 정렬,드래그,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,제외,,,2026-07-13
+수집필수,원자지표,권장,LOUNGE_ENTER_OK,라운지,입장,라운지 입장 성공,POST /lounge/enter,,Redis presence만,,미수집,미수집(로그없음·BE/FE보강필요),성공도 DB/activity_logs,핵심,,,2026-07-13
+수집필수,원자지표,기존,LOUNGE_ENTER_DENY,라운지,입장,라운지 입장 거절,정원초과 409,,DB:official_lounge_access_log,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,권장,LOUNGE_LEAVE,라운지,퇴장,라운지 퇴장,DELETE /lounge/leave,,Redis,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,기존,LOUNGE_FOCUS_CHECK,라운지,설정,라운지 집중체크 설정,PUT focus-check,,DB/Redis,,미수집,부분수집(상태만·이력없음),,참고,,,2026-07-13
+수집필수,원자지표,기존,MP_PROFILE_UPDATE,마이페이지,프로필,프로필 수정,PATCH profile,,DB:user,,미수집,부분수집(상태만·이력없음),,참고,,,2026-07-13
+수집필수,원자지표,기존,MP_CHARACTER_CHANGE,마이페이지,캐릭터,대표 캐릭터 변경,PATCH character,,DB:user_character,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,MP_CHARACTER_AWARD,마이페이지,캐릭터,캐릭터 보상 확인,POST check-award,,DB:user_character,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,기존,FB_SUBMIT,마이페이지,리뷰,몰입종료 리뷰 제출,POST /feedback,,DB:feedback,,미수집,즉시수집가능(DB있음·파이프라인확장),,후보,,,2026-07-13
+수집필수,원자지표,권장,FB_SHOW_SKIP,마이페이지,리뷰,리뷰 팝업 노출/스킵,ReviewPopup,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,권장,REC_DAILY_VIEW,집중리포트,조회,일별 기록 조회,GET /records/daily,,없음(read),,미수집,미수집(로그없음·BE/FE보강필요),,핵심,,,2026-07-13
+수집필수,원자지표,권장,REC_DASHBOARD_VIEW,집중리포트,조회,리포트 대시보드 조회,GET /records/dashboard,,없음(read),,미수집,미수집(로그없음·BE/FE보강필요),,핵심,,,2026-07-13
+선택,원자지표,기존,UI_BOWL,기타,외부,UI Bowl 투표 FAB,클릭,,GA,ui_bowl_vote_floating_click,미수집,부분수집(GA만),,제외,,,2026-07-13
+선택,원자지표,기존,IMG_UPLOAD,기타,미디어,이미지 업로드,presigned→S3,,URL in DB,,미수집,시스템조회(분석가치낮음),,제외,,,2026-07-13
+선택,원자지표,기존,CHAT_ROOM_CREATE,채팅,메시지,그룹 채팅방 생성,chat API/WS,,DB:chat_*,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,FE UI 미노출 가능성,2026-07-13
+선택,원자지표,기존,CHAT_ROOM_JOIN,채팅,메시지,채팅방 참여,chat API/WS,,DB:chat_*,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,FE UI 미노출 가능성,2026-07-13
+선택,원자지표,기존,CHAT_ROOM_LEAVE,채팅,메시지,채팅방 퇴장,chat API/WS,,DB:chat_*,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,FE UI 미노출 가능성,2026-07-13
+선택,원자지표,기존,CHAT_MSG_SEND,채팅,메시지,채팅 메시지 전송,chat API/WS,,DB:chat_*,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,FE UI 미노출 가능성,2026-07-13
+선택,원자지표,기존,CHAT_MSG_READ,채팅,메시지,채팅 읽음,chat API/WS,,DB:chat_*,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,FE UI 미노출 가능성,2026-07-13
+수집필수,원자지표,기존,WS_CONNECT,시스템,WS,WebSocket 연결,STOMP CONNECT,,DB:user.is_active,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,WS_DISCONNECT,시스템,WS,WebSocket 해제,DISCONNECT,,DB:user.is_active,,미수집,즉시수집가능(DB있음·파이프라인확장),,참고,,,2026-07-13
+수집필수,원자지표,기존,NOTI_FOCUS_SEND,알림,집중체크,집중체크 알림 발송,scheduler,,Redis→WS,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,권장,NOTI_FOCUS_RECV,알림,집중체크,집중체크 알림 수신/클릭,WS+브라우저알림,,WS,,미수집,미수집(로그없음·BE/FE보강필요),,후보,,,2026-07-13
+수집필수,원자지표,기존,NOTI_TIMER_COMPLETE,알림,타이머,타이머 완료 알림,TimerCompletionService,,Redis→WS,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+수집필수,원자지표,권장,NOTI_BROWSER_PERM,알림,권한,브라우저 알림 권한,Notification permission,,없음,,미수집,미수집(로그없음·BE/FE보강필요),,참고,,,2026-07-13
+선택,원자지표,기존,MATE_ACTIVE_WS,시스템,상태,메이트 활동상태 브로드캐스트,active-status,,Redis→WS,,미수집,시스템조회(분석가치낮음),,제외,,,2026-07-13
+수집필수,원자지표,기존,TOOL_GA4,분석도구,외부,GA4 전체,pageview+커스텀,,GA4콘솔,,미연동,부분수집(GA만),,참고,,,2026-07-13
+선택,원자지표,기존,TOOL_CLARITY,분석도구,외부,Clarity 세션,전페이지,,Clarity,,미연동,부분수집(GA만),,참고,,정성분석,2026-07-13
+수집필수,파생지표,신규,KPI_USER_GROUPS,대시보드후보,조합,유저별 그룹목록·개수·최근입장 뷰,UG_* 조합,,파생,,원천의존,즉시수집가능(파이프라인중),이미 스냅샷으로 가능. 대시보드/리포트로 노출,핵심,UG_* 조합,,2026-07-13
+수집필수,파생지표,신규,KPI_PERSONAL_VS_GROUP,대시보드후보,조합,개인 vs 그룹 집중 비교,TM_*+GTM_*,,파생,,원천의존,즉시수집가능(파이프라인중),파이프라인 원천 있음,핵심,TM_*+GTM_*,,2026-07-13
+수집필수,파생지표,신규,KPI_INVITE_FUNNEL,대시보드후보,조합,초대 생성→수락 퍼널,INV_*,,파생,,원천의존,즉시수집가능(파이프라인중),원천 있음,핵심,INV_*,,2026-07-13
+수집필수,파생지표,신규,KPI_POKE_FUNNEL,대시보드후보,조합,콕 발송→응답→입장,POKE_*+UG_SESSION_ENTER,,파생,,원천의존,미수집(로그없음·BE/FE보강필요),POKE_SEND 로그 선행 필수,핵심,POKE_*+UG_SESSION_ENTER,,2026-07-13
+수집필수,파생지표,신규,KPI_STAY_VS_FOCUS,대시보드후보,조합,체류 vs 실제집중,GA stay+TM,,파생,,원천의존,즉시수집가능(파이프라인중),소스 이질·퇴장로그 보강,핵심,GA stay+TM,,2026-07-13
+수집필수,파생지표,신규,KPI_ONBOARD_FUNNEL,대시보드후보,조합,온보딩 단계 전환,ONB_STEP_*,,파생,,원천의존,미수집(로그없음·BE/FE보강필요),단계로그 선행,핵심,ONB_STEP_*,,2026-07-13
+수집필수,파생지표,신규,KPI_SIGNUP_CHANNEL,대시보드후보,조합,채널별 가입전환,PAGE_FIRST+AUTH,,파생,,원천의존,즉시수집가능(파이프라인중),GA연동 또는 파이프라인,핵심,PAGE_FIRST+AUTH,,2026-07-13

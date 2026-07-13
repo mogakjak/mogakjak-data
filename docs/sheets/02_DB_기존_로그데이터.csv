@@ -1,0 +1,18 @@
+구분,DB테이블,저장방식,기록되는사용자행동,주요컬럼,데이터파이프라인수집여부,비고
+핵심행동로그,focus_session,MySQL 영구,개인/그룹내 개인 타이머 시작·일시정지·종료,user_id / group_id / todo_id / mode / started_at / ended_at / total_duration / focus_duration / status,수집중(personal_sessions),집중시간 analytics 핵심
+핵심행동로그,focus_interval,MySQL 영구,뽀모도로 focus/break 구간,session_id / started_at / ended_at / phase_type / round,수집중(intervals 포함),heatmap·시간대 분석
+핵심행동로그,group_focus_session,MySQL 영구,그룹 공유 타이머 세션,group_id / mode / started_at / ended_at / total_duration / status,수집중(group_sessions),
+핵심행동로그,group_focus_interval,MySQL 영구,그룹 타이머 구간,session_id / phase_type / round / started_at / ended_at,수집중(intervals 포함),
+소셜이벤트,invitation,MySQL 영구,그룹 초대 발송·수락·거절,group_id / inviter_id / invitee_id / status / created_at,수집중,상태 이력 영구보존
+참여상태,user_group,MySQL 영구,그룹 멤버십·입장·응원수,user_id / group_id / role / participation_status / entered_at / cheer_count,수집중,탈퇴 시 row 삭제
+피드백,feedback,MySQL 영구,몰입 종료 후 리뷰,user_id / score / content / tags,미수집,추가 권장(P2)
+채팅,chat_message,MySQL 영구,그룹/1:1 채팅 메시지,chat_room_id / member_id / content / is_read,미수집,추가 검토(P3)
+감사로그,official_lounge_access_log,MySQL 영구,라운지 입장 거절(정원초과)만,user_id / attempted_at / result / reason,미수집,성공 입장은 Redis만
+활동스냅샷,user,MySQL 영구,온라인·마지막 활동,is_active / last_activity_at / is_onboard,미수집,추가 권장(P2)
+할일누적,todo,MySQL 영구,할일별 실제 집중시간·완료,actual_time_in_seconds / is_completed / date,미수집,추가 검토(P2)
+휘발상태,active_focus_session,MySQL 휘발,현재 실행중 타이머 1건,session_id / user_id / started_at,미수집,종료 시 삭제
+실시간(미저장),poke,Redis+WebSocket,콕 찌르기 발송,-,미수집,activity_logs 필요(P0)
+실시간(미저장),cheer,Redis+WebSocket+user_group.cheerCount,응원 알림·누적만,-,미수집,이벤트 이력 없음(P0)
+실시간(미저장),lounge_presence,Redis,라운지 접속자·성공입장,-,미수집,거절만 DB로그
+인증세션,refresh_token,Redis TTL,로그인 세션,user_id / device_info,미수집,분석용 낮음
+프론트분석,GA4+Clarity,외부,타이머·일부 UI 클릭,-,DB미연동,퍼널·그룹·온보딩 편중

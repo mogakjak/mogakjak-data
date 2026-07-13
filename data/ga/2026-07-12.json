@@ -1,0 +1,37 @@
+{
+  "source": "ga4",
+  "status": "pending_integration",
+  "target_date": "2026-07-12",
+  "property_id": null,
+  "collected_at": null,
+  "metrics": {
+    "active_users": null,
+    "new_users": null,
+    "sessions": null,
+    "engaged_sessions": null,
+    "average_engagement_time_sec": null,
+    "bounce_rate": null,
+    "retention_d1": null,
+    "retention_d7": null,
+    "retention_d30": null
+  },
+  "checklist": [
+    {
+      "item": "GA4 Property ID / 측정 ID 확인",
+      "done": false
+    },
+    {
+      "item": "서비스 계정 + Data API 권한",
+      "done": false
+    },
+    {
+      "item": "파이프라인 ga collector 구현",
+      "done": false
+    },
+    {
+      "item": "Secrets에 GA 인증정보 등록",
+      "done": false
+    }
+  ],
+  "note": "연동 전 placeholder. 실제 연동 후 metrics가 채워집니다."
+}

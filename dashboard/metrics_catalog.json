@@ -1,0 +1,3135 @@
+{
+  "version": 2,
+  "taxonomy": {
+    "lens": [
+      {
+        "id": "growth",
+        "label": "성장(Growth)"
+      },
+      {
+        "id": "ux",
+        "label": "퍼널(UX)"
+      },
+      {
+        "id": "tech",
+        "label": "개발(Tech)"
+      }
+    ],
+    "journey": [
+      {
+        "id": "onboarding",
+        "label": "온보딩"
+      },
+      {
+        "id": "core",
+        "label": "핵심기능"
+      },
+      {
+        "id": "social",
+        "label": "소셜"
+      },
+      {
+        "id": "system",
+        "label": "시스템"
+      }
+    ]
+  },
+  "item_count": 150,
+  "ga_fe_event_count": 18,
+  "items": [
+    {
+      "id": "UG_USER_GROUP_LIST",
+      "name": "유저별 보유 그룹방 목록",
+      "category": "그룹·멤버십",
+      "subcategory": "소속",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:user_group",
+      "ga4_event": "",
+      "pipeline": "수집중(membership_snapshot)",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "UG_GROUP_COUNT_PER_USER|UG_LAST_ENTERED",
+      "note": "질문하신 상세로그 중 소속목록",
+      "value_binding": {
+        "type": "db_summary",
+        "key": "membership_count"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_GROUP_COUNT_PER_USER",
+      "name": "유저별 보유 그룹방 개수",
+      "category": "그룹·멤버십",
+      "subcategory": "소속",
+      "lens": "growth",
+      "journey": "social",
+      "type": "파생지표",
+      "source": "파생(스냅샷)",
+      "ga4_event": "",
+      "pipeline": "원천있음·KPI미기재였음",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "UG_USER_GROUP_LIST",
+      "note": "",
+      "value_binding": {
+        "type": "db_summary",
+        "key": "membership_count"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_LAST_ENTERED",
+      "name": "유저-그룹별 최근 입장 시각",
+      "category": "그룹·멤버십",
+      "subcategory": "입장",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:user_group.entered_at",
+      "ga4_event": "",
+      "pipeline": "수집중(membership_snapshot+session_entries)",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "핵심",
+      "related": "UG_ENTER_HISTORY|UG_SESSION_LEAVE",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_ENTER_HISTORY",
+      "name": "그룹방 입장 이력(매번)",
+      "category": "그룹·멤버십",
+      "subcategory": "입장",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "없음(entered_at 덮어쓰기)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "UG_LAST_ENTERED|UG_SESSION_LEAVE|GA_GROUP_STAY",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_SESSION_ENTER",
+      "name": "그룹 세션 입장(상태변경)",
+      "category": "그룹·멤버십",
+      "subcategory": "입장",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:user_group",
+      "ga4_event": "",
+      "pipeline": "수집중(session_entries=당일)",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "db_summary",
+        "key": "session_entry_count"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_SESSION_LEAVE",
+      "name": "그룹 세션 퇴장",
+      "category": "그룹·멤버십",
+      "subcategory": "퇴장",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB상태변경만(NOT_PARTICIPATING)/체류는GA",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "GA_GROUP_STAY|UG_ENTER_HISTORY",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_GROUP_JOIN",
+      "name": "그룹 가입",
+      "category": "그룹·멤버십",
+      "subcategory": "가입",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:user_group 생성(이벤트로그없음)",
+      "ga4_event": "",
+      "pipeline": "스냅샷diff만가능",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_GROUP_LEAVE",
+      "name": "그룹 탈퇴",
+      "category": "그룹·멤버십",
+      "subcategory": "탈퇴",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "row삭제(이력소실)",
+      "ga4_event": "",
+      "pipeline": "스냅샷diff로소실감지가능",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_GROUP_CREATE",
+      "name": "그룹 생성",
+      "category": "그룹·멤버십",
+      "subcategory": "생성",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:mogak_groups",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_GROUP_UPDATE",
+      "name": "그룹 정보 수정",
+      "category": "그룹·멤버십",
+      "subcategory": "수정",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:mogak_groups(덮어쓰기)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_MEMBER_KICK",
+      "name": "멤버 강퇴",
+      "category": "그룹·멤버십",
+      "subcategory": "강퇴",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "row삭제",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_HOST_ACK",
+      "name": "새 방장 확인",
+      "category": "그룹·멤버십",
+      "subcategory": "방장",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:user_group",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_GOAL_SET",
+      "name": "그룹 목표 설정",
+      "category": "그룹·멤버십",
+      "subcategory": "설정",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:mogak_groups",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UG_NOTI_SETTING",
+      "name": "집중체크 알림 설정 변경",
+      "category": "그룹·멤버십",
+      "subcategory": "설정",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:mogak_groups",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_CREATE",
+      "name": "메이트 초대 발송",
+      "category": "초대",
+      "subcategory": "발송",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:invitation",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "db_summary",
+        "key": "invitations_created_count"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_ACCEPT",
+      "name": "초대 수락",
+      "category": "초대",
+      "subcategory": "응답",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:invitation",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "INV_CREATE|UG_GROUP_JOIN",
+      "note": "",
+      "value_binding": {
+        "type": "db_summary",
+        "key": "invitations_responded_count"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_DECLINE",
+      "name": "초대 거절",
+      "category": "초대",
+      "subcategory": "응답",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:invitation",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_LINK_CREATE",
+      "name": "초대 링크 생성",
+      "category": "초대",
+      "subcategory": "링크",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "없음(URL반환만)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_LINK_COPY",
+      "name": "초대 링크 복사",
+      "category": "초대",
+      "subcategory": "링크",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_LINK_JOIN",
+      "name": "초대 링크로 가입",
+      "category": "초대",
+      "subcategory": "링크",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:user_group",
+      "ga4_event": "",
+      "pipeline": "스냅샷/세션에반영",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_LINK_JOIN_FAIL",
+      "name": "초대 링크 가입 실패",
+      "category": "초대",
+      "subcategory": "링크",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "INV_WS_RECEIVE",
+      "name": "초대 WS 알림 수신",
+      "category": "초대",
+      "subcategory": "알림",
+      "lens": "growth",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "WS+Redis",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "POKE_SEND",
+      "name": "콕 찌르기 발송",
+      "category": "소셜",
+      "subcategory": "콕찌르기",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "Redis+WS만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "POKE_RECEIVE",
+      "name": "콕 알림 수신",
+      "category": "소셜",
+      "subcategory": "콕찌르기",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "WS",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "POKE_RESPOND",
+      "name": "콕 응답(참여/거절)",
+      "category": "소셜",
+      "subcategory": "콕찌르기",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "GA:poke_response",
+      "ga4_event": "poke_response",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "POKE_SEND|UG_SESSION_ENTER",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "poke_response"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHEER_SEND",
+      "name": "그룹 응원 발송",
+      "category": "소셜",
+      "subcategory": "응원",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "cheerCount누적+Redis",
+      "ga4_event": "cheer_click",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "cheer_click"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHEER_RECEIVE",
+      "name": "응원 알림 수신",
+      "category": "소셜",
+      "subcategory": "응원",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "WS+Redis",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "LOUNGE_CHEER",
+      "name": "라운지 응원 발송",
+      "category": "라운지",
+      "subcategory": "응원",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "Redis",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_START_TIMER",
+      "name": "개인 일반타이머 시작",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_START_STOPWATCH",
+      "name": "개인 스톱워치 시작",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_START_POMODORO",
+      "name": "개인 뽀모도로 시작",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_PAUSE",
+      "name": "개인 타이머 일시정지",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_RESUME",
+      "name": "개인 타이머 재개",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_FINISH",
+      "name": "개인 타이머 종료",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_NEXT_POMO",
+      "name": "뽀모도로 다음단계",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중(intervals)",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_FINISH_ACTIVE",
+      "name": "활성세션 강제종료",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_VISIBILITY",
+      "name": "타이머 공개설정 변경",
+      "category": "타이머",
+      "subcategory": "개인",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:focus_session(+interval)",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_MODE_SELECT",
+      "name": "타이머 모드 탭 선택",
+      "category": "타이머",
+      "subcategory": "UI",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "select_timer_mode",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "select_timer_mode"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_START_FAILED",
+      "name": "타이머 시작 실패",
+      "category": "타이머",
+      "subcategory": "오류",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "timer_start_failed",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "timer_start_failed"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_PIP",
+      "name": "PiP 모드 열기/닫기",
+      "category": "타이머",
+      "subcategory": "UI",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_TAB_ORDER",
+      "name": "타이머 탭 순서 변경",
+      "category": "타이머",
+      "subcategory": "설정",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:user_timer_setting",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_TODO_SELECT",
+      "name": "타이머용 할일 선택",
+      "category": "타이머",
+      "subcategory": "UI",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "localStorage",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TM_NAV_BLOCK",
+      "name": "타이머 중 페이지/그룹 이탈 시도",
+      "category": "타이머",
+      "subcategory": "이탈",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GTM_START",
+      "name": "그룹 타이머 시작",
+      "category": "타이머",
+      "subcategory": "그룹공유",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:group_focus_session",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "GA없음",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GTM_PAUSE",
+      "name": "그룹 타이머 일시정지",
+      "category": "타이머",
+      "subcategory": "그룹공유",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:group_focus_session",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "GA없음",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GTM_RESUME",
+      "name": "그룹 타이머 재개",
+      "category": "타이머",
+      "subcategory": "그룹공유",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:group_focus_session",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "GA없음",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GTM_FINISH",
+      "name": "그룹 타이머 종료",
+      "category": "타이머",
+      "subcategory": "그룹공유",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:group_focus_session",
+      "ga4_event": "",
+      "pipeline": "수집중",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "GA없음",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GTM_WS_EVENT",
+      "name": "그룹 타이머 WS 이벤트",
+      "category": "타이머",
+      "subcategory": "그룹공유",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "Redis+WS",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_LOGIN_CLICK",
+      "name": "소셜 로그인 시도",
+      "category": "인증·온보딩",
+      "subcategory": "로그인",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "login",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "login"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_LOGIN_SUCCESS",
+      "name": "OAuth 로그인 성공",
+      "category": "인증·온보딩",
+      "subcategory": "로그인",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "DB:user/user_provider+Redis token",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_LOGIN_FAIL",
+      "name": "OAuth 로그인 실패",
+      "category": "인증·온보딩",
+      "subcategory": "로그인",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_TOKEN_REFRESH",
+      "name": "토큰 갱신",
+      "category": "인증·온보딩",
+      "subcategory": "세션",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "Redis",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "시스템조회(분석가치낮음)",
+      "dashboard_candidate": "제외",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_AGREEMENT",
+      "name": "약관 동의 제출",
+      "category": "인증·온보딩",
+      "subcategory": "약관",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "DB:user flags",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_ONBOARD_FLAG",
+      "name": "온보딩 첫방문 마킹",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "DB:is_onboard",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_ONBOARD_DONE",
+      "name": "온보딩 완료(로컬)",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "localStorage mg_onboarded_v1",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_0",
+      "name": "온보딩 Step 0 웰컴",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_1",
+      "name": "온보딩 Step 1 할일안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_2",
+      "name": "온보딩 Step 2 할일폼",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_3",
+      "name": "온보딩 Step 3 타이머안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_4",
+      "name": "온보딩 Step 4 그룹생성안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_5",
+      "name": "온보딩 Step 5 그룹생성모달",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_6",
+      "name": "온보딩 Step 6 비공개안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_7",
+      "name": "온보딩 Step 7 시간기록안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_8",
+      "name": "온보딩 Step 8 목표집중체크안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_9",
+      "name": "온보딩 Step 9 초대안내",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_10",
+      "name": "온보딩 Step 10 초대모달",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "ONB_STEP_11",
+      "name": "온보딩 Step 11 완료",
+      "category": "인증·온보딩",
+      "subcategory": "온보딩단계",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_WITHDRAW",
+      "name": "계정 탈퇴",
+      "category": "인증·온보딩",
+      "subcategory": "탈퇴",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "DB:user soft delete",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_WITHDRAW_REASON",
+      "name": "탈퇴 사유·피드백",
+      "category": "인증·온보딩",
+      "subcategory": "탈퇴",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "UI state(API미전송)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_BACK",
+      "name": "로그인/랜딩 뒤로가기",
+      "category": "인증·온보딩",
+      "subcategory": "이탈",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "page_back_navigation",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "page_back_navigation"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_HOME",
+      "name": "홈 / 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_TODO",
+      "name": "할일 /todo 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_RECORD",
+      "name": "집중리포트 /record 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_MYPAGE",
+      "name": "마이페이지 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_LOUNGE",
+      "name": "라운지 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_LOGIN",
+      "name": "로그인 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_LANDING",
+      "name": "랜딩 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_AGREE",
+      "name": "약관 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_ONBOARD",
+      "name": "온보딩 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_INVITE",
+      "name": "초대링크 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_GROUP",
+      "name": "그룹방 진입",
+      "category": "페이지·여정",
+      "subcategory": "진입",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA pageview만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "PAGE_FIRST_ENTRANCE",
+      "name": "세션 최초 진입",
+      "category": "페이지·여정",
+      "subcategory": "유입",
+      "lens": "growth",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "first_entrance",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "first_entrance"
+      },
+      "composable": true
+    },
+    {
+      "id": "NAV_HEADER_CLICK",
+      "name": "헤더 네비 클릭",
+      "category": "페이지·여정",
+      "subcategory": "네비",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "NAV_LOGO_HOME",
+      "name": "로고 홈 이동",
+      "category": "페이지·여정",
+      "subcategory": "네비",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "SHARE_KAKAO_LANDING",
+      "name": "랜딩 카카오 공유",
+      "category": "유입",
+      "subcategory": "공유",
+      "lens": "growth",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "없음(외부SDK)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_CREATE",
+      "name": "할일 생성",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_UPDATE",
+      "name": "할일 수정",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_COMPLETE",
+      "name": "할일 완료 토글",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_DELETE",
+      "name": "할일 삭제",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CAT_CREATE",
+      "name": "카테고리 생성",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CAT_UPDATE",
+      "name": "카테고리 수정",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CAT_ORDER",
+      "name": "카테고리 순서",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CAT_DELETE",
+      "name": "카테고리 삭제",
+      "category": "할일",
+      "subcategory": "CRUD",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:todo/category",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_COMPLETE_GA",
+      "name": "할일 완료 클릭(GA)",
+      "category": "할일",
+      "subcategory": "GA",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "todo_complete_click",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "todo_complete_click"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_DATE_PICKER",
+      "name": "날짜 피커 클릭",
+      "category": "할일",
+      "subcategory": "GA",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "date_picker_click",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "date_picker_click"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_PAST_TO_TODAY",
+      "name": "과거할일 오늘로",
+      "category": "할일",
+      "subcategory": "GA",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "past_todo_select_to_today",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "past_todo_select_to_today"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_DURATION_SELECT",
+      "name": "목표시간 선택",
+      "category": "할일",
+      "subcategory": "GA",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "add_work_form_select_duration",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "add_work_form_select_duration"
+      },
+      "composable": true
+    },
+    {
+      "id": "TODO_DND",
+      "name": "할일 DnD 정렬",
+      "category": "할일",
+      "subcategory": "UI",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "제외",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "LOUNGE_ENTER_OK",
+      "name": "라운지 입장 성공",
+      "category": "라운지",
+      "subcategory": "입장",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "Redis presence만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "LOUNGE_ENTER_DENY",
+      "name": "라운지 입장 거절",
+      "category": "라운지",
+      "subcategory": "입장",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:official_lounge_access_log",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "LOUNGE_LEAVE",
+      "name": "라운지 퇴장",
+      "category": "라운지",
+      "subcategory": "퇴장",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "Redis",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "LOUNGE_FOCUS_CHECK",
+      "name": "라운지 집중체크 설정",
+      "category": "라운지",
+      "subcategory": "설정",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB/Redis",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "MP_PROFILE_UPDATE",
+      "name": "프로필 수정",
+      "category": "마이페이지",
+      "subcategory": "프로필",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:user",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(상태만·이력없음)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "MP_CHARACTER_CHANGE",
+      "name": "대표 캐릭터 변경",
+      "category": "마이페이지",
+      "subcategory": "캐릭터",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:user_character",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "MP_CHARACTER_AWARD",
+      "name": "캐릭터 보상 확인",
+      "category": "마이페이지",
+      "subcategory": "캐릭터",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:user_character",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "FB_SUBMIT",
+      "name": "몰입종료 리뷰 제출",
+      "category": "마이페이지",
+      "subcategory": "리뷰",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "DB:feedback",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "FB_SHOW_SKIP",
+      "name": "리뷰 팝업 노출/스킵",
+      "category": "마이페이지",
+      "subcategory": "리뷰",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "REC_DAILY_VIEW",
+      "name": "일별 기록 조회",
+      "category": "집중리포트",
+      "subcategory": "조회",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "없음(read)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "REC_DASHBOARD_VIEW",
+      "name": "리포트 대시보드 조회",
+      "category": "집중리포트",
+      "subcategory": "조회",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "없음(read)",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "UI_BOWL",
+      "name": "UI Bowl 투표 FAB",
+      "category": "기타",
+      "subcategory": "외부",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA",
+      "ga4_event": "ui_bowl_vote_floating_click",
+      "pipeline": "미수집",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "제외",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "ui_bowl_vote_floating_click"
+      },
+      "composable": true
+    },
+    {
+      "id": "IMG_UPLOAD",
+      "name": "이미지 업로드",
+      "category": "기타",
+      "subcategory": "미디어",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "URL in DB",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "시스템조회(분석가치낮음)",
+      "dashboard_candidate": "제외",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHAT_ROOM_CREATE",
+      "name": "그룹 채팅방 생성",
+      "category": "채팅",
+      "subcategory": "메시지",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:chat_*",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "FE UI 미노출 가능성",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHAT_ROOM_JOIN",
+      "name": "채팅방 참여",
+      "category": "채팅",
+      "subcategory": "메시지",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:chat_*",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "FE UI 미노출 가능성",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHAT_ROOM_LEAVE",
+      "name": "채팅방 퇴장",
+      "category": "채팅",
+      "subcategory": "메시지",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:chat_*",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "FE UI 미노출 가능성",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHAT_MSG_SEND",
+      "name": "채팅 메시지 전송",
+      "category": "채팅",
+      "subcategory": "메시지",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:chat_*",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "FE UI 미노출 가능성",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "CHAT_MSG_READ",
+      "name": "채팅 읽음",
+      "category": "채팅",
+      "subcategory": "메시지",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "DB:chat_*",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "FE UI 미노출 가능성",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "WS_CONNECT",
+      "name": "WebSocket 연결",
+      "category": "시스템",
+      "subcategory": "WS",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "DB:user.is_active",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "WS_DISCONNECT",
+      "name": "WebSocket 해제",
+      "category": "시스템",
+      "subcategory": "WS",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "DB:user.is_active",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "즉시수집가능(DB있음·파이프라인확장)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "NOTI_FOCUS_SEND",
+      "name": "집중체크 알림 발송",
+      "category": "알림",
+      "subcategory": "집중체크",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "Redis→WS",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "NOTI_FOCUS_RECV",
+      "name": "집중체크 알림 수신/클릭",
+      "category": "알림",
+      "subcategory": "집중체크",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "WS",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "NOTI_TIMER_COMPLETE",
+      "name": "타이머 완료 알림",
+      "category": "알림",
+      "subcategory": "타이머",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "Redis→WS",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "NOTI_BROWSER_PERM",
+      "name": "브라우저 알림 권한",
+      "category": "알림",
+      "subcategory": "권한",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "없음",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "MATE_ACTIVE_WS",
+      "name": "메이트 활동상태 브로드캐스트",
+      "category": "시스템",
+      "subcategory": "상태",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "Redis→WS",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "시스템조회(분석가치낮음)",
+      "dashboard_candidate": "제외",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TOOL_GA4",
+      "name": "GA4 전체",
+      "category": "분석도구",
+      "subcategory": "외부",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4콘솔",
+      "ga4_event": "",
+      "pipeline": "미연동",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "TOOL_CLARITY",
+      "name": "Clarity 세션",
+      "category": "분석도구",
+      "subcategory": "외부",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "Clarity",
+      "ga4_event": "",
+      "pipeline": "미연동",
+      "collect_status": "부분수집(GA만)",
+      "dashboard_candidate": "참고",
+      "related": "",
+      "note": "정성분석",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_USER_GROUPS",
+      "name": "유저별 그룹목록·개수·최근입장 뷰",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "system",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "UG_* 조합",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_PERSONAL_VS_GROUP",
+      "name": "개인 vs 그룹 집중 비교",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "system",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "TM_*+GTM_*",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_INVITE_FUNNEL",
+      "name": "초대 생성→수락 퍼널",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "social",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "INV_*",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_POKE_FUNNEL",
+      "name": "콕 발송→응답→입장",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "system",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "POKE_*+UG_SESSION_ENTER",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_STAY_VS_FOCUS",
+      "name": "체류 vs 실제집중",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "system",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "GA stay+TM",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_ONBOARD_FUNNEL",
+      "name": "온보딩 단계 전환",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "system",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "ONB_STEP_*",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "KPI_SIGNUP_CHANNEL",
+      "name": "채널별 가입전환",
+      "category": "대시보드후보",
+      "subcategory": "조합",
+      "lens": "growth",
+      "journey": "system",
+      "type": "파생지표",
+      "source": "파생",
+      "ga4_event": "",
+      "pipeline": "원천의존",
+      "collect_status": "즉시수집가능(파이프라인중)",
+      "dashboard_candidate": "핵심",
+      "related": "PAGE_FIRST+AUTH",
+      "note": "",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GA_FE_FIRST_ENTRANCE",
+      "name": "[GA심음] 세션 최초 진입",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "growth",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "first_entrance",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · entranceTracker.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "first_entrance"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "entry_page",
+        "referrer"
+      ]
+    },
+    {
+      "id": "GA_FE_LOGIN",
+      "name": "[GA심음] 소셜 로그인 클릭",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "login",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · loginButton.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "login"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "login_type"
+      ]
+    },
+    {
+      "id": "GA_FE_PAGE_BACK_NAVIGATION",
+      "name": "[GA심음] 뒤로가기",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "page_back_navigation",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · LoginPageClient.tsx / landing/page.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "page_back_navigation"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "from_page"
+      ]
+    },
+    {
+      "id": "GA_FE_SELECT_TIMER_MODE",
+      "name": "[GA심음] 타이머 모드 선택",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "select_timer_mode",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · timerSelected.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "select_timer_mode"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "type"
+      ]
+    },
+    {
+      "id": "GA_FE_TIMER_START",
+      "name": "[GA심음] 타이머 시작",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "timer_start",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · useTimerMetrics.ts",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "timer_start"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "timer_type",
+        "target_duration"
+      ]
+    },
+    {
+      "id": "GA_FE_TIMER_PAUSE",
+      "name": "[GA심음] 타이머 일시정지",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "timer_pause",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · useTimerMetrics.ts",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "timer_pause"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_TIMER_STOP",
+      "name": "[GA심음] 타이머 종료",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "timer_stop",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · useTimerMetrics.ts",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "timer_stop"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "actual_focus_time"
+      ]
+    },
+    {
+      "id": "GA_FE_TIMER_COMPLETE",
+      "name": "[GA심음] 타이머 완료",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "timer_complete",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · timerComponent.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "timer_complete"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_TIMER_START_FAILED",
+      "name": "[GA심음] 타이머 시작 실패",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "timer_start_failed",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · timerComponent.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "timer_start_failed"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_VISIBILITY_TOGGLE",
+      "name": "[GA심음] 할일/시간 공개 토글",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "visibility_toggle",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · groupMySidebar.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "visibility_toggle"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "public_type",
+        "is_public"
+      ]
+    },
+    {
+      "id": "GA_FE_GROUP_STAY_DURATION",
+      "name": "[GA심음] 그룹방 체류 시간",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "group_stay_duration",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · groupPage.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "group_stay_duration"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "value"
+      ]
+    },
+    {
+      "id": "GA_FE_CHEER_CLICK",
+      "name": "[GA심음] 응원 클릭",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "cheer_click",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · groupPage.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "cheer_click"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_POKE_RESPONSE",
+      "name": "[GA심음] 콕 찌르기 응답",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "ux",
+      "journey": "social",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "poke_response",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · pokeNotificationModal.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "poke_response"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "action"
+      ]
+    },
+    {
+      "id": "GA_FE_TODO_COMPLETE_CLICK",
+      "name": "[GA심음] 할일 완료 클릭",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "todo_complete_click",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · workItem.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "todo_complete_click"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_DATE_PICKER_CLICK",
+      "name": "[GA심음] 날짜 피커 클릭",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "date_picker_click",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · dateField.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "date_picker_click"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_PAST_TODO_SELECT_TO_TODAY",
+      "name": "[GA심음] 과거 할일 → 오늘",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "past_todo_select_to_today",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · addWorkForm.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "past_todo_select_to_today"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    },
+    {
+      "id": "GA_FE_ADD_WORK_FORM_SELECT_DURATION",
+      "name": "[GA심음] 할일 목표시간 선택",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "add_work_form_select_duration",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · addWorkForm.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "add_work_form_select_duration"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": [
+        "duration_seconds"
+      ]
+    },
+    {
+      "id": "GA_FE_UI_BOWL_VOTE_FLOATING_CLICK",
+      "name": "[GA심음] UI Bowl 투표 FAB",
+      "category": "GA4심어둔이벤트",
+      "subcategory": "FE sendGAEvent",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "GA4 (FE 전송)",
+      "ga4_event": "ui_bowl_vote_floating_click",
+      "pipeline": "미수집(건수는 API 연동 후)",
+      "collect_status": "부분수집(GA전송중·대시보드건수대기)",
+      "dashboard_candidate": "후보",
+      "related": "",
+      "note": "FE 계측됨 · floatingUiBowlButton.tsx",
+      "value_binding": {
+        "type": "ga_event",
+        "event_name": "ui_bowl_vote_floating_click"
+      },
+      "composable": true,
+      "instrumented_in_fe": true,
+      "params": []
+    }
+  ]
+}

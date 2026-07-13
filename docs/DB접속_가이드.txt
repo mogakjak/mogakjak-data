@@ -1,0 +1,67 @@
+모각작 DB 접속 가이드 (PM용)
+========================
+
+개발자 안내 요약:
+- Oracle Cloud → Oracle Server 들어가기
+- IP 등록 필요 없음
+- 토글에서 private key(.pem) 다운로드 → 그걸로 SSH 접속
+- 서버 안에 MySQL 떠 있음 → localhost:3306
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1. private key 받기
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Oracle Cloud 콘솔 로그인
+2. 왼쪽 메뉴에서 Compute → Instances (Oracle Server)
+3. 모각작 서버 인스턴스 클릭
+4. "Private key" / SSH key 토글 → .pem 파일 다운로드
+5. 예: C:\Users\본인이름\.ssh\mogakjak.pem 에 저장
+
+※ .pem 파일은 비밀번호처럼 관리 (카톡·GitHub에 올리지 않기)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2. SSH 터널 열기 (터미널 1개 — 닫지 말 것)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PowerShell 또는 CMD:
+
+ssh -i "C:\Users\본인이름\.ssh\mogakjak.pem" -L 3307:localhost:3306 opc@서버공인IP
+
+- opc : Oracle Ubuntu 기본 유저 (다르면 개발자에게 확인)
+- 서버공인IP : Oracle Server 화면에 보이는 Public IP
+- 처음 연결 시 yes 입력
+
+성공하면 커서가 깜빡이며 대기 상태 → 이 창 유지
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3. .env 확인 (이미 설정됨)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MOGAKJAK_DB_HOST=127.0.0.1
+MOGAKJAK_DB_PORT=3307
+MOGAKJAK_DB_NAME=mogakjak
+MOGAKJAK_DB_USER=...
+MOGAKJAK_DB_PASSWORD=...
+
+※ HOST/PORT는 127.0.0.1 / 3307 그대로 (개발자 DB host로 바꾸지 않음)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4. 수집 실행 (터미널 다른 창)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+cd C:\00_mogakjak\mogakjak_data_pipeline
+run.bat
+
+또는:
+.venv\Scripts\python main.py
+
+성공 시:
+  저장 완료: data\YYYY-MM-DD\daily_snapshot.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+자주 나는 문제
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+| 증상 | 해결 |
+| Connection timed out | 서버 IP 확인, Oracle 인스턴스 Running 확인 |
+| Permission denied (publickey) | .pem 경로·파일명 확인, Username(opc) 확인 |
+| Access denied (DB) | .env DB_USER/PASSWORD 확인 |
+| No module named sqlalchemy | run.bat 사용 (.venv) |
+
+IntelliJ에서 하던 것과 같음:
+  Oracle Server SSH(private key) → 서버 접속 → MySQL localhost:3306

@@ -1,0 +1,18 @@
+우선순위,사용자행동,현재저장위치,문제점,권장수집방법,비고
+P0,페이지 이동(홈→할일→그룹→리포트),GA 자동만,퍼널 분석 불가,activity_logs PAGE_VIEW,전체 여정
+P0,온보딩 단계별 진행/이탈,없음,신규유저 퍼널 공백,activity_logs ONBOARDING_STEP_VIEW,localStorage만 완료표시
+P0,그룹 생성·가입·탈퇴,DB(mogak_groups/user_group),이벤트 로그 없음·탈퇴 시 삭제,activity_logs + 파이프라인 일별 스냅샷,도메인테이블만으로는 시점 추적 어려움
+P0,콕 찌르기 발송,Redis만,이력 전무,activity_logs POKE_SEND + BE 자동기록,수신응답만 GA
+P0,초대 링크 복사,클라이언트만,공유 행동 미기록,activity_logs INVITE_LINK_COPY,
+P1,콕 찌르기 응답,GA만,DB 없음,activity_logs POKE_RESPOND,
+P1,응원(그룹·라운지),cheerCount 누적만,누가 언제 누구에게 모름,activity_logs CHEER_SEND,
+P1,그룹 타이머,DB(group_focus_session),GA 없음,파이프라인 수집(완료) + GA 병행,파이프라인은 커버됨
+P1,약관 동의,DB(user flags),동의 시점 이벤트 없음,activity_logs AUTH_AGREEMENT_SUBMIT,
+P1,탈퇴 사유,UI state만,이탈 분석 불가,activity_logs ACCOUNT_WITHDRAW + API 확장,
+P2,할일 CRUD,DB(todo),행동 이벤트 없음,activity_logs TODO_* + todo 테이블 연동,
+P2,집중 리포트 조회,없음,기능 사용률 모름,activity_logs RECORD_VIEW,
+P2,몰입종료 리뷰,DB(feedback),노출→제출 전환 없음,activity_logs REVIEW_SUBMIT + feedback 수집,
+P2,라운지 입장 성공,Redis만,거절만 official_lounge_access_log,activity_logs LOUNGE_ENTER,
+P2,프로필 수정,DB(user),변경 이력 없음,activity_logs PROFILE_UPDATE,
+P3,채팅 메시지,DB(chat_message),파이프라인 미포함,일별 메시지 수 집계 검토,용량·개인정보 검토 필요
+P3,알림 수신·클릭,WebSocket만,집중체크 알림 효과 모름,activity_logs NOTI_RECEIVED / NOTI_CLICK,

@@ -1,0 +1,69 @@
+카테고리,데이터항목,사용자행동_설명,DB저장,DB테이블_또는_저장소,GA4_이벤트,Clarity,기타_저장소,파이프라인_일별수집,비고
+[분석도구],Google Analytics 4,전역 페이지뷰·일부 커스텀 이벤트,일부만,API 연동 데이터는 DB 미저장,자동 pageview + 커스텀 이벤트(아래 참조),-,외부(GA4 콘솔),미수집,layout.tsx NEXT_PUBLIC_GA_ID
+[분석도구],Microsoft Clarity,세션 녹화·히트맵·클릭 추적,없음,-,없음,전 페이지 자동,외부(Clarity 대시보드),미수집,layout.tsx NEXT_PUBLIC_CLARITY_ID
+인증·온보딩,소셜 로그인 시도,Google/Kakao 로그인 버튼 클릭,없음,OAuth 외부,login (login_type),자동,없음,미수집,성공/실패 DB 이벤트 없음
+인증·온보딩,OAuth 로그인 완료,콜백 후 토큰 쿠키 저장,있음,user / user_provider,없음,자동,없음,미수집,신규·기존 구분은 user 테이블
+인증·온보딩,약관 동의,필수/선택 약관 제출,있음,user (termsAgreed privacyAgreed marketingAgreed),없음,자동,없음,미수집,동의 시점 이벤트 로그 없음
+인증·온보딩,온보딩 첫방문 체크,POST /users/onboarding 호출,있음,user (isOnboard),없음,자동,없음,미수집,튜토리얼 완료 전 마킹될 수 있음
+인증·온보딩,온보딩 완료,튜토리얼 종료,없음,localStorage mg_onboarded_v1,없음,자동,없음,미수집,DB 완료 API 없음
+인증·온보딩,온보딩 단계별 진행,11단계 튜토리얼 이동,없음,없음,없음,자동,없음,미수집,퍼널 공백 P0
+인증·온보딩,계정 탈퇴,회원 soft delete,있음,user (isDeleted deletedAt),없음,자동,없음,미수집,
+인증·온보딩,탈퇴 사유·피드백,탈퇴 모달 입력,없음,UI state만,없음,자동,없음,미수집,API 미전송
+인증·온보딩,첫 진입,세션 최초 페이지 진입,없음,없음,first_entrance (entry_page referrer),자동,없음,미수집,세션당 1회만
+인증·온보딩,뒤로가기,로그인/랜딩에서 뒤로가기,없음,없음,page_back_navigation (from_page),자동,없음,미수집,
+타이머,개인 타이머 세션,시작·일시정지·재개·종료,있음,focus_session,없음(아래 GA는 별도),자동,active_focus_session(휘발),수집중(personal_sessions),핵심 analytics 데이터
+타이머,개인 타이머 구간,뽀모도로 focus/break 구간,있음,focus_interval,없음,자동,없음,수집중(intervals 포함),
+타이머,그룹 공유 타이머 세션,그룹 타이머 라이프사이클,있음,group_focus_session,없음,자동,group_active_focus_session(휘발),수집중(group_sessions),GA 이벤트 없음
+타이머,그룹 타이머 구간,그룹 뽀모도로 구간,있음,group_focus_interval,없음,자동,없음,수집중(intervals 포함),
+타이머,타이머 시작(GA),개인 타이머 시작,있음(DB),focus_session,timer_start (timer_type target_duration 등),자동,없음,수집중,DB+GA 이중기록
+타이머,타이머 일시정지(GA),개인 타이머 pause,있음,focus_session,timer_pause,자동,없음,수집중,
+타이머,타이머 종료(GA),개인 타이머 stop,있음,focus_session,timer_stop (actual_focus_time 등),자동,없음,수집중,
+타이머,타이머 완료(GA),타이머 complete 알림/완료,있음,focus_session,timer_complete,자동,없음,수집중,
+타이머,타이머 시작 실패(GA),시작 실패,없음,없음,timer_start_failed,자동,없음,미수집,
+타이머,타이머 모드 선택,타이머/스톱워치/뽀모도로 탭,없음,클라이언트 state,select_timer_mode (type),자동,없음,미수집,
+타이머,타이머 공개 설정,할일/시간 공개 토글,있음,focus_session (isTaskPublic isTimerPublic),visibility_toggle (public_type is_public),자동,없음,수집중,
+타이머,기본 타이머 탭 순서,타이머 설정 변경,있음,user_timer_setting,없음,자동,없음,미수집,
+타이머,할일별 누적시간,타이머 완료 시 할일 시간 반영,있음,todo (actualTimeInSeconds),없음,자동,없음,미수집,
+타이머,PiP 모드,화면 속 화면,없음,클라이언트만,없음,자동,없음,미수집,
+그룹·소셜,그룹 생성,새 그룹방 만들기,있음,mogak_groups,없음,자동,없음,미수집,이벤트 로그 없음
+그룹·소셜,그룹 수정,이름·이미지·설명 변경,있음,mogak_groups,없음,자동,없음,미수집,
+그룹·소셜,그룹 가입,그룹 멤버 등록,있음,user_group,없음,자동,없음,수집중(membership_snapshot),가입 시점 이벤트 없음
+그룹·소셜,그룹 탈퇴,멤버 탈퇴,삭제됨,user_group hard delete,없음,자동,없음,수집중(스냅샷 diff),row 삭제로 이력 소실
+그룹·소셜,그룹 세션 입장,그룹방 enteredAt 기록,있음,user_group (enteredAt participationStatus),없음,자동,없음,수집중(session_entries),
+그룹·소셜,그룹 세션 퇴장,그룹방 나가기,있음,user_group 상태변경,group_stay_duration (value 초),자동,없음,미수집,체류시간 GA만
+그룹·소셜,그룹 멤버십 상태,역할·참여상태·응원수,있음,user_group (role participationStatus cheerCount),없음,자동,없음,수집중(membership_snapshot),
+그룹·소셜,그룹 목표·알림설정,집중체크 알림 설정,있음,mogak_groups (notificationCycle 등),없음,자동,없음,미수집,
+그룹·소셜,초대 발송,메이트 초대,있음,invitation (PENDING),없음,자동,없음,수집중(invitations_created),
+그룹·소셜,초대 수락·거절,초대 응답,있음,invitation (status),없음,자동,없음,수집중(invitations_responded),
+그룹·소셜,초대 링크 복사,클립보드 복사,없음,클라이언트만,없음,자동,없음,미수집,
+그룹·소셜,콕 찌르기 발송,메이트 poke,없음,없음,없음,자동,Redis Pub/Sub + WebSocket,미수집,DB 이력 없음 P0
+그룹·소셜,콕 찌르기 응답,수락/거절,없음,없음,poke_response (action),자동,WebSocket,미수집,GA만
+그룹·소셜,응원 보내기(그룹),cheer 버튼,부분,user_group.cheerCount 누적,cheer_click,자동,Redis Pub/Sub + WebSocket,미수집,누가→누구 이벤트 없음
+그룹·소셜,콕 찌르기 알림 수신,WebSocket 알림,없음,없음,없음,자동,WebSocket,미수집,
+할일,할일 생성,새 할일 추가,있음,todo,없음,자동,없음,미수집,
+할일,할일 수정·삭제,할일 CRUD,있음,todo (soft delete),없음,자동,없음,미수집,
+할일,할일 완료 토글,체크박스 완료,있음,todo (isCompleted),todo_complete_click,자동,없음,미수집,
+할일,카테고리 CRUD,카테고리 관리·정렬,있음,category,없음,자동,없음,미수집,
+할일,날짜 피커 클릭,날짜 선택 UI,없음,클라이언트,date_picker_click,자동,없음,미수집,
+할일,과거 할일 오늘로,과거 할일 가져오기,없음,클라이언트,past_todo_select_to_today,자동,없음,미수집,
+할일,할일 생성 시 목표시간,목표 시간 선택,없음,클라이언트,add_work_form_select_duration,자동,없음,미수집,
+라운지,라운지 입장 성공,공식 라운지 enter,없음,없음,없음,자동,Redis presence,미수집,
+라운지,라운지 입장 거절,정원 초과 거절,있음,official_lounge_access_log,없음,자동,Redis,미수집,성공 입장은 DB 없음
+라운지,라운지 퇴장,leave,없음,없음,없음,자동,Redis,미수집,
+라운지,라운지 응원,cheer,부분,user_group 또는 Redis,없음,자동,Redis,미수집,그룹과 달리 GA도 없음
+마이페이지,프로필 수정,닉네임·이미지 변경,있음,user,없음,자동,없음,미수집,
+마이페이지,캐릭터 변경,대표 캐릭터,있음,user_profile / user_character,없음,자동,없음,미수집,
+마이페이지,집중 리포트 조회,대시보드·일별 기록 열람,없음,GET API만(조회),없음,자동,없음,미수집,조회 행동 미기록
+마이페이지,몰입 종료 리뷰,세션 후 피드백,있음,feedback + feedback_tag_relation,없음,자동,없음,미수집,
+마이페이지,캐릭터 보상,check-award,있음,user_character,없음,자동,없음,미수집,
+마이페이지,UI Bowl 투표 FAB,외부 투표 링크,없음,외부 URL,ui_bowl_vote_floating_click,자동,없음,미수집,
+채팅·알림,채팅 메시지,그룹/1:1 채팅,있음,chat_message + read_status,없음,자동,WebSocket,미수집,
+채팅·알림,집중체크 알림 수신,WebSocket push,없음,없음,없음,자동,WebSocket + Redis Pub/Sub,미수집,
+채팅·알림,타이머 완료 알림,WebSocket push,없음,없음,없음,자동,WebSocket,미수집,
+채팅·알림,응원 알림 수신,WebSocket push,없음,없음,없음,자동,WebSocket,미수집,
+채팅·알림,초대 알림 수신,WebSocket + invitation API,있음,invitation,없음,자동,WebSocket,수집중(초대 테이블),
+채팅·알림,브라우저 알림 권한,알림 허용/거부,없음,클라이언트만,없음,자동,없음,미수집,
+시스템,사용자 온라인 상태,WS 연결·타이머 시 활동,있음,user (isActive lastActivityAt),없음,자동,Redis Pub/Sub,미수집,
+시스템,로그인 세션,refresh token,있음,Redis refresh_token,없음,자동,Redis TTL,미수집,
+시스템,페이지 이동,라우트 변경,없음,없음,자동 pageview만,자동,없음,미수집,커스텀 PAGE_VIEW 없음 P0
+시스템,네비게이션 차단,타이머 중 이탈 시도,없음,없음,없음,자동,없음,미수집,

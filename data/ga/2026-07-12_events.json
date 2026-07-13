@@ -1,0 +1,193 @@
+{
+  "source": "ga4_fe_instrumentation",
+  "target_date": "2026-07-12",
+  "status": "events_linked_counts_pending",
+  "event_count": 18,
+  "events": [
+    {
+      "event_name": "first_entrance",
+      "label_ko": "세션 최초 진입",
+      "params": [
+        "entry_page",
+        "referrer"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "login",
+      "label_ko": "소셜 로그인 클릭",
+      "params": [
+        "login_type"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "page_back_navigation",
+      "label_ko": "뒤로가기",
+      "params": [
+        "from_page"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "select_timer_mode",
+      "label_ko": "타이머 모드 선택",
+      "params": [
+        "type"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "timer_start",
+      "label_ko": "타이머 시작",
+      "params": [
+        "timer_type",
+        "target_duration"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "timer_pause",
+      "label_ko": "타이머 일시정지",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "timer_stop",
+      "label_ko": "타이머 종료",
+      "params": [
+        "actual_focus_time"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "timer_complete",
+      "label_ko": "타이머 완료",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "timer_start_failed",
+      "label_ko": "타이머 시작 실패",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "visibility_toggle",
+      "label_ko": "할일/시간 공개 토글",
+      "params": [
+        "public_type",
+        "is_public"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "group_stay_duration",
+      "label_ko": "그룹방 체류 시간",
+      "params": [
+        "value"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "cheer_click",
+      "label_ko": "응원 클릭",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "poke_response",
+      "label_ko": "콕 찌르기 응답",
+      "params": [
+        "action"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "todo_complete_click",
+      "label_ko": "할일 완료 클릭",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "date_picker_click",
+      "label_ko": "날짜 피커 클릭",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "past_todo_select_to_today",
+      "label_ko": "과거 할일 → 오늘",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "add_work_form_select_duration",
+      "label_ko": "할일 목표시간 선택",
+      "params": [
+        "duration_seconds"
+      ],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    },
+    {
+      "event_name": "ui_bowl_vote_floating_click",
+      "label_ko": "UI Bowl 투표 FAB",
+      "params": [],
+      "instrumented": true,
+      "count": null,
+      "status": "awaiting_ga4_api",
+      "note": "FE에서 GA로 전송 중. 건수는 GA4 Data API 연동 후 채워짐."
+    }
+  ]
+}

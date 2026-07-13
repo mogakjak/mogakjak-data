@@ -1,0 +1,8 @@
+카테고리,수집키,DB테이블,수집조건,수집항목,PM분석용도,파이프라인상태
+그룹참여,membership_snapshot,user_group + user + mogak_groups,매일 전체 스냅샷,user_group_id / user_id / user_name / group_id / group_name / role / participation_status / entered_at / cheer_count / joined_at / updated_at,일별 멤버십 변화(diff),구현완료
+그룹참여,session_entries,user_group + user + mogak_groups,entered_at = 수집일,user_group_id / user_id / user_name / group_id / group_name / participation_status / entered_at,그룹방 당일 입장 추적,구현완료
+그룹참여,invitations_created,invitation + user + mogak_groups,created_at = 수집일,invitation_id / group_id / group_name / inviter_id / inviter_name / invitee_id / invitee_name / status / created_at,초대 발송량,구현완료
+그룹참여,invitations_responded,invitation + user + mogak_groups,updated_at = 수집일 AND status IN (ACCEPTED DECLINED),invitation_id / group_id / inviter / invitee / status / created_at / responded_at,초대 수락·거절률,구현완료
+타이머,personal_sessions,focus_session + focus_interval + user + mogak_groups,started_at = 수집일,session_id / user_id / group_id / todo_id / mode / participation_type / started_at / ended_at / target_duration / total_duration / focus_duration / break_duration / repeat_count / status / intervals(phase_type round),개인·그룹내 개인 집중시간,구현완료
+타이머,group_sessions,group_focus_session + group_focus_interval + mogak_groups,started_at = 수집일,session_id / group_id / group_name / mode / started_at / ended_at / total_duration / focus_duration / break_duration / status / intervals,그룹 공유 타이머 이용,구현완료
+요약,summary,-,수집일 집계,membership_count / session_entry_count / invitations_created_count / invitations_responded_count / personal_session_count / group_session_count / personal_focus_seconds / group_focus_seconds,일일 KPI 요약,구현완료

@@ -1,0 +1,72 @@
+name: Deploy Dashboard (GitHub Pages)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "dashboard/**"
+      - "data/**"
+      - "config/ga_fe_events.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build dashboard assets
+        run: |
+          python dashboard/build_manifest.py
+          python dashboard/build_catalog.py
+
+      - name: Assemble static site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp -r dashboard _site/dashboard
+          cp -r data _site/data
+          # 루트 접속 시 대시보드로 이동
+          printf '%s\n' \
+            '<!DOCTYPE html>' \
+            '<html lang="ko"><head>' \
+            '<meta charset="UTF-8" />' \
+            '<meta http-equiv="refresh" content="0; url=./dashboard/" />' \
+            '<title>모각작 데이터</title>' \
+            '<link rel="canonical" href="./dashboard/" />' \
+            '</head><body>' \
+            '<p><a href="./dashboard/">모각작 대시보드로 이동</a></p>' \
+            '</body></html>' > _site/index.html
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
