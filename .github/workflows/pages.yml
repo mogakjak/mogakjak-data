@@ -48,13 +48,14 @@ jobs:
             '<html lang="ko"><head>' \
             '<meta charset="UTF-8" />' \
             '<meta http-equiv="refresh" content="0; url=./dashboard/" />' \
+            '<link rel="icon" href="./dashboard/favicon.svg" type="image/svg+xml" />' \
             '<title>모각작 데이터</title>' \
             '<link rel="canonical" href="./dashboard/" />' \
             '</head><body>' \
             '<p><a href="./dashboard/">모각작 대시보드로 이동</a></p>' \
             '</body></html>' > _site/index.html
           touch _site/.nojekyll
-
+          # favicon is already under dashboard/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

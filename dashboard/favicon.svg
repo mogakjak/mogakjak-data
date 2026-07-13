@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="tomato">
+  <!-- stem -->
+  <path fill="#00770e" d="M30 8c2 6 6 8 10 8-4 1-7 4-8 8-1-4-4-7-8-8 4 0 8-2 6-8z"/>
+  <!-- leaf -->
+  <ellipse cx="24" cy="18" rx="7" ry="3.5" fill="#00770e" transform="rotate(-35 24 18)"/>
+  <ellipse cx="40" cy="18" rx="7" ry="3.5" fill="#00770e" transform="rotate(35 40 18)"/>
+  <!-- body -->
+  <ellipse cx="32" cy="40" rx="22" ry="20" fill="#fa5332"/>
+  <ellipse cx="24" cy="34" rx="6" ry="4" fill="#fb7055" opacity="0.55"/>
+</svg>
