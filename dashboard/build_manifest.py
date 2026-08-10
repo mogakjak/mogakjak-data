@@ -127,6 +127,7 @@ def build_manifest() -> dict:
 
     ga_days = _scan_ga_days(dates)
     ga_connected = any(d.get("connected") for d in ga_days)
+    sorted_dates = sorted(dates)
 
     return {
         "sources": {
@@ -138,6 +139,9 @@ def build_manifest() -> dict:
             },
         },
         "latest_date": db_days[0]["date"] if db_days else (ga_days[0]["date"] if ga_days else None),
+        "max_date": sorted_dates[-1] if sorted_dates else None,
+        "min_date": sorted_dates[0] if sorted_dates else None,
+        "available_dates": sorted_dates,
         "db_days": db_days,
         "ga_days": ga_days,
         # 하위 호환

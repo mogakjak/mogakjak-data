@@ -336,7 +336,8 @@
 
   function selectableMaxDate() {
     const yesterday = calendarYesterdayIso();
-    const maxAvail = state.manifest?.max_date;
+    const maxAvail =
+      state.manifest?.max_date || latestDataDate() || state.manifest?.latest_date;
     if (!maxAvail) return yesterday;
     return maxAvail < yesterday ? maxAvail : yesterday;
   }
@@ -410,11 +411,18 @@
   }
 
   function selectableMinDate() {
-    return state.manifest?.min_date || state.manifest?.latest_date || selectableMaxDate();
+    if (state.manifest?.min_date) return state.manifest.min_date;
+    const days = state.manifest?.db_days || state.manifest?.days || [];
+    if (days.length) return days[days.length - 1].date;
+    return state.manifest?.latest_date || selectableMaxDate();
   }
 
   function availableDateSet() {
-    return new Set(state.manifest?.available_dates || []);
+    if (state.manifest?.available_dates?.length) {
+      return new Set(state.manifest.available_dates);
+    }
+    const days = state.manifest?.db_days || state.manifest?.days || [];
+    return new Set(days.map((d) => d.date));
   }
 
   function eachDateInclusive(from, to) {
