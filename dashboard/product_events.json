@@ -1,4 +1,154 @@
 {
   "schema_version": 1,
-  "events": []
+  "events": [
+    {
+      "id": "evt-20260803-ga254",
+      "date": "2026-08-03",
+      "type": "ga_event",
+      "title": "GA 이벤트 일괄 심기",
+      "note": "PR #254 feat/ga-253 — 가입·그룹·타이머·고객지원 GA",
+      "repos": [
+        "mogakjak-fe"
+      ],
+      "affects": [
+        "ga",
+        "funnel",
+        "timer"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-fe/pull/254"
+    },
+    {
+      "id": "evt-20260713-dashboard",
+      "date": "2026-07-13",
+      "type": "ops",
+      "title": "Analytics 대시보드 Pages 배포",
+      "note": "데이터 파이프라인 GitHub Pages · Overview·전환·데이터 탭",
+      "repos": [
+        "mogakjak-data-pipeline"
+      ],
+      "affects": [
+        "db",
+        "ga"
+      ],
+      "url": "https://github.com/shon-ah-hyun/mogakjak-data-pipeline"
+    },
+    {
+      "id": "evt-20260523-fe251",
+      "date": "2026-05-23",
+      "type": "fe_release",
+      "title": "FE 추가 기능 구현",
+      "note": "PR #251 — 할 일·타이머 등 후속 기능 묶음",
+      "repos": [
+        "mogakjak-fe"
+      ],
+      "affects": [
+        "timer",
+        "funnel"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-fe/pull/251"
+    },
+    {
+      "id": "evt-20260520-fe249",
+      "date": "2026-05-20",
+      "type": "fix",
+      "title": "할 일 추가 직후 반영",
+      "note": "PR #249 — 할 일 페이지에서 추가 후 즉시 목록 반영",
+      "repos": [
+        "mogakjak-fe"
+      ],
+      "affects": [
+        "funnel"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-fe/pull/249"
+    },
+    {
+      "id": "evt-20260518-fe247",
+      "date": "2026-05-18",
+      "type": "feature",
+      "title": "뽀모도로 단계별 알림 (FE)",
+      "note": "PR #247 — 타이머 단계 전환 알림 UI",
+      "repos": [
+        "mogakjak-fe"
+      ],
+      "affects": [
+        "timer"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-fe/pull/247"
+    },
+    {
+      "id": "evt-20260517-be84",
+      "date": "2026-05-17",
+      "type": "be_release",
+      "title": "타이머 탭 순서 설정",
+      "note": "PR #84 MOG-211 — 타이머 모드 탭 순서 사용자 설정",
+      "repos": [
+        "mogakjak-be"
+      ],
+      "affects": [
+        "timer"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-be/pull/84"
+    },
+    {
+      "id": "evt-20260514-be83",
+      "date": "2026-05-14",
+      "type": "be_release",
+      "title": "뽀모도로 단계별 알림 (BE)",
+      "note": "PR #83 MOG-210 — 단계별 알림 API·로직",
+      "repos": [
+        "mogakjak-be"
+      ],
+      "affects": [
+        "timer"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-be/pull/83"
+    },
+    {
+      "id": "evt-20260426-be82",
+      "date": "2026-04-26",
+      "type": "be_release",
+      "title": "그룹 초대 정책 수정",
+      "note": "PR #82 MOG-198 — 초대·멤버십 정책 변경",
+      "repos": [
+        "mogakjak-be"
+      ],
+      "affects": [
+        "group",
+        "funnel"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-be/pull/82"
+    },
+    {
+      "id": "evt-20260417-lounge",
+      "date": "2026-04-17",
+      "type": "feature",
+      "title": "공식 라운지 출시",
+      "note": "FE #244 라운지 화면·연동 + BE #78 라운지 API",
+      "repos": [
+        "mogakjak-fe",
+        "mogakjak-be"
+      ],
+      "affects": [
+        "group",
+        "funnel",
+        "growth"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-fe/pull/244"
+    },
+    {
+      "id": "evt-20260331-fe242",
+      "date": "2026-03-31",
+      "type": "fe_release",
+      "title": "모바일 랜딩페이지 연결",
+      "note": "PR #242 — 모바일 유입·첫 진입 경로",
+      "repos": [
+        "mogakjak-fe"
+      ],
+      "affects": [
+        "growth",
+        "funnel"
+      ],
+      "url": "https://github.com/mogakjak/mogakjak-fe/pull/242"
+    }
+  ]
 }
