@@ -59,9 +59,9 @@
       },
     };
   </script>
-  <link rel="stylesheet" href="./styles.css?v=20260810g" />
+  <link rel="stylesheet" href="./styles.css?v=20260810h" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
-  <script src="./app.js?v=20260810g" defer></script>
+  <script src="./app.js?v=20260810h" defer></script>
 </head>
 <body class="app-shell font-sans text-mg-black antialiased">
   <aside id="sidebar" class="sidebar" aria-label="대시보드 메뉴">
@@ -149,54 +149,76 @@
   </aside>
 
   <div class="main min-w-0 flex-1">
-    <header class="top top-main mb-6 flex flex-wrap items-start justify-between gap-4">
-      <button type="button" class="menu-btn" id="openSidebar" aria-label="메뉴 열기">☰</button>
-      <div class="min-w-0">
-        <p class="view-eyebrow" id="viewEyebrow">Overview</p>
-        <h1 class="view-title" id="viewTitle">대시보드</h1>
-        <p class="view-desc" id="viewDesc">핵심 지표와 추세를 한곳에서</p>
-      </div>
-      <div class="controls flex flex-wrap items-end gap-2">
-        <div class="field flex flex-col gap-1 text-xs text-mg-500 relative">
-          <span>날짜</span>
-          <button type="button" id="datePickerBtn" class="control-input date-picker-btn" aria-haspopup="dialog" aria-expanded="false">
-            날짜 선택
-          </button>
-          <div id="datePickerPop" class="date-picker-pop hidden" role="dialog" aria-label="날짜 선택">
-            <div class="date-picker-head">
-              <div class="date-picker-nav">
-                <button type="button" id="calPrev" aria-label="이전 달">‹</button>
-                <strong id="calTitle"></strong>
-                <button type="button" id="calNext" aria-label="다음 달">›</button>
+    <header class="top top-main mb-6">
+      <div class="top-main__row flex flex-wrap items-start justify-between gap-4">
+        <button type="button" class="menu-btn" id="openSidebar" aria-label="메뉴 열기">☰</button>
+        <div class="min-w-0 flex-1">
+          <p class="view-eyebrow" id="viewEyebrow">Overview</p>
+          <h1 class="view-title" id="viewTitle">대시보드</h1>
+          <p class="view-desc" id="viewDesc">핵심 지표와 추세를 한곳에서</p>
+        </div>
+        <div class="controls flex flex-wrap items-end gap-2">
+          <div class="field flex flex-col gap-1 text-xs text-mg-500 relative">
+            <span>날짜</span>
+            <button type="button" id="datePickerBtn" class="control-input date-picker-btn" aria-haspopup="dialog" aria-expanded="false">
+              날짜 선택
+            </button>
+            <div id="datePickerPop" class="date-picker-pop hidden" role="dialog" aria-label="날짜 선택">
+              <div class="date-picker-head">
+                <div class="date-picker-nav">
+                  <button type="button" id="calPrev" aria-label="이전 달">‹</button>
+                  <strong id="calTitle"></strong>
+                  <button type="button" id="calNext" aria-label="다음 달">›</button>
+                </div>
+                <p class="cal-range-preview" id="calRangePreview">날짜를 선택하세요</p>
               </div>
-              <p class="cal-range-preview" id="calRangePreview">날짜를 선택하세요</p>
+              <div class="cal-weekdays" aria-hidden="true">
+                <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+              </div>
+              <div id="calGrid" class="cal-grid"></div>
+              <div id="calQuickActions" class="cal-quick-actions hidden" role="group" aria-label="빠른 종료일">
+                <button type="button" class="cal-quick-btn" id="calEndLatest">어제까지</button>
+              </div>
+              <p id="calHint" class="cal-hint">시작일 선택 → 종료일 선택 → 적용</p>
+              <div class="date-picker-actions">
+                <button type="button" id="calApply" class="btn-primary">적용</button>
+                <button type="button" id="calCancel" class="btn-secondary">닫기</button>
+              </div>
             </div>
-            <div class="cal-weekdays" aria-hidden="true">
-              <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
-            </div>
-            <div id="calGrid" class="cal-grid"></div>
-            <div id="calQuickActions" class="cal-quick-actions hidden" role="group" aria-label="빠른 종료일">
-              <button type="button" class="cal-quick-btn" id="calEndLatest">어제까지</button>
-            </div>
-            <p id="calHint" class="cal-hint">시작일 선택 → 종료일 선택 → 적용</p>
-            <div class="date-picker-actions">
-              <button type="button" id="calApply" class="btn-primary">적용</button>
-              <button type="button" id="calCancel" class="btn-secondary">닫기</button>
+          </div>
+          <div class="field relative">
+            <button type="button" id="headerMoreBtn" class="btn-secondary header-more-btn" aria-haspopup="menu" aria-expanded="false" title="더보기">⋯</button>
+            <div id="headerMoreMenu" class="header-more-menu hidden" role="menu">
+              <button type="button" role="menuitem" id="refreshBtn">데이터 다시 불러오기</button>
+              <button type="button" role="menuitem" id="shareHelpBtn">공유 방법</button>
+              <label class="header-more-preview" role="none">
+                <span>미리보기(개발)</span>
+                <select id="phasePreview">
+                  <option value="auto">실데이터</option>
+                  <option value="full">예시 수치</option>
+                </select>
+              </label>
             </div>
           </div>
         </div>
-        <div class="field relative">
-          <button type="button" id="headerMoreBtn" class="btn-secondary header-more-btn" aria-haspopup="menu" aria-expanded="false" title="더보기">⋯</button>
-          <div id="headerMoreMenu" class="header-more-menu hidden" role="menu">
-            <button type="button" role="menuitem" id="refreshBtn">데이터 다시 불러오기</button>
-            <button type="button" role="menuitem" id="shareHelpBtn">공유 방법</button>
-            <label class="header-more-preview" role="none">
-              <span>미리보기(개발)</span>
-              <select id="phasePreview">
-                <option value="auto">실데이터</option>
-                <option value="full">예시 수치</option>
-              </select>
-            </label>
+      </div>
+      <div id="headerContext" class="header-context hidden">
+        <p id="viewContextMeta" class="view-context-meta"></p>
+        <div class="home-filters header-filters">
+          <div class="filter-group filter-group--period">
+            <span class="filter-group__label">기간</span>
+            <div class="period-seg" id="globalPeriodChips" role="group" aria-label="기간">
+              <button type="button" class="period-chip" data-period="yesterday">어제</button>
+              <button type="button" class="period-chip" data-period="week">이번 주</button>
+              <button type="button" class="period-chip" data-period="month">이번 달</button>
+            </div>
+          </div>
+          <div class="filter-group filter-group--agg hidden" id="globalAggChipsWrap">
+            <span class="filter-group__label">집계</span>
+            <div class="agg-seg" id="globalAggChips" role="group" aria-label="집계 방식">
+              <button type="button" class="agg-chip" data-agg="avg" title="매일 서비스 전체 합 ÷ 일수">일평균</button>
+              <button type="button" class="agg-chip" data-agg="sum" title="선택 기간 서비스 전체 합">합산</button>
+            </div>
           </div>
         </div>
       </div>
@@ -497,68 +519,6 @@
       </section>
     </div>
 
-    <!-- DB -->
-    <div id="view-db" class="view space-y-8">
-      <section>
-        <div class="mb-3 flex flex-wrap items-end justify-between gap-2">
-          <h2 class="text-lg font-semibold text-mg-black">A. 몰입 엔진</h2>
-          <p id="dbMeta" class="text-sm text-mg-500"></p>
-        </div>
-        <div class="kpi-grid" id="dbFocusKpis"></div>
-        <div class="panel mt-4">
-          <div class="chart-panel relative"><canvas id="dbFocusChart" height="100"></canvas></div>
-        </div>
-      </section>
-      <section class="grid gap-4 lg:grid-cols-2">
-        <div class="panel">
-          <div class="mb-3"><h2 class="text-base font-semibold">B. 그룹 네트워크</h2></div>
-          <div class="chart-panel short relative"><canvas id="dbGroupDistChart"></canvas></div>
-        </div>
-        <div class="panel">
-          <div class="mb-3"><h2 class="text-base font-semibold">C. 초대 퍼널</h2></div>
-          <div class="chart-panel short relative"><canvas id="dbInviteChart"></canvas></div>
-          <div class="kpi-grid tight mt-3" id="dbInviteKpis"></div>
-        </div>
-      </section>
-      <section>
-        <div class="mb-3 flex items-center justify-between gap-2">
-          <h2 class="text-base font-semibold">유저별 그룹방</h2>
-          <div class="toolbar flex items-center gap-2">
-            <input id="userFilter" type="search" placeholder="검색" class="control-input min-w-[160px]" />
-            <span id="userCount" class="text-sm text-mg-500"></span>
-          </div>
-        </div>
-        <div class="panel table-wrap overflow-auto max-h-[420px]">
-          <table class="data-table">
-            <thead><tr><th>유저</th><th>보유</th><th>그룹</th><th>최근 입장</th></tr></thead>
-            <tbody id="userGroupBody"></tbody>
-          </table>
-        </div>
-      </section>
-      <section>
-        <div class="mb-3"><h2 class="text-base font-semibold">그룹방별 멤버</h2></div>
-        <div class="panel table-wrap overflow-auto max-h-[420px]">
-          <table class="data-table">
-            <thead><tr><th>그룹</th><th>멤버</th><th>HOST</th><th>최근 입장</th></tr></thead>
-            <tbody id="groupBody"></tbody>
-          </table>
-        </div>
-      </section>
-      <section>
-        <div class="mb-3"><h2 class="text-base font-semibold">당일 입장</h2></div>
-        <div class="panel table-wrap overflow-auto max-h-[420px]">
-          <table class="data-table">
-            <thead><tr><th>유저</th><th>그룹</th><th>상태</th><th>시각</th></tr></thead>
-            <tbody id="entryBody"></tbody>
-          </table>
-        </div>
-      </section>
-      <section>
-        <div class="mb-3"><h2 class="text-base font-semibold">D. 데이터 품질</h2></div>
-        <ul class="checklist" id="dbQualityList"></ul>
-      </section>
-    </div>
-
     <!-- 실험·탐색 -->
     <div id="view-explore" class="view space-y-6">
       <div class="explore-tabs-wrap">
@@ -716,6 +676,10 @@
       <section>
         <div class="mb-3"><h2 class="text-base font-semibold">단계별 상태</h2></div>
         <div class="stage-cards" id="funnelStages"></div>
+      </section>
+      <section>
+        <div class="mb-3"><h2 class="text-base font-semibold">단계별 자세히</h2></div>
+        <div class="journey-links" id="journeyLinks"></div>
       </section>
       <section class="grid gap-4 lg:grid-cols-2">
         <div class="panel">

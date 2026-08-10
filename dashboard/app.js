@@ -529,17 +529,24 @@
 
   function syncPeriodChips() {
     const active = detectQuickPeriod();
-    document.querySelectorAll("#homePeriodChips .period-chip").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.period === active);
-    });
-    const yesterdayBtn = document.querySelector('#homePeriodChips [data-period="yesterday"]');
-    if (yesterdayBtn) {
-      const stale = isDataStale();
-      yesterdayBtn.textContent = stale ? "최신일" : "어제";
-      yesterdayBtn.title = stale
-        ? `DB/GA 수집 최신 ${latestDataDate() || ""} · 이후 미수집`
-        : "";
-    }
+    document
+      .querySelectorAll(
+        "#homePeriodChips .period-chip, #globalPeriodChips .period-chip"
+      )
+      .forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.period === active);
+      });
+    document
+      .querySelectorAll(
+        '#homePeriodChips [data-period="yesterday"], #globalPeriodChips [data-period="yesterday"]'
+      )
+      .forEach((yesterdayBtn) => {
+        const stale = isDataStale();
+        yesterdayBtn.textContent = stale ? "최신일" : "어제";
+        yesterdayBtn.title = stale
+          ? `DB/GA 수집 최신 ${latestDataDate() || ""} · 이후 미수집`
+          : "";
+      });
   }
 
   function fmtDur(seconds) {
@@ -1603,20 +1610,22 @@
   }
 
   function syncRangeAggUI() {
-    const homeWrap = $("homeAggChipsWrap") || $("homeAggChips");
-    const homeSeg = $("homeAggChips");
     const appliedMulti = !!(
       state.dateFrom &&
       state.dateTo &&
       state.dateFrom !== state.dateTo
     );
-    if (homeWrap) {
-      homeWrap.classList.toggle("hidden", !appliedMulti);
+    for (const wrapId of ["homeAggChipsWrap", "globalAggChipsWrap"]) {
+      const wrap = $(wrapId);
+      if (wrap) wrap.classList.toggle("hidden", !appliedMulti);
     }
-    if (homeSeg) {
-      homeSeg.querySelectorAll("[data-agg]").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.agg === state.rangeAgg);
-      });
+    for (const segId of ["homeAggChips", "globalAggChips"]) {
+      const seg = $(segId);
+      if (seg) {
+        seg.querySelectorAll("[data-agg]").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.agg === state.rangeAgg);
+        });
+      }
     }
   }
 
@@ -3170,8 +3179,98 @@
     if (isGroupSvc) renderGroupLedger();
   }
 
+  function renderGroupLedger() {
+    const s = state.summary;
+    const membership =
+      state.snapshot?.group_participation?.membership_snapshot || [];
+    state.userRows = buildUserRows(membership);
+    const dist = {};
+    for (const u of state.userRows) {
+      const k = String(Math.min(u.group_count, 5));
+      dist[k] = (dist[k] || 0) + 1;
+    }
+    const labels = ["1", "2", "3", "4", "5+"];
+    const distCanvas = $("dbGroupDistChart");
+    if (distCanvas) {
+      destroyChart("dbGroupDist");
+      state.charts.dbGroupDist = new Chart(distCanvas, {
+        type: "bar",
+        data: {
+          labels: labels.map((l) => `${l}개`),
+          datasets: [
+            {
+              label: "유저 수",
+              data: labels.map((l) => dist[l === "5+" ? "5" : l] || 0),
+              backgroundColor: CHART.red,
+              borderRadius: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, title: { display: true, text: "명" } } },
+        },
+      });
+    }
+
+    const rate = inviteAcceptRate(s);
+    const inviteCanvas = $("dbInviteChart");
+    if (inviteCanvas) {
+      destroyChart("dbInvite");
+      state.charts.dbInvite = new Chart(inviteCanvas, {
+        type: "doughnut",
+        data: {
+          labels: ["생성", "응답"],
+          datasets: [
+            {
+              data: [
+                s.invitations_created_count || 0,
+                s.invitations_responded_count || 0,
+              ],
+              backgroundColor: [CHART.red, CHART.black],
+              borderWidth: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: "bottom" } },
+        },
+      });
+    }
+    if ($("dbInviteKpis")) {
+      renderKpiGrid($("dbInviteKpis"), [
+        {
+          label: "생성",
+          value: fmtNum(s.invitations_created_count) || "0",
+          source: "DB",
+        },
+        {
+          label: "응답",
+          value: fmtNum(s.invitations_responded_count) || "0",
+          source: "DB",
+        },
+        {
+          label: "응답/생성",
+          value: rate == null ? "—" : fmtPct(rate),
+          source: "DB",
+          accent: true,
+          pending: rate == null,
+        },
+      ]);
+    }
+
+    renderUserTable(state.userRows);
+    renderGroupTable(buildGroupRows(membership));
+    renderEntries(state.snapshot?.group_participation?.session_entries || []);
+  }
+
   /* ===== DB ===== */
   function renderDb() {
+    if (!$("dbMeta")) return;
     const s = state.summary;
     $("dbMeta").textContent = `수집: ${state.snapshot?.collected_at || "-"}`;
     const homeSec = Number(s.personal_home_focus_seconds) || 0;
@@ -3758,6 +3857,29 @@
       </article>`
       )
       .join("");
+
+    const linksEl = $("journeyLinks");
+    if (linksEl) {
+      const links = [
+        { step: "캐릭터·온보딩", service: "character", title: "캐릭터" },
+        { step: "홈·타이머", service: "home", title: "홈" },
+        { step: "할 일", service: "todo", title: "할 일" },
+        { step: "그룹·라운지", service: "group", title: "그룹" },
+        { step: "메이트·콕", service: "mate", title: "메이트" },
+        { step: "회고", service: "record", title: "집중 리포트" },
+      ];
+      linksEl.innerHTML = links
+        .map(
+          (l) => `<a href="#" class="journey-link" data-view="svc" data-service="${escapeHtml(
+            l.service
+          )}">
+          <span class="journey-link__step">${escapeHtml(l.step)}</span>
+          <span class="journey-link__title">${escapeHtml(l.title)}</span>
+          <span class="journey-link__arrow" aria-hidden="true">→</span>
+        </a>`
+        )
+        .join("");
+    }
 
     const pokeReady = preview;
     $("pokeOverlay").classList.toggle("hidden", pokeReady);
@@ -4679,9 +4801,23 @@
       const link = e.target.closest("a[data-view]");
       if (!link) return;
       e.preventDefault();
-      switchView(link.dataset.view);
+      if (link.dataset.view === "svc" && link.dataset.service) {
+        switchView("svc", { service: link.dataset.service });
+      } else {
+        switchView(link.dataset.view);
+      }
     });
   }
+  document.body.addEventListener("click", (e) => {
+    const link = e.target.closest(".journey-link[data-view]");
+    if (!link) return;
+    e.preventDefault();
+    if (link.dataset.view === "svc" && link.dataset.service) {
+      switchView("svc", { service: link.dataset.service });
+    } else {
+      switchView(link.dataset.view);
+    }
+  });
   if ($("homeInsight")) {
     $("homeInsight").addEventListener("click", () => {
       const el = $("homeInsight");
@@ -4697,20 +4833,24 @@
     });
   }
   if ($("homePeriodChips")) {
-    $("homePeriodChips").addEventListener("click", (e) => {
-      const btn = e.target.closest(".period-chip");
-      if (!btn?.dataset.period) return;
-      const [from, to] = quickPeriodRange(btn.dataset.period);
-      state.cal.pickingEnd = false;
-      state.cal.draftFrom = from;
-      state.cal.draftTo = to;
-      if (from) {
-        const [y, m] = from.split("-").map(Number);
-        state.cal.viewYear = y;
-        state.cal.viewMonth = m - 1;
-      }
-      showSelection(from, to).catch((err) => setStatus(err.message, true));
-    });
+    $("homePeriodChips").addEventListener("click", onPeriodChipClick);
+  }
+  if ($("globalPeriodChips")) {
+    $("globalPeriodChips").addEventListener("click", onPeriodChipClick);
+  }
+  function onPeriodChipClick(e) {
+    const btn = e.target.closest(".period-chip");
+    if (!btn?.dataset.period) return;
+    const [from, to] = quickPeriodRange(btn.dataset.period);
+    state.cal.pickingEnd = false;
+    state.cal.draftFrom = from;
+    state.cal.draftTo = to;
+    if (from) {
+      const [y, m] = from.split("-").map(Number);
+      state.cal.viewYear = y;
+      state.cal.viewMonth = m - 1;
+    }
+    showSelection(from, to).catch((err) => setStatus(err.message, true));
   }
   if ($("datePickerBtn")) {
     $("datePickerBtn").addEventListener("click", (e) => {
@@ -4767,15 +4907,21 @@
     });
   }
   if ($("homeAggChips")) {
-    $("homeAggChips").addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-agg]");
-      if (!btn?.dataset.agg) return;
-      state.rangeAgg = btn.dataset.agg;
-      syncRangeAggUI();
-      if (state.dateFrom && state.dateTo) {
-        renderHome(selectionLabel(state.dateFrom, state.dateTo));
-      }
-    });
+    $("homeAggChips").addEventListener("click", onAggChipClick);
+  }
+  if ($("globalAggChips")) {
+    $("globalAggChips").addEventListener("click", onAggChipClick);
+  }
+  function onAggChipClick(e) {
+    const btn = e.target.closest("[data-agg]");
+    if (!btn?.dataset.agg) return;
+    state.rangeAgg = btn.dataset.agg;
+    syncRangeAggUI();
+    if (state.dateFrom && state.dateTo) {
+      showSelection(state.dateFrom, state.dateTo).catch((err) =>
+        setStatus(err.message, true)
+      );
+    }
   }
 
   function setHeaderMoreOpen(open) {
