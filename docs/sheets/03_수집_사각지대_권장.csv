@@ -9,6 +9,10 @@ P1,응원(그룹·라운지),cheerCount 누적만,누가 언제 누구에게 모
 P1,그룹 타이머,DB(group_focus_session),GA 없음,파이프라인 수집(완료) + GA 병행,파이프라인은 커버됨
 P1,약관 동의,DB(user flags),동의 시점 이벤트 없음,activity_logs AUTH_AGREEMENT_SUBMIT,
 P1,탈퇴 사유,UI state만,이탈 분석 불가,activity_logs ACCOUNT_WITHDRAW + API 확장,
+P1,로그아웃,Redis refresh 삭제만,의도적 세션종료 vs 이탈 구분 불가,activity_logs ACCOUNT_LOGOUT,탈퇴와 별도 지표
+P1,로그인 스크롤 CTA,없음,랜딩 관심→로그인 버튼 퍼널 공백,activity_logs/GA LOGIN_SCROLL_CTA,시작하기·내 몰입 공간 만들기
+P2,문의/제보 FAB,없음,지원·헬프센터 사용률 모름,activity_logs SUPPORT_CLICK,UI Bowl FAB과 별개
+P2,그룹 공통타이머 인원제한 모달,없음,그룹 타이머 시작 마찰 미측정,activity_logs/GA GROUP_TIMER_LIMIT,groupTimerLimit AlertModal
 P2,할일 CRUD,DB(todo),행동 이벤트 없음,activity_logs TODO_* + todo 테이블 연동,
 P2,집중 리포트 조회,없음,기능 사용률 모름,activity_logs RECORD_VIEW,
 P2,몰입종료 리뷰,DB(feedback),노출→제출 전환 없음,activity_logs REVIEW_SUBMIT + feedback 수집,
@@ -16,3 +20,4 @@ P2,라운지 입장 성공,Redis만,거절만 official_lounge_access_log,activit
 P2,프로필 수정,DB(user),변경 이력 없음,activity_logs PROFILE_UPDATE,
 P3,채팅 메시지,DB(chat_message),파이프라인 미포함,일별 메시지 수 집계 검토,용량·개인정보 검토 필요
 P3,알림 수신·클릭,WebSocket만,집중체크 알림 효과 모름,activity_logs NOTI_RECEIVED / NOTI_CLICK,
+P3,과일 도감 열기,없음,게이미피케이션 관심도 모름,activity_logs FRUIT_DEX_OPEN,보상/대표캐릭터와 별개 UI

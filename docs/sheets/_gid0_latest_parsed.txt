@@ -1,0 +1,266 @@
+002		🍅 모각작 서비스 정책 관리										
+004		ID 체계 (요약)
+형식: 도메인접두어-번호
+
+AUTH- : 가입·약관·로그인·탈퇴
+STATUS- : 상태·용어
+SIDE-H- / SIDE-G- / SIDE-C- : 사이드바 홈 / 그룹방 / 공통
+TIMER- : 개인 타이머
+HOME- : 홈 전용(다른 곳에 없는 것만)
+LOUNGE- : 공식 라운지
+GROUP-* : 그룹방 (J가입 S세션 L탈퇴 M관리 H홈UI …)
+MCARD- : 멤버카드
+GTIMER- 그룹 공통 타이머
+POKE- CHEER- INVITE- MATE- 소통
+TODO- REPORT- MYPAGE- CHAR- 메뉴별			구현됨(FE+BE) = FE와 BE 모두에 해당 규칙이 있음
+구현됨(FE) = FE에만 규칙(가드/UI). BE 검증 없음 또는 미연동
+구현됨(BE) = BE에만 규칙(API/도메인). FE UI 없음 또는 미연동
+데이터만(DB) = 전용 정책 로직보다 DB 저장값으로 유지·조회되는 수준
+
+빈칸 = 기능 없음/라벨 비해당 (예: 그룹방 채팅)							
+006		정책 ID	대분류	중분류	내용	구현 여부	출처/위치	비고				
+007		📜 이용대상·약관·계정										
+008		AUTH-01	이용대상	가입/진입	소셜 로그인(Kakao/Google) 후 회원가입 완료자가 이용	구현됨(FE+BE)	mogakjak-be OAuth/User · mogakjak-fe auth/callback					
+009		AUTH-02	가입 약관	필수 동의	서비스 이용약관 + 개인정보 처리방침 모두 동의 필수	구현됨(FE+BE)	BE User.termsAgreed/privacyAgreed · AgreementGateFilter · FE agreements/					
+010		AUTH-03	가입 약관	선택 동의	마케팅 정보 수신 동의	구현됨(FE+BE)	User.marketingAgreed · FE AgreementComponent					
+011		AUTH-04	서비스 해지	자진 탈퇴	회원 soft delete(isDeleted/deletedAt)	구현됨(FE+BE)	BE User 탈퇴 API · FE 탈퇴 UI	진행 중 그룹 조건은 코드에 없음				
+012		AUTH-05	서비스 해지	사용자 데이터 규정								
+016		🫥 상태·용어	🫥 상태·용어									
+017		STATUS-01	상태 및 용어	활동 상태 (접속)	모각작 사이트에 접속(로그인) 중인 상태로, 이 상태여야만 '콕 찌르기' 대상이 됨. 미접속 상태일 경우 마지막 접속 시점으로부터의 경과 시간(예: n분 전)이 표시됨.	구현됨(FE)						
+018		STATUS-02	상태 및 용어	몰입 상태	실제로 유저가 개인 타이머를 실행하여 작동시키고 있는 상태를 뜻함.
+= GroupParticipationStatus.PARTICIPATING	구현됨(FE+BE)						
+019		STATUS-03	상태 및 용어	휴식(세션 참여)	그룹방 입장 후 타이머 미실행 = RESTING	구현됨(FE+BE)	UserGroup.enterGroup → RESTING · leaveGroupSession → NOT_PARTICIPATING					
+020		STATUS-04	상태 및 용어	미참여	그룹 멤버이나 방 세션 미입장 = NOT_PARTICIPATING	구현됨(FE+BE)	UserGroup 기본값 · leaveGroupSession					
+024		1. 사이드바 및 개인타이머 정책										
+025		SIDE-H-01	사이드바(홈)	명언	요청/새로고침마다 랜덤 명언	구현됨(FE+BE)	QuoteService/getRandomQuote · FE previewMain Quotes					
+026		SIDE-G-01	사이드바(그룹방)	작업 공개여부 설정	그룹방 진입 시 '공개 여부'는 매번 "공개" 상태로 초기화됨.	구현됨(FE)	FE previewMain/group 사이드바 useState(true) · FocusSession 기본 isTaskPublic/isTimerPublic=true					
+027		SIDE-C-01	사이드바 (공통)	프로필 캐릭터	유저가 가장 최근에 획득한 캐릭터(최고 레벨 케릭터)가 노출됨	구현됨(FE+BE)	MyPage 프로필 getHighestLevelCharacter · mainImageCharacter 미사용(주석)					
+028		SIDE-C-02	사이드바 (공통)	작업 설정	설정된 작업은 홈/그룹방 이동 시 유지	데이터만(DB)	todo DB · 사이드바 상태					
+029		SIDE-C-03	사이드바 (공통)	작업 달성률	화면 달성률은 최대 100%	구현됨(FE+BE)	BE Math.min(100; progress) · FE todo 표시					
+030		SIDE-C-04	사이드바 (공통)	작업 누적 시건	작업 기준 누적 합산 표시. 작업이 1일 단위 이므로, 결국엔 하루 - 작업 기준 누적 합산	데이터만(DB)	개인 타이머/할일 actualTime · 사이드바 오늘 누적 UI					
+031		SIDE-C-05	사이드바 (공통)	개인 타이머 강제 종료	타이머 작동(실행/휴식) 중 페이지 이동 시 타이머가 강제 종료됨	구현됨(FE)	NavigationBlocker · forceStopTimer					
+032		TIMER-01	개인타이머	시작 조건	선택된 할 일로 개인 타이머 시작 · 삭제된 todo면 TODO_DELETED	구현됨(FE+BE)	timerComponent · FocusSessionServiceImpl					
+033		TIMER-02	개인타이머	누적 반영	pause/finish/뽀모도로 완료 시 todo.actualTime 가산	구현됨(BE)	FocusSessionServiceImpl.addActualTime					
+036		2. 홈 정책						중복 정책(대분류-중분류)				
+037		HOME-01	홈-그룹목록	목록 API	내 그룹 전체 + 공식 라운지 항상 맨 위	구현됨(FE+BE)		그룹방_홈UI-몰입/휴식 · 공식라운지-홈UI				
+038		HOME-02	홈-그룹목록	라운지 실시간	홈 라운지 카드 3초 polling + WS presence	구현됨(FE+BE)		공식라운지-정원 · 공식라운지-홈UI				
+039		HOME-03	홈-그룹목록	빈/로딩	스켈레톤 2행·그룹 0개 안내·320px 스크롤	구현됨(FE)						
+040		HOME-04	홈-그룹목록	생성 CTA	새 그룹 생성하기 → RoomModal create	구현됨(FE+BE)		그룹방_생성-생성필드 · 온보딩				
+041		HOME-05	홈-그룹목록	생성 후 초대	생성 성공 직후 InviteModal 자동 오픈	구현됨(FE)		초대-내부초대				
+042		GROUP-H01	홈-그룹목록	몰입/휴식 배지	PARTICIPATING≥1 → 몰입 중 else 휴식 중	구현됨(FE)		그룹방_홈UI-몰입/휴식배지				
+043		GROUP-H02	홈-그룹목록	인원 표시	(타이머 실행)/(전체 멤버)	구현됨(FE)		그룹방_홈UI-인원표시				
+044		GROUP-H03	홈-그룹목록	프로필 5+n	최대 5아이콘 +n hover 상세	구현됨(FE)		그룹방_홈UI-프로필5+n				
+045		GROUP-S01	홈-그룹목록	일반 그룹 입장	참여하기 → /group/{id} + enter timestamp 저장	구현됨(FE+BE)		그룹방_세션-입장				
+046		LOUNGE-03	홈-그룹목록	라운지 입장	POST /lounge/enter 후 /lounge?entered=1 · 정원 초과 모달	구현됨(FE+BE)		공식라운지-정원 · 공식라운지-홈UI				
+047		GROUP-L01	홈-그룹목록	그룹 탈퇴	일반 그룹만 케밥 → 그룹 나가기	구현됨(FE+BE)		그룹방_탈퇴-일반멤버 · 그룹방_탈퇴-방장+다른멤버				
+048		GROUP-M01	홈-그룹목록	방장 뱃지	본인 HOST인 일반 그룹에 왕관	구현됨(FE)		그룹방_관리-이름/이미지				
+049		MATE-01	홈-메이트	목록	함께한 메이트 카드·무한 스크롤	구현됨(FE+BE)		메이트검색-부분일치				
+050		LOUNGE-12	홈-메이트	그룹 필터	드롭다운에 공식 라운지 제외	구현됨(FE)		공식라운지-홈UI				
+051		MATE-02	홈-메이트	검색	Enter/버튼으로 닉네임 LIKE 검색	구현됨(FE+BE)		메이트검색-부분일치				
+052		POKE-01	홈-메이트	콕 찌르기	메이트 행 ForkButton → 공통 그룹 선택 → poke	구현됨(FE)		콕찌르기-버튼활성화 · 콕찌르기-송신후이동				
+055		공식라운지 정책										
+056		LOUNGE-01	공식라운지	정체	시스템 운영 단일 공간·UserGroup 멤버십 없음	구현됨(BE)	OfficialLoungeBootstrap MAX=20 · OfficialLoungePresenceService · alertModal officialLoungeFull					
+057		LOUNGE-02	공식라운지	정원	최대 20명·초과 시 입장 거부	구현됨(FE+BE)	groupRoom.tsx official lounge branch					
+058		LOUNGE-03	공식라운지	입장	홈/직접 POST /lounge/enter → /lounge?entered=1	구현됨(FE+BE)	FocusSessionServiceImpl officialLounge early return					
+059		LOUNGE-04	공식라운지	퇴장	leave API + pagehide 자동 퇴실	구현됨(FE+BE)						
+060		LOUNGE-05	공식라운지	홈 UI	탈퇴·방장 뱃지 없음	구현됨(FE)						
+061		LOUNGE-06	공식라운지	참여상태	개인타이머↔UserGroup participationStatus 동기화 안 함	구현됨(BE)						
+062		LOUNGE-07	공식라운지	페이지 상단 기능	오늘의 한마디(Quote) + 라운지 현황(N명) + 집중체크 개인 토글	구현됨(FE)						
+063		LOUNGE-08	공식라운지	집중체크	매 시 정각·개인 opt-in(User.isOfficialLoungeFocusCheckEnabled)	구현됨(FE+BE)						
+064		LOUNGE-09	공식라운지	집중체크 수신	presence 입실 + opt-in true (타이머 불필요)	구현됨(BE)						
+065		LOUNGE-10	공식라운지	응원	POST /lounge/cheer · Redis cheer-count · 전원 퇴실 시 0	구현됨(FE+BE)						
+066		LOUNGE-11	공식라운지	초대	라운지 입실 중인 사람만 초대·수락 시 enter()	구현됨(BE)						
+067		LOUNGE-12	공식라운지	초대 링크	고정 /lounge?entered=1 (inviteModal)	구현됨(FE)						
+068		LOUNGE-13	공식라운지	멤버카드	isHost 항상 false · presence+ActiveFocusSession 직접 계산	구현됨(FE+BE)						
+069		LOUNGE-14	공식라운지	멤버카드 lastActiveAt	ISO lastActiveAt 직접 사용	구현됨(FE+BE)						
+070		LOUNGE-15	공식라운지	메이트 필터	홈 메이트 드롭다운에서 라운지 제외	구현됨(FE)						
+071		LOUNGE-16	공식라운지	입장 거절 로그	정원 초과 등 official_lounge_access_log	구현됨(BE)						
+074		3. 그룹방 정책										
+075		GROUP-01	그룹방_생성	생성 필드	name + imageUrl로 생성	구현됨(FE+BE)	CreateGroupRequest · FE roomModal					
+076		GROUP-02	그룹방_생성	기본값	- 방이 생성하자마자 초대팝업 (기존 메이트 & 링크 초대) 노출. 방으로 이동하진 않음.
+- 목표·알림 등은 기본값으로 자동 세팅 (목표 0, 집중알림 ON·1시간)	구현됨(BE)	Group.java 기본값 · GroupServiceImpl.createGroup					
+077		GROUP-03	그룹방_생성	방장 부여	생성자 = HOST (hostAckState=1)	구현됨(BE)	UserGroup.create HOST					
+078		GROUP-J01	그룹방_가입	링크 가입	멤버가 만든 /invite/{groupId}로 즉시 MEMBER 가입	구현됨(FE+BE)	joinGroupViaLink · inviteModal					
+079		GROUP-J02	그룹방_가입	내부 초대	- 친구에게 초대장을 보내면, 상대가 수락/거절할 수 있음
+- PENDING→수락 시 MEMBER · 거절 가능	구현됨(FE+BE)	inviteMate/acceptInvitation/declineInvitation					
+080		GROUP-J03	그룹방_가입	정원 강제	일반 그룹 8명은 필드/UI 암시만 있고 join·accept 시 강제 차단 없음	데이터만(DB)	Group.maxMemberCount=8 · join 경로에 용량체크 없음 · FE 스켈레톤 8칸					
+081		GROUP-J04	그룹방_가입	초대 권한	멤버면 누구나 초대/링크 생성 가능(방장 전용 아님)	구현됨(BE)	ensureCanInvite · createInvitationUrl					
+082		GROUP-S01	그룹방_세션	입장	- 방 화면에 들어가면 기본적으로 “쉬는 중(입장)” 상태가 됨
+- 그룹 상세 GET 시 NOT_PARTICIPATING이면 enterGroup→RESTING+enteredAt	구현됨(BE)	getGroupDetail · UserGroup.enterGroup					
+083		GROUP-S02	그룹방_세션	세션 퇴장	- “세션 나가기”를 하더라도 그룹에서 탈퇴되지 않고, 소속은 유지됨
+- 멤버십 유지한 채 NOT_PARTICIPATING (DELETE .../session/me)	구현됨(FE+BE)	leaveGroupSession · useGroupSessionExitGuard					
+084		GROUP-S03	그룹방_세션	탭 종료	- 탭을 닫아도 자리에서 나간 것처럼 처리하려고 함
+- beforeunload keepalive로 session/me 호출	구현됨(FE)	useGroupSessionExitGuard					
+085		GROUP-L01	그룹방_탈퇴	일반 멤버 (방장 외)	- 일반 멤버가 나가면 그 그룹에서만 빠짐
+- UserGroup 삭제	구현됨(FE+BE)	leaveGroup					
+086		GROUP-L02	그룹방_탈퇴	방장	- 방장이 나가는데 다른 사람이 있으면 → 가장 오래 있던 멤버가 새 방장
+- 가장 오래된 멤버에게 HOST 이양(hostAckState=0) 후 탈퇴	구현됨(FE+BE)	leaveGroup L246+ · designateAsNewHost					
+087		GROUP-L03	그룹방_탈퇴	유저 단독으로 있을 때	마지막 멤버 leaveGroup 시 그룹 삭제	구현됨(FE+BE)	leaveGroup 마지막 멤버					
+088		GROUP-L04	그룹방_방장 이양	확인	새 방장 host-ack 모달(GET/PUT host-ack)	구현됨(FE+BE)	getHostAckStatus/acknowledgeNewHost · alertModal newHostAck					
+089		GROUP-M01	그룹방_관리	이름/이미지	방장(HOST)만 수정 가능	구현됨(FE+BE)	updateGroup HOST 검사 · FE 편집 아이콘 HOST					
+090		GROUP-M02	그룹방_관리	집중체크 알림	- 방장(HOST)만 설정.
+- 디폴트 기본 설정 (동의true, 1시간 주기)
+- 1시간 단위 주기	구현됨(FE+BE)	Group.java · modifyFocusNotification · FocusNotificationScheduler · FE groupNoti					
+091		GROUP-M03	그룹방_관리	집중체크 수신자	- 알림은 “방에 있는 사람 전부”가 아니라, 개인 타이머 돌리는 사람에게만 감 (개인 타이머 ActiveFocusSession 있는 유저에게만 발송)	구현됨(BE)	FocusNotificationService					
+092		GROUP-M04	그룹방_관리	그룹 목표	- UI는 방장(HOST)만 수정 가능
+- BE setGroupGoal은 멤버면 가능	구현됨(FE)	FE groupGoal.tsx · BE setGroupGoal					
+093		GROUP-M05	그룹방_관리	그룹 삭제	HOST만 가능 (API 존재) · FE UI 없음	구현됨(BE)	deleteGroupByHost					
+094		GROUP-H01	그룹방_홈UI	몰입/휴식 배지	- 한 명이라도 개인 타이머 중이면 방 전체가 「몰입 중」, 아니면 「휴식 중」
+- PARTICIPATING≥1 → 몰입 중 else 휴식 중	구현됨(FE)	home groupRoom · StateButton					
+095		GROUP-H02	그룹방_홈UI	인원 표시	(타이머 실행=PARTICIPATING 수)/(전체 멤버)	구현됨(FE)	groupRoom · members					
+096		GROUP-H03	그룹방_홈UI	프로필 5+n	최대 5아이콘 · 초과 +n · hover 전체+개별상태	구현됨(FE)	members.tsx max=5 · membersHover.tsx					
+097		GROUP-R01	그룹방_방안UI	인원 카운트	(NOT_PARTICIPATING 제외)/(전체)	구현됨(FE)	groupPage.tsx					
+098		GROUP-P01	그룹방_방안UI	본인 정렬	본인 카드를 맨 앞·4열 그리드	구현됨(FE)	groupPage.tsx					
+099		MCARD-01	그룹방_멤버카드	상단-프로필	프로필 이미지·닉네임·(나) 표시	구현됨(FE)						
+100		MCARD-02	그룹방_멤버카드	상단-방장	HOST면 왕관 아이콘	구현됨(FE)						
+101		MCARD-03	그룹방_멤버카드	상단-응원	타인 + 세션 참여 중(end 아님)일 때만 응원 버튼	구현됨(FE)						
+102		MCARD-04	그룹방_멤버카드	상단-캐릭터	active/rest=일반 캐릭터 / end=잠자는 캐릭터	구현됨(FE)						
+103		MCARD-05	그룹방_멤버카드	하단-상태문구	{작업이름 or 뭔가} 하는중/쉬어갈래요/참여하지않았어요	구현됨(FE+BE)						
+104		MCARD-06	그룹방_멤버카드	하단-시간표시	현재 개인 타이머 세션 경과 시간(초)	구현됨(FE+BE)						
+105		MCARD-07	그룹방_멤버카드	시간-비공개	isTimerPublic false → null → 참여중/휴식중 텍스트만	구현됨(FE+BE)						
+106		MCARD-08	그룹방_멤버카드	할일-비공개	isTaskPublic false → todoTitle null → 뭔가 하는 중	구현됨(FE+BE)						
+107		MCARD-09	그룹방_멤버카드	최근참여 표시	end 상태 N분/일 전	구현됨(BE)						
+108		MCARD-10	그룹방_멤버카드	동기화	WS /topic/group/{id}/member-status + 10초 전체 브로드캐스트	구현됨(FE+BE)						
+109		GROUP-X01	그룹방_나가기경고	타이머 중 이탈	개인/그룹 타이머 중이면 TimerEndModal · 확인 후 forceStop/finish·리뷰·session exit	구현됨(FE)	groupPage.tsx · useBlockGroupTimerNavigation					
+110			그룹방_채팅	채팅	그룹방 UI에 채팅 없음	삭제	BE ChatService는 별도·그룹방 미연동					
+111			그룹방_관리	강퇴	HOST만 가능 (API 존재) · FE UI 없음	삭제	ejectMemberFromGroup					
+114		4. 그룹타이머 정책										
+115		GTIMER-01	그룹 타이머	시작 인원	세션 참여자(participationStatus≠NOT_PARTICIPATING) 2명 미만이면 시작 불가(모달). 소켓 접속 수 아님	구현됨(FE)	groupTimer.tsx activeParticipantCount · alertModal groupTimerLimit					
+116		GTIMER-02	그룹 타이머	모달 문구	제목: 공통 타이머는 2명부터… / 메이트 2명 이상 참여·개인타이머 유도	구현됨(FE)	alertModal.tsx groupTimerLimit					
+117		GTIMER-03	그룹 타이머	제어 권한	멤버 누구나 start/pause/resume/finish	구현됨(FE+BE)	GroupFocusSessionServiceImpl.validateUserAccessToGroup(멤버만) · GroupTimer UI isHost 없음					
+118		GTIMER-04	그룹 타이머	활성 세션	그룹당 활성 그룹타이머 1개	구현됨(BE)	ensureNoActiveSession					
+119		GTIMER-05	그룹 타이머	목표시간	FE 시작 요청 targetSeconds=3600 고정	구현됨(FE)	groupTimer.tsx start mutate					
+120		GTIMER-06	그룹 타이머	자동 종료	running 중 참여자≤1이면 FE가 finish 호출(paused면 미적용). BE 자동종료 없음	구현됨(FE)	groupTimer.tsx useEffect					
+121		GTIMER-07	그룹 타이머	퇴장 시 유지	다른 참여자 남아있으면 그룹타이머 유지·본인 세션만 종료	구현됨(FE+BE)	groupPage 나가기 · leaveGroupSession					
+122		GTIMER-08	그룹 타이머	마지막 유저 퇴장	경고 후 그룹타이머 finish	구현됨(FE)	groupPage handleFinalExit participatingMemberCount<=1					
+126		5. 소통·초대·온보딩										
+127		POKE-01	콕 찌르기	버튼 활성화	상대 isActive일 때만 FE에서 버튼 활성	구현됨(FE)	mogakjak-fe .../mate/forkButton.tsx					
+128		POKE-02	콕 찌르기	대상 방 목록	함께 속한 그룹방 목록에서 선택	구현됨(FE)	forkPopup · common groups API					
+129		POKE-03	콕 찌르기	몰입 중 방 초대 비활성	대상가 해당 방에서 PARTICIPATING이면 그 방 초대 CTA 비활성	구현됨(FE)	forkPopup.tsx targetParticipationStatus===PARTICIPATING					
+130		POKE-04	콕 찌르기	송신 후 이동	발송 후 송신자도 /group/{id}로 이동(+내부초대 API 동시 호출)	구현됨(FE)	forkPopup handleJoin · useInviteMate · usePoke					
+131		POKE-05	콕 찌르기	수신	모달에서 참여하기 클릭 시 해당 방 이동	구현됨(FE)	poke 수신 모달					
+132		CHEER-01	응원하기	리셋 조건	전원 NOT_PARTICIPATING이 되면 cheerCount=0 (일일 리셋 아님)	구현됨(BE)	GroupServiceImpl.resetAllCheerCounts · leaveGroupSession에서 호출					
+133		CHEER-02	응원하기	전송 조건	발신·수신 모두 세션 참여 중(≠NOT_PARTICIPATING)이어야 함	구현됨(FE+BE)	sendCheer · groupFriendField end면 버튼 없음					
+134		INVITE-01	초대	외부 링크	URL=/invite/{groupId}. 시간 기반 7일 만료 없음. 그룹 없으면 FE가 만료로 표시	구현됨(FE+BE)	BE createInvitationUrl/joinGroupViaLink · FE inviteRedirectLogic					
+135		INVITE-02	초대	내부 초대	친구 목록에서 PENDING 초대 생성·수락/거절	구현됨(FE+BE)	Invitation · inviteMate/accept/decline					
+136		MATE-01	메이트 검색	부분일치	닉네임 한 글자라도 일치 시 노출	구현됨(FE)	메이트 검색 UI					
+137		ONBOARD-01	온보딩·라우팅	분기	미로그인→login / 약관→onboarding / pending invite→/invite/{id} / 완료→홈 또는 그룹	구현됨(FE)	auth/callback · middleware · useOnboardingRedirect · inviteRedirectLogic · InviteRedirectHandler					
+140		6. 캐락터 보상 정책										
+141		CHAR-01	캐릭터	성장 기준	누적 집중 시간(초) 기준. 출석 일수 조건은 미구현	구현됨(FE+BE)						
+142		CHAR-02	캐릭터	단계	FE 상수 12단계(1/5/10/20/50/100/150/200/300/400/500/600h)	구현됨(FE)						
+143		SIDE-C-01	캐릭터	노출	프로필/사이드바는 최고 레벨 캐릭터	구현됨(FE+BE)						
+144		CHAR-03	캐릭터	비정상 종료	정상 저장되지 않은 시간은 누적/보상 산정에서 제외되는 것이 원칙	데이터만(DB)						
+145		CHAR-04	캐릭터	해재 시점	세션 나가기, 리뷰 제출 후 check-award	구현됨(FE)						
+148		7. 할 일 메뉴 정책										
+149		TODO-01	할일-접근	메뉴 진입	헤더 '할 일' → /todo	구현됨(FE)						
+150		TODO-02	할일-접근	로그인 필요	refresh 토큰 없으면 /login 리다이렉트	구현됨(FE)						
+151		TODO-03	할일-접근	모바일	모바일 UA도 /todo 접근 가능(홈만 /landing 분기)	구현됨(FE)						
+152		TODO-04	할일-필터	오늘/전체	사이드바 필터 today | all	구현됨(FE)						
+153		TODO-05	할일-필터	오늘 목록	오늘 작업 목록 + 날짜 라벨	구현됨(FE+BE)						
+154		TODO-06	할일-필터	전체 목록	전체 투두리스트(모든 날짜)	구현됨(FE+BE)						
+155		TODO-07	할일-필터	카테고리 선택	전체 또는 특정 카테고리만 우측 표시	구현됨(FE)						
+156		TODO-08	할일-카테고리	생성	이름+색상으로 카테고리 추가 · Enter로 저장	구현됨(FE+BE)						
+157		TODO-09	할일-카테고리	이름 제한	최대 20자	구현됨(FE+BE)						
+158		TODO-10	할일-카테고리	개수 제한	카테고리 최대 개수 제한 없음	구현됨(BE)						
+159		TODO-11	할일-카테고리	수정	이름·색상 변경	구현됨(FE+BE)						
+160		TODO-12	할일-카테고리	삭제	카테고리 삭제 시 하위 할 일 전부 삭제	구현됨(FE+BE)						
+161		TODO-13	할일-카테고리	순서 변경	드래그 핸들로 순서 변경	구현됨(FE+BE)						
+162		TODO-14	할일-카테고리	접기 상태	기본이 펼쳐진 상	데이터만(DB)						
+163		TODO-15	할일-작업	생성	카테고리·제목·날짜·목표시간으로 할 일 추가	구현됨(FE+BE)						
+164		TODO-16	할일-작업	제목 제한	최대 35자	구현됨(FE+BE)						
+165		TODO-17	할일-작업	목표시간	최소 1분~최대 24시간(60~86400초)	구현됨(FE+BE)						
+166		TODO-18	할일-작업	날짜	과거·미래·오늘 모두 허용	구현됨(FE+BE)						
+167		TODO-19	할일-작업	개수 제한	할 일 최대 개수 제한 없음	구현됨(BE)						
+168		TODO-20	할일-작업	수정	카테고리·제목·날짜·목표시간 변경	구현됨(FE+BE)						
+169		TODO-21	할일-작업	삭제	할 일 1건 삭제(확인 모달)	구현됨(FE+BE)						
+170		TODO-22	할일-작업	완료 토글	체크박스로 완료/미완료 전환	구현됨(FE+BE)						
+171		TODO-23	할일-작업	완료 UI	완료 시 100%·취소선·opacity 50%	구현됨(FE)						
+172		TODO-24	할일-작업	달성률	actualTime/targetTime 기준 % · 최대 100%	구현됨(FE+BE)						
+173		TODO-25	할일-작업	누적시간 표시	카드에 actualTimeInSeconds HH:MM:SS 표시	구현됨(FE+BE)						
+174		TODO-26	할일-작업	누적시간 증가	개인 타이머 pause/finish/뽀모도로 완료 시 가산	구현됨(BE)						
+175		TODO-27	할일-작업	드래그이동	미완료 할 일만 다른 카테고리로 DnD	구현됨(FE)						
+176		TODO-28	할일-작업	오늘하기	과거 날짜 미완료 작업 → 날짜를 오늘로 변경	구현됨(FE)						
+177		TODO-29	할일-작업	과거날짜 추가제한	과거 날짜에서 신규 추가 버튼 숨김	구현됨(FE)						
+178		TODO-30	할일-작업	빈 목록	오늘 필터·항목 0건 시 안내 문구	구현됨(FE)						
+179		SIDE-C-02	할일-연동	사이드바 선택	홈/그룹방에서 선택한 할 일과 연동	구현됨(FE)						
+180		TIMER-01	할일-연동	타이머 연동	선택된 할 일로 개인 타이머 시작	구현됨(FE+BE)						
+181			할일-연동	온보딩	온보딩 step에서 addWorkForm 재사용	구현됨(FE)						
+182			할일-이슈	카테고리수정권한	modifyCategory가 userId 미검증 findById만 사용	구현됨(BE)						
+183		AUTH-05	할일-접근	로그인 필요	refresh 없으면 /login							
+186		8. 집중리포트 메뉴 정책										
+187		REPORT-01	집중리포트-접근	메뉴 진입	헤더 '집중 리포트' → /record	구현됨(FE)						
+188		REPORT-02	집중리포트-접근	로그인 필요	refresh 토큰 없으면 /login	구현됨(FE)						
+189		REPORT-03	집중리포트-접근	약관 언급	개인정보처리방침에 타이머 로그·집중 리포트 분석 명시	구현됨(FE)						
+190		REPORT-04	집중리포트-히트맵	데이터 소스	focus_interval 기반 일별 몰입 시간(초)	구현됨(FE+BE)						
+191		REPORT-05	집중리포트-히트맵	집계 대상	FOCUS·NORMAL phase만 포함 · BREAK 제외	구현됨(BE)						
+192		REPORT-06	집중리포트-히트맵	기간	당해 연도 1/1~12/31 전체 일별(없는 날 0)	구현됨(FE+BE)						
+193		REPORT-07	집중리포트-히트맵	그리드	53열×7행 GitHub 스타일 캘린더	구현됨(FE)						
+194		REPORT-08	집중리포트-히트맵	색상 레벨	0~1h / 1~3h / 3~6h / 6~9h / 9h+ 5단계	구현됨(FE)						
+195		REPORT-09	집중리포트-히트맵	툴팁	날짜별 몰입 시간 XXh YYm 표시	구현됨(FE)						
+196		REPORT-10	집중리포트-히트맵	캐시	5분 staleTime	구현됨(FE)						
+197		AUTH-05	집중리포트-히트맵	이슈-데이터잘림	col>=53 셀 버림 · 윤년+연초요일에 말일 누락 가능	구현됨(FE)						
+198			집중리포트-대시보드	탭	오늘(기본)·이번 주·이번 달·전체	구현됨(FE+BE)						
+199			집중리포트-대시보드	기간-오늘	오늘 00:00~23:59:59.999	구현됨(BE)						
+200			집중리포트-대시보드	기간-이번주	이번 주 월요일 00:00 ~ 다음 월요일 직전	구현됨(BE)						
+201			집중리포트-대시보드	기간-이번달	이번 달 1일 ~ 다음 달 1일 직전	구현됨(BE)						
+202			집중리포트-대시보드	기간-전체	1970-01-01 ~ now	구현됨(BE)						
+203			집중리포트-대시보드	API	GET /api/records/dashboard?rangeType=	구현됨(FE+BE)						
+204			집중리포트-대시보드	리페치	마운트·포커스 시 항상 refetch	구현됨(FE)						
+205			집중리포트-요약카드	총 몰입시간	선택 기간 focus_session.total_duration 합	구현됨(FE+BE)						
+206			집중리포트-요약카드	모각작 몰입	그룹 참여 세션 시간 합	구현됨(FE+BE)						
+207			집중리포트-요약카드	개인 몰입	개인 세션 시간 합	구현됨(FE+BE)						
+208			집중리포트-요약카드	완료한 작업	기간 내 todo.date·isCompleted=true 건수	구현됨(FE+BE)						
+209			집중리포트-요약카드	표시포맷	시간=XXh YYm · 작업=N개	구현됨(FE)						
+210			집중리포트-차트	시간대별	0~23시 막대 그래프	구현됨(FE+BE)						
+211			집중리포트-차트	시간대 phase	FOCUS/BREAK/NORMAL 모두 포함(히트맵과 다름)	구현됨(BE)						
+212			집중리포트-차트	Y축 제한	막대 Y축 0~60분 고정 · 60분 초과 시 클리핑	구현됨(FE)						
+213			집중리포트-차트	카테고리 도넛	카테고리별 focus_session.total_duration 비율	구현됨(FE+BE)						
+214			집중리포트-차트	도넛 라벨	1% 미만 라벨 숨김	구현됨(FE)						
+215			집중리포트-차트	카테고리 달성	카테고리별 완료/전체 할 일 수	구현됨(FE+BE)						
+216			집중리포트-차트	카테고리 리스트	높이 274px 스크롤·이름 150px truncate	구현됨(FE)						
+217			집중리포트-데이터	세션 기준	몰입 시간=focus_session·focus_interval (타이머 로그)	구현됨(BE)						
+218			집중리포트-데이터	할일 기준	완료 작업 수=todo.date·isCompleted (actualTime 아님)	구현됨(BE)						
+219			집중리포트-데이터	미사용필드	dashboard 응답 dailyFocus FE 미사용	구현됨(BE)						
+220			집중리포트-데이터	마이페이지와 차이	마이페이지 누적=todo.actualTime 합 · 리포트=focus_session	구현됨(FE+BE)						
+221			집중리포트-이슈	그룹타이머	그룹 공유 타이머(group_focus_session)는 리포트 집계에 별도 미포함	구현됨(BE)						
+224		9. 마이페이지										
+225		MYPAGE-01	마이페이지-접근	메뉴 진입	헤더 프로필 아이콘 → /mypage	구현됨(FE)						
+226		MYPAGE-02	마이페이지-접근	로그인 필요	refresh 토큰 없으면 /login	구현됨(FE)						
+227		MYPAGE-03	마이페이지-접근	현재 페이지 표시	pathname===/mypage 시 프로필 버튼 활성	구현됨(FE)						
+228		AUTH-04	마이페이지-프로필	표시 항목	닉네임·이메일·프로필 이미지·완료 작업·완료 시간·수집 캐릭터 수	구현됨(FE+BE)						
+229		MYPAGE-B01	마이페이지-프로필	완료 작업 수	완료+미삭제 todo 건수	구현됨(BE)						
+230		MYPAGE-B02	마이페이지-프로필	완료한 시간	완료 todo의 actualTimeInSeconds 합 → N시간 N분	구현됨(BE)						
+231		MYPAGE-T01	마이페이지-프로필	대표 캐릭터	보유 중 최고 레벨 캐릭터	구현됨(FE+BE)						
+232		MYPAGE-T02	마이페이지-프로필	프로필 수정	이름·이메일·이미지 변경 모달	구현됨(FE+BE)						
+233		MATE-01	마이페이지-프로필	닉네임 제한	최대 20자·중복 불가	구현됨(BE)						
+234		MATE-02	마이페이지-프로필	이메일 제한	@Email 형식·중복 불가	구현됨(BE)						
+235		POKE-01	마이페이지-프로필	이미지 업로드	presigned URL · prefix profiles	구현됨(FE)						
+236		MYPAGE-M06	마이페이지-프로필	계정설정	톱니 → 로그아웃·계정 탈퇴 팝오버	구현됨(FE)						
+237		SIDE-C-01	마이페이지-프로필	로그아웃	POST /api/auth/logout → /login	구현됨(FE+BE)						
+238		AUTH-05	마이페이지-탈퇴	1단계	탈퇴 사유 5종 중복선택 + 자유 피드백	구현됨(FE)						
+239			마이페이지-탈퇴	2단계	즉시 삭제·복구 불가 재확인	구현됨(FE)						
+240			마이페이지-탈퇴	API	DELETE /api/users/withdrawal · 사유 미전송	구현됨(FE+BE)						
+241			마이페이지-탈퇴	처리 방식	soft delete isDeleted=true deletedAt=now	구현됨(BE)						
+242			마이페이지-탈퇴	재로그인	탈퇴 계정 WITHDRAWN_USER 에러	구현됨(BE)						
+243			마이페이지-탈퇴	그룹 조건	진행 중 그룹 있어도 탈퇴 가능(코드 검증 없음)	구현됨(BE)						
+244			마이페이지-바구니	그리드	12레벨 고정 4열 카드	구현됨(FE)						
+245			마이페이지-바구니	보유 표시	내 과일 바구니 (N/12)	구현됨(FE)						
+246			마이페이지-바구니	잠금 UI	미보유 시 N시간 달성 후 만나요	구현됨(FE)						
+247			마이페이지-바구니	과일 도감	정적 테이블 모달(Lv1=회원가입)	구현됨(FE)						
+248			마이페이지-바구니	도감 API	GET /characters/guide 존재하나 UI 미사용	구현됨(BE)						
+249			마이페이지-바구니	해금 조건	누적 학습시간 >= unlockTimeInSeconds	구현됨(FE+BE)						
+250			마이페이지-바구니	해금 시점	세션 리뷰 팝업 제출 후 check-award 호출	구현됨(FE)						
+251			마이페이지-바구니	대표 변경 API	PATCH /api/mypage/character 존재·UI 미연동	구현됨(BE)						
+252			마이페이지-바구니	BE 명칭	API 주석 '내 채소 바구니' · FE '내 과일 바구니'	구현됨(FE+BE)						
+253			마이페이지-누적시간	캐릭터용	GET /total-study-time = todo actualTime 전체 합(완료 무관)	구현됨(BE)						
+254			마이페이지-누적시간	프로필용	character-basket totalFocusTime = 완료 todo actualTime만	구현됨(BE)						
+255			마이페이지-누적시간	집계 불일치	해금 기준 vs 프로필 표시 vs 리포트가 서로 다른 소스	구현됨(FE+BE)						
+256			마이페이지-메이트	목록 API	GET /api/groups/mates 페이지네이션	구현됨(FE+BE)						
+257			마이페이지-메이트	그룹 필터	전체 그룹 또는 내 그룹 목록 선택	구현됨(FE)						
+258			마이페이지-메이트	검색	닉네임 검색·submit 시에만 반영	구현됨(FE)						
+259			마이페이지-메이트	실시간 상태	WS /topic/mates/active-status	구현됨(FE+BE)						
+260			마이페이지-메이트	콕 찌르기	활성 메이트만 · 공통 그룹 선택	구현됨(FE)						
+261			마이페이지-메이트	빈 목록	그룹 없음/검색无 결과 안내 문구	구현됨(FE)						
+262			마이페이지-메이트	라운지 제외	홈과 달리 마이페이지 메이트 필터에 라운지 제외 로직 없음	구현됨(FE)						
+263			마이페이지-연동	헤더 프로필	GET /api/mypage/profile 별도(명언·대표캐릭터)	구현됨(FE+BE)						
+264			마이페이지-연동	캐릭터 획득 모달	획득 시 '마이페이지>내 과일 바구니' 안내	구현됨(FE)						

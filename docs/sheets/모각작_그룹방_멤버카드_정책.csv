@@ -1,0 +1,19 @@
+대분류,중분류,내용(쉬운 설명),내용(코드/구현),구현 여부,출처/위치,중복 정책(대분류-중분류),비고
+그룹방_멤버카드,카드 전체 구성,224×144 상단(흰) + 하단(회색) 2단 카드,GroupFriendField 상단+GroupMemberState 하단,구현됨(FE),groupFriendField.tsx,그룹방_방안UI-카드상태,
+그룹방_멤버카드,그리드 배치,4열 그리드·본인 카드 맨 앞,groupPage grid-cols-4 · sort 본인 first,구현됨(FE),groupPage.tsx,그룹방_방안UI-본인정렬,
+그룹방_멤버카드,상단-프로필,프로필 이미지·닉네임·(나) 표시,profileUrl · friendName · isCurrentUser,구현됨(FE),groupFriendField,,
+그룹방_멤버카드,상단-방장,HOST면 왕관 아이콘,isHost from status.role,구현됨(FE),groupFriendField,그룹방_관리-이름/이미지,
+그룹방_멤버카드,상단-응원,타인 + 세션 참여 중(end 아님)일 때만 응원 버튼,canShowCheer = !end && !isCurrentUser,구현됨(FE),groupFriendField · cheerUp,응원하기-전송조건,
+그룹방_멤버카드,상단-캐릭터,active/rest=일반 캐릭터 / end=잠자는 캐릭터,status===end → sleepingLevel SVG,구현됨(FE),groupFriendField L48-52,변수명 isActive는 실제로 end(비활성) 의미
+그룹방_멤버카드,상태-active,개인 타이머 실행 중,PARTICIPATING → displayStatus active,구현됨(FE+BE),groupPage · FocusSessionServiceImpl,상태 및 용어-몰입상태,
+그룹방_멤버카드,상태-rest,방 입장·타이머 pause/finish 후 세션 내 휴식,RESTING → rest · finish 후 NOT 아님,구현됨(FE+BE),UserGroup · groupPage,상태 및 용어-휴식(세션참여),
+그룹방_멤버카드,상태-end,그룹 세션 미참여,NOT_PARTICIPATING → end · 잠자는 캐릭터,구현됨(FE+BE),leaveGroupSession,상태 및 용어-미참여,
+그룹방_멤버카드,하단-상태문구,하는중/쉬어갈래요/참여하지않았어요 + 할일명,GroupMemberState line1 todoTitle,구현됨(FE+BE),groupMemberState · todoTitle WS,그룹방_공개설정-할일/시간공개,
+그룹방_멤버카드,하단-시간표시(AS-IS),현재 개인 타이머 세션 경과 시간(초),personalTimerSeconds · useLiveTimer(active일 때 증가),구현됨(FE+BE),GroupMemberStatusService · groupMemberState,사이드바(공통)-작업누적시간,사이드바는 todo.actualTimeInSeconds(누적) → 불일치
+그룹방_멤버카드,시간-비공개,isTimerPublic false → null → 참여중/휴식중 텍스트만,BE null 전송 · FE hasActiveTime false,구현됨(FE+BE),GroupMemberStatusService,그룹방_공개설정-할일/시간공개,
+그룹방_멤버카드,할일-비공개,isTaskPublic false → todoTitle null → 뭔가 하는 중,BE null · FE task undefined,구현됨(FE+BE),GroupMemberStatusService,그룹방_공개설정-할일/시간공개,
+그룹방_멤버카드,최근참여 표시,end 상태 N분/일 전,daysSinceLastParticipation = enteredAt 기준 일수(이름과 불일치),구현됨(BE),GroupMemberStatusService,,
+그룹방_멤버카드,동기화,WS /topic/group/{id}/member-status + 10초 전체 브로드캐스트,useGroupMemberStatus · GroupMemberStatusScheduler,구현됨(FE+BE),useGroupMemberStatus.ts,,
+그룹방_멤버카드,버그-종료후active,타이머 끝났는데 active/rest로 남는 경우,finish→RESTING( end 아님) · WS stale 시 useLiveTimer 계속 증가,구현됨(FE+BE),FocusSessionServiceImpl · useLiveTimer,,"""참여중"" 오해 원인"
+그룹방_멤버카드,버그-초기깜빡임,첫 로드 전 전원 end(잠자는)로 보임,초기 participationStatus NOT_PARTICIPATING,구현됨(FE),useGroupMemberStatus,,
+그룹방_멤버카드,isPublic prop,groupPage isPublic=true 하드코딩·MemberState 미사용,실제 비공개는 null 필드로 처리,구현됨(FE),groupPage L313,,

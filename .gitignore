@@ -12,6 +12,12 @@ _site/
 *.key
 mogakjak-private.key
 
+# GA/GCP 서비스 계정 JSON (절대 GitHub에 올리지 않기)
+project-*.json
+*-sa.json
+ga-sa.json
+**/service-account*.json
+
 # 별도 저장소 클론 (이 파이프라인 배포에 포함하지 않음)
 mogakjak-be/
 mogakjak-fe/

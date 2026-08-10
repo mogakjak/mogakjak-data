@@ -1,0 +1,42 @@
+{
+  "source": "ga4",
+  "status": "ok",
+  "target_date": "2026-04-13",
+  "property_id": "511799490",
+  "collected_at": "2026-07-20T08:38:48.404772+09:00",
+  "metrics": {
+    "active_users": 9,
+    "new_users": 12,
+    "sessions": 17,
+    "engaged_sessions": 7,
+    "average_engagement_time_sec": 27.24493382352941,
+    "bounce_rate": 0.5882352941176471,
+    "engagement_rate": 0.4117647058823529,
+    "sessions_per_user": 1.8888888888888888,
+    "screen_page_views": 34,
+    "event_count_total": 134,
+    "user_engagement_duration_sec": 264.0,
+    "retention_d1": null,
+    "retention_d7": null,
+    "retention_d30": null
+  },
+  "checklist": [
+    {
+      "item": "GA4 Property ID / 측정 ID 확인",
+      "done": true
+    },
+    {
+      "item": "서비스 계정 + Data API 권한",
+      "done": true
+    },
+    {
+      "item": "파이프라인 ga collector 구현",
+      "done": true
+    },
+    {
+      "item": "Secrets에 GA 인증정보 등록",
+      "done": false
+    }
+  ],
+  "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+}

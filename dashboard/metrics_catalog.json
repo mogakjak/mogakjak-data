@@ -34,7 +34,7 @@
       }
     ]
   },
-  "item_count": 150,
+  "item_count": 155,
   "ga_fe_event_count": 18,
   "items": [
     {
@@ -1428,6 +1428,46 @@
       "composable": true
     },
     {
+      "id": "AUTH_LOGOUT",
+      "name": "계정 로그아웃",
+      "category": "인증·온보딩",
+      "subcategory": "로그아웃",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "Redis refresh 삭제만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "AUTH_WITHDRAW",
+      "note": "탈퇴와 구분",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "AUTH_LOGIN_SCROLL_CTA",
+      "name": "로그인 페이지 스크롤 CTA",
+      "category": "인증·온보딩",
+      "subcategory": "로그인",
+      "lens": "ux",
+      "journey": "onboarding",
+      "type": "원자지표",
+      "source": "클라이언트만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "핵심",
+      "related": "AUTH_LOGIN_CLICK",
+      "note": "login 클릭 전 관심 퍼널",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
       "id": "AUTH_BACK",
       "name": "로그인/랜딩 뒤로가기",
       "category": "인증·온보딩",
@@ -2154,6 +2194,26 @@
       "composable": true
     },
     {
+      "id": "MP_FRUIT_DEX_OPEN",
+      "name": "과일 도감 열기",
+      "category": "마이페이지",
+      "subcategory": "캐릭터",
+      "lens": "ux",
+      "journey": "core",
+      "type": "원자지표",
+      "source": "클라이언트만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "참고",
+      "related": "MP_CHARACTER_*",
+      "note": "보상·대표캐릭터와 별개 UI",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
       "id": "FB_SUBMIT",
       "name": "몰입종료 리뷰 제출",
       "category": "마이페이지",
@@ -2251,6 +2311,46 @@
       "value_binding": {
         "type": "ga_event",
         "event_name": "ui_bowl_vote_floating_click"
+      },
+      "composable": true
+    },
+    {
+      "id": "UI_SUPPORT",
+      "name": "문의/제보 FAB",
+      "category": "기타",
+      "subcategory": "외부",
+      "lens": "tech",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "클라이언트만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "UI_BOWL",
+      "note": "UI Bowl과 별개",
+      "value_binding": {
+        "type": "none"
+      },
+      "composable": true
+    },
+    {
+      "id": "GTM_TIMER_LIMIT_MODAL",
+      "name": "그룹 공통타이머 인원제한 모달",
+      "category": "그룹타이머",
+      "subcategory": "마찰",
+      "lens": "ux",
+      "journey": "system",
+      "type": "원자지표",
+      "source": "클라이언트만",
+      "ga4_event": "",
+      "pipeline": "미수집",
+      "collect_status": "미수집(로그없음·BE/FE보강필요)",
+      "dashboard_candidate": "후보",
+      "related": "TM_START_FAIL",
+      "note": "groupTimerLimit",
+      "value_binding": {
+        "type": "none"
       },
       "composable": true
     },

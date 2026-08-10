@@ -57,6 +57,11 @@
 마이페이지,몰입 종료 리뷰,세션 후 피드백,있음,feedback + feedback_tag_relation,없음,자동,없음,미수집,
 마이페이지,캐릭터 보상,check-award,있음,user_character,없음,자동,없음,미수집,
 마이페이지,UI Bowl 투표 FAB,외부 투표 링크,없음,외부 URL,ui_bowl_vote_floating_click,자동,없음,미수집,
+마이페이지,문의/제보 FAB,SupportModal·Notion FAQ/버그제보,없음,클라이언트만,없음,자동,없음,미수집,UI Bowl과 별개 / REC_SUPPORT_CLICK
+마이페이지,로그아웃,계정 설정→로그아웃,없음,Redis refresh 삭제만,없음,자동,없음,미수집,탈퇴와 구분 / REC_ACCOUNT_LOGOUT
+마이페이지,과일 도감 열기,과일 바구니→도감 모달,없음,클라이언트만,없음,자동,없음,미수집,보상·대표캐릭터와 별개 / REC_FRUIT_DEX_OPEN
+인증·온보딩,로그인 스크롤 CTA,시작하기/내 몰입 공간 만들기,없음,클라이언트만,없음,자동,없음,미수집,login 클릭과 별개 / REC_LOGIN_SCROLL_CTA
+그룹·소셜,그룹 공통타이머 인원제한 모달,2명 미만 시 AlertModal,없음,클라이언트만,없음,자동,없음,미수집,timer_start_failed와 별개 / REC_GROUP_TIMER_LIMIT
 채팅·알림,채팅 메시지,그룹/1:1 채팅,있음,chat_message + read_status,없음,자동,WebSocket,미수집,
 채팅·알림,집중체크 알림 수신,WebSocket push,없음,없음,없음,자동,WebSocket + Redis Pub/Sub,미수집,
 채팅·알림,타이머 완료 알림,WebSocket push,없음,없음,없음,자동,WebSocket,미수집,

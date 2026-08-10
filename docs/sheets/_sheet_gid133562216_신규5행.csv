@@ -1,0 +1,6 @@
+﻿업데이트구분,데이터코드,플랫폼,,,대분류,중분류,,발생조건_또는_설명,데이터활용목적,속성1,속성2,속성3,유저속성,수집소스,DB테이블_또는_저장소,GA4_이벤트,파이프라인수집,파이프라인키,수집여부,우선순위,비고
+권장,REC_GROUP_TIMER_LIMIT,Web,그룹방,그룹방,그룹·소셜,마찰,그룹 공통타이머 인원제한 모달,2명 미만일 때 그룹 타이머 시작 시도→AlertModal,그룹 타이머 시작 마찰·초대 유도 효과,reason,,,user_id,권장(activity_logs+GA),클라이언트만(AlertModal),-,미수집,-,미수집,P2,timer_start_failed(missing_todo)와 별개 / groupTimerLimit
+권장,REC_ACCOUNT_LOGOUT,Web,마이페이지,마이페이지,인증·온보딩,로그아웃,계정 설정에서 로그아웃,POST /api/auth/logout 등 세션 종료,의도적 세션 종료 vs 이탈 구분,,,,user_id,권장(activity_logs),Redis refresh 삭제만,-,미수집,-,미수집,P1,탈퇴(REC_ACCOUNT_WITHDRAW)와 구분
+권장,REC_FRUIT_DEX_OPEN,Web,마이페이지,마이페이지,마이페이지,캐릭터,과일 도감 열기,내 과일 바구니→과일 도감 모달 오픈,게이미피케이션 관심도,,,,user_id,권장(activity_logs),클라이언트만,-,미수집,-,미수집,P3,MP_CHARACTER(보상·대표캐릭터)와 별개 UI
+권장,REC_LOGIN_SCROLL_CTA,Web,랜딩/로그인,랜딩/로그인,유입,CTA,로그인 페이지 스크롤 CTA,시작하기/내 몰입 공간 만들기 클릭(소셜 로그인 영역으로 스크롤),랜딩 관심→로그인 버튼 도달 퍼널,cta_type,,,user_id,권장(activity_logs+GA),클라이언트만,-,미수집,-,미수집,P1,AUTH_LOGIN_CLICK(login)과 별개
+권장,REC_SUPPORT_CLICK,Web,전역,전역,마이페이지,외부링크,문의/제보 FAB 클릭,SupportModal 열기·Notion FAQ/버그제보 링크,지원·헬프센터 사용률,action,,,user_id,권장(activity_logs),클라이언트만,-,미수집,-,미수집,P2,UI_BOWL_VOTE와 별개 SupportModal

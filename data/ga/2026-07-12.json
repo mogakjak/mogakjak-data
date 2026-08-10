@@ -1,16 +1,21 @@
 {
   "source": "ga4",
-  "status": "pending_integration",
+  "status": "ok",
   "target_date": "2026-07-12",
-  "property_id": null,
-  "collected_at": null,
+  "property_id": "511799490",
+  "collected_at": "2026-07-20T08:41:44.967761+09:00",
   "metrics": {
-    "active_users": null,
-    "new_users": null,
-    "sessions": null,
-    "engaged_sessions": null,
-    "average_engagement_time_sec": null,
-    "bounce_rate": null,
+    "active_users": 4,
+    "new_users": 4,
+    "sessions": 11,
+    "engaged_sessions": 3,
+    "average_engagement_time_sec": 180.53200136363637,
+    "bounce_rate": 0.7272727272727273,
+    "engagement_rate": 0.2727272727272727,
+    "sessions_per_user": 2.75,
+    "screen_page_views": 26,
+    "event_count_total": 90,
+    "user_engagement_duration_sec": 252.0,
     "retention_d1": null,
     "retention_d7": null,
     "retention_d30": null
@@ -18,20 +23,20 @@
   "checklist": [
     {
       "item": "GA4 Property ID / 측정 ID 확인",
-      "done": false
+      "done": true
     },
     {
       "item": "서비스 계정 + Data API 권한",
-      "done": false
+      "done": true
     },
     {
       "item": "파이프라인 ga collector 구현",
-      "done": false
+      "done": true
     },
     {
       "item": "Secrets에 GA 인증정보 등록",
       "done": false
     }
   ],
-  "note": "연동 전 placeholder. 실제 연동 후 metrics가 채워집니다."
+  "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
 }

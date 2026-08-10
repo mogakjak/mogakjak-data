@@ -257,7 +257,10 @@ def build_catalog() -> dict:
 
 
 def write_ga_events_for_dates(dates: list[str]) -> None:
-    """심어 둔 GA 이벤트 목록을 날짜별 JSON으로 저장 (건수는 API 연동 후)."""
+    """심어 둔 GA 이벤트 목록 골격만 생성.
+
+    이미 Data API로 수집된 파일(`ga4_all_events` / counts_ok)은 덮어쓰지 않음.
+    """
     GA_DIR.mkdir(parents=True, exist_ok=True)
     events = []
     for ev in _load_ga_fe():
@@ -274,6 +277,21 @@ def write_ga_events_for_dates(dates: list[str]) -> None:
         )
     for date in dates:
         path = GA_DIR / f"{date}_events.json"
+        if path.exists():
+            try:
+                prev = json.loads(path.read_text(encoding="utf-8"))
+                if prev.get("source") == "ga4_all_events" or prev.get(
+                    "status"
+                ) == "events_linked_counts_ok":
+                    continue
+                # 실제 건수가 하나라도 있으면 보존
+                if any(
+                    isinstance(e.get("count"), (int, float))
+                    for e in (prev.get("events") or [])
+                ):
+                    continue
+            except (OSError, json.JSONDecodeError):
+                pass
         payload = {
             "source": "ga4_fe_instrumentation",
             "target_date": date,

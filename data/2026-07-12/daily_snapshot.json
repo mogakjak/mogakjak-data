@@ -1,5 +1,5 @@
 {
-  "collected_at": "2026-07-13T01:21:32.057692+09:00",
+  "collected_at": "2026-07-20T03:49:45.251158+09:00",
   "target_date": "2026-07-12",
   "group_participation": {
     "membership_snapshot": [
@@ -232,10 +232,10 @@
         "group_name": "D&A",
         "role": "MEMBER",
         "participation_status": "NOT_PARTICIPATING",
-        "entered_at": "2026-06-16 09:21:17.492822",
+        "entered_at": "2026-07-15 18:09:53.490640",
         "cheer_count": 8,
         "joined_at": "2026-03-12 16:36:10.953560",
-        "updated_at": "2026-06-16 09:21:21.873044"
+        "updated_at": "2026-07-15 18:09:58.915240"
       },
       {
         "user_group_id": "ac120006-9d09-17c0-819d-32a6cc960153",
@@ -635,10 +635,10 @@
         "group_name": "몰딥브",
         "role": "HOST",
         "participation_status": "NOT_PARTICIPATING",
-        "entered_at": "2026-06-04 03:58:18.716478",
+        "entered_at": "2026-07-19 19:40:58.063295",
         "cheer_count": 0,
         "joined_at": "2026-03-03 16:25:07.680864",
-        "updated_at": "2026-06-04 21:17:26.862608"
+        "updated_at": "2026-07-19 19:41:01.013307"
       },
       {
         "user_group_id": "ac120004-9cb2-16b8-819c-b339a9c80064",
@@ -1385,6 +1385,21 @@
     "personal_session_count": 0,
     "group_session_count": 0,
     "personal_focus_seconds": 0,
-    "group_focus_seconds": 0
-  }
+    "group_focus_seconds": 0,
+    "activity_log_count": 0,
+    "activity_unique_users": 0,
+    "personal_home_focus_seconds": 0,
+    "personal_group_focus_seconds": 0,
+    "group_stay_seconds": null
+  },
+  "activity_logs": {
+    "total_events": 0,
+    "unique_users": 0,
+    "unique_sessions": 0,
+    "distinct_event_types": 0,
+    "by_event": [],
+    "samples": [],
+    "note": null
+  },
+  "activity_logs_patched_at": "2026-07-20T21:14:55.786811+09:00"
 }

@@ -1,0 +1,76 @@
+﻿,,,,,,,데이터명,,,속성,,,,,,,,,,,
+업데이트구분,데이터코드,플랫폼,,,대분류,중분류,,발생조건_또는_설명,데이터활용목적,속성1,속성2,속성3,유저속성,수집소스,DB테이블_또는_저장소,GA4_이벤트,파이프라인수집,파이프라인키,수집여부,우선순위,비고
+신규,PIPE_PERSONAL_SESSIONS,Web,개인 타이머,개인타이머 공통,파이프라인,타이머,개인 타이머 세션(+구간),started_at이 수집일인 focus_session + intervals,개인·그룹내 개인 집중시간,mode,total_duration,intervals,user_id,"DB, 파이프라인 (자체)",focus_session + focus_interval,-,수집중,personal_sessions,수집중,-,data_pipeline 구현완료 / 핵심 KPI
+기존,DB_FOCUS_SESSION,Web,,개인타이머 공통,타이머,세션,개인 타이머 세션(원본 DB),시작·일시정지·재개·종료 전체 라이프사이클,핵심 analytics,mode,status,total_duration,user_id,DB,focus_session,timer_start/pause/stop/complete,수집중,personal_sessions,수집중,-,active_focus_session은 휘발
+기존,DB_FOCUS_INTERVAL,Web,,개인타이머 공통,타이머,구간,개인 타이머 뽀모도로 구간,focus/break 구간,뽀모도로 패턴 분석,phase_type,round,,user_id,DB,focus_interval,-,수집중,personal_sessions.intervals,수집중,-,
+기존,GA_TIMER_START,Web,,개인타이머 공통,타이머,세션,타이머 시작(GA),개인 타이머 시작,시작 행동·설정값,timer_type,target_duration,,user_id,"GA4, GA4(+DB)",focus_session,timer_start,수집중(DB측),personal_sessions,부분수집,-,DB+GA 이중기록
+기존,GA_TIMER_STOP,Web,,개인타이머 공통,타이머,세션,타이머 종료(GA),개인 타이머 stop,실제 집중시간,actual_focus_time,,,user_id,"GA4, GA4(+DB)",focus_session,timer_stop,수집중(DB측),personal_sessions,부분수집,-,
+기존,GA_TIMER_COMPLETE,Web,,개인타이머 공통,타이머,세션,타이머 완료(GA),타이머 complete 알림/완료,완료율,,,,user_id,"GA4, GA4(+DB)",focus_session,timer_complete,수집중(DB측),personal_sessions,부분수집,-,
+기존,TIMER_PIP,Web,,개인타이머 공통,타이머,UI,PiP 모드,화면 속 화면 사용,PiP 사용률,,,,user_id,클라이언트만,-,-,미수집,-,미수집,P3,
+기존,E_TIMER_PAUSE,Web,,개인타이머 공통,타이머,세션,타이머 일시정지,유저가 타이머를 일시정지,집중 흐름 단절 지점 파악,elapsed_time,task_name,,user_id,"DB, GA4",focus_session,timer_pause,수집중,personal_sessions,수집중,-,예시양식 항목 / 파이프라인 세션에 포함
+기존,E_TIMER_START_NO_TASK,Web,,개인타이머 공통,타이머,세션,할 일 미설정 시 타이머 시작 시도,할 일 없이 타이머 시작 시도,할 일 입력 유도 UX 적절성 판단,,,,user_id,GA4,-,timer_start_failed,미수집,-,부분수집(GA만),P2,예시양식 항목
+권장,REC_GROUP_TIMER_LIMIT,Web,그룹방,그룹방,그룹·소셜,마찰,그룹 공통타이머 인원제한 모달,2명 미만일 때 그룹 타이머 시작 시도→AlertModal,그룹 타이머 시작 마찰·초대 유도 효과,reason,,,user_id,권장(activity_logs+GA),클라이언트만(AlertModal),-,미수집,-,미수집,P2,timer_start_failed(missing_todo)와 별개 / groupTimerLimit
+기존,E_DATE_CHANGE_CLICK,Web,,개인타이머 공통,할일,탐색,날짜 변경 클릭,특정 날짜 작업을 찾기 위해 날짜 변경,탐색 난이도·UI 불편함 측정,,,,user_id,GA4,-,date_picker_click,미수집,-,부분수집(GA만),P2,예시양식 항목
+기존,E_TIMER_USAGE_TIME,Web,,개인타이머 공통,타이머,세션,개인 타이머 사용 시간,개인 타이머 집중 시간 합계,핵심 가치 검증,total_duration,mode,,user_id,"파이프라인 (자체), DB",focus_session,-,수집중,personal_sessions,수집중,-,예시양식 항목 / daily_snapshot 요약에 포함
+기존,TIMER_SETTING,Web,,개인타이머 공통,타이머,설정,기본 타이머 탭 순서,타이머 설정 변경,기본 모드 선호도,,,,user_id,DB,user_timer_setting,-,미수집,-,DB저장(파이프라인미수집),P3,
+기존,E_TASK_TIME_PRIVATE_TOGGLE,Web,,"개인 타이머,그룹방",타이머,공개설정,할 일/누적시간 비공개 전환,공개→비공개 또는 반대 토글,그룹 내 정보 공유 허들 측정,public_type,is_public,,user_id,"DB, GA4",focus_session (isTaskPublic/isTimerPublic),visibility_toggle,수집중,personal_sessions,수집중,-,예시양식 항목
+기존,E_TIMER_MODE_SELECT_G,Web,,"개인 타이머,그룹방",타이머,모드선택,타이머 모드 선택,유저가 일반/뽀모도로/스톱워치 모드를 선택,선호 몰입 방식 파악 및 기능 고도화,mode_type,is_first_time,,user_id,GA4,-,select_timer_mode,미수집,-,부분수집(GA만),P1,예시양식 항목 / DB 이력 없음
+기존,E_TIMER_MODE_SELECT_I,Web,,개인 타이머(사이드바),타이머,모드선택,타이머 모드 선택,유저가 일반/뽀모도로/스톱워치 모드를 선택,선호 몰입 방식 파악 및 기능 고도화,mode_type,is_first_time,,user_id,GA4,-,select_timer_mode,미수집,-,부분수집(GA만),P1,예시양식 항목 / DB 이력 없음
+기존,E_PAST_TASK_SELECT_TODAY,Web,할 일,공통,할일,재사용,과거 작업을 오늘로 변경,과거 할 일 선택 후 CTA로 오늘 날짜 변경,과거 작업 조회 니즈 측정,,,,user_id,GA4,-,past_todo_select_to_today,미수집,-,부분수집(GA만),P2,예시양식 항목
+기존,DB_MOGAK_GROUPS,Web,그룹,그룹,그룹·소셜,그룹정보,그룹 메타·알림설정,이름·이미지·설명·알림주기,활성 그룹·설정 분석,notificationCycle,,,group_id,DB,mogak_groups,-,미수집,-,DB저장(파이프라인미수집),P2,생성 이벤트 로그 없음
+권장,REC_GROUP_JOIN_LEAVE,Web,,그룹,그룹·소셜,멤버십,그룹 가입·탈퇴 이벤트,가입/탈퇴 시점 이벤트 로그,멤버십 변화 시점 추적,action,group_id,,user_id,권장(activity_logs+스냅샷),user_group (탈퇴시 삭제),-,수집중(스냅샷만),membership_snapshot,부분수집,P0,탈퇴 hard delete로 이력 소실
+기존,E_GROUP_REACTION_CLICK,Web,그룹방,그룹방,그룹·소셜,응원,비동기 리액션(응원) 클릭,응원 아이콘 클릭,느슨한 연결(응원) 활성도 파악,,,,user_id,"GA4, Redis",user_group.cheerCount 누적만,cheer_click,미수집,-,부분수집,P1,누가→누구에게 보냈는지 이력 없음
+기존,E_GROUP_CREATE_LEGACY,Web,,그룹방,그룹·소셜,생성,그룹방 개설,새 그룹방 만들기,그룹 생성량·활성 그룹 추적,,,,user_id,DB,mogak_groups,-,미수집,-,수집대기,P0,예시양식 수집대기 / 이벤트 로그 없음
+신규,PIPE_SESSION_ENTRIES,Web,,그룹방,파이프라인,그룹참여,그룹방 당일 입장,entered_at이 수집일인 기록,그룹방 당일 입장 추적,entered_at,participation_status,,user_id,"DB, 파이프라인 (자체)",user_group,-,수집중,session_entries,수집중,-,data_pipeline 구현완료
+기존,E_GROUP_ROOM_STAY_TIME,Web,,그룹방,그룹·소셜,체류,그룹방 체류 시간,그룹방 퇴장 시 체류 초 단위 기록,핵심 가치 검증,value_sec,,,user_id,GA4,-,group_stay_duration,미수집,-,부분수집(GA만),P1,예시양식 항목 / DB 입장시각은 session_entries로 수집
+신규,PIPE_GROUP_SESSIONS,Web,,그룹방,파이프라인,타이머,그룹 공유 타이머 세션(+구간),started_at이 수집일인 group_focus_session + intervals,그룹 공유 타이머 이용,mode,total_duration,intervals,group_id,"DB, 파이프라인 (자체)",group_focus_session + group_focus_interval,-,수집중,group_sessions,수집중,-,data_pipeline 구현완료 / GA 없음
+기존,DB_GROUP_FOCUS_SESSION,Web,,그룹방,타이머,세션,그룹 공유 타이머 세션(원본 DB),그룹 타이머 라이프사이클,그룹 타이머 이용 / GA 미연동,mode,status,total_duration,group_id,DB,group_focus_session,-,수집중,group_sessions,수집중,P1,
+기존,DB_GROUP_FOCUS_INTERVAL,Web,,그룹방,타이머,구간,그룹 타이머 뽀모도로 구간,그룹 focus/break 구간,그룹 뽀모도로 패턴,phase_type,round,,group_id,DB,group_focus_interval,-,수집중,group_sessions.intervals,수집중,-,
+기존,DB_USER_GROUP,Web,,그룹방,그룹·소셜,멤버십,그룹 멤버십 상태,역할·참여상태·응원수·입장시각,멤버십·입장 추적,role,participation_status,cheer_count,user_id,DB,user_group,-,수집중,membership_snapshot,수집중,-,탈퇴 시 hard delete로 이력 소실
+권장,REC_CHEER_SEND,Web,그룹방/라운지,그룹방/라운지,그룹·소셜,응원,응원 발송(누가→누구),응원 버튼 클릭 상세,소셜 상호작용 밀도,from_user_id,to_user_id,group_id,user_id,권장(activity_logs),cheerCount 누적만,cheer_click,미수집,-,부분수집,P1,
+기존,DB_LOUNGE_ACCESS_LOG,Web,라운지,라운지,라운지,입장,라운지 입장 거절 로그,정원 초과 등 거절만 기록,라운지 병목,,,,user_id,DB,official_lounge_access_log,-,미수집,-,부분수집(거절만),P2,성공 입장은 Redis만
+권장,REC_LOUNGE_ENTER,Web,,라운지,라운지,입장,라운지 입장 성공,라운지 enter 성공,라운지 이용률,lounge_id,,,user_id,권장(activity_logs),현재 Redis presence,-,미수집,-,미수집,P2,거절만 DB 로그
+기존,DB_USER,Web,마이페이지,마이페이지,인증·온보딩,계정,유저 계정·약관·온보딩플래그,가입·약관·isOnboard·탈퇴,유저 상태·온보딩·탈퇴,termsAgreed,isOnboard,isDeleted,user_id,DB,user,-,미수집,-,DB저장(파이프라인미수집),P1,동의/온보딩 시점 이벤트 없음
+기존,DB_FEEDBACK,Web,,마이페이지,마이페이지,리뷰,몰입 종료 리뷰,세션 후 피드백 제출,만족도·이탈 원인,,,,user_id,DB,feedback + feedback_tag_relation,-,미수집,-,DB저장(파이프라인미수집),P2,노출→제출 전환 미측정
+권장,REC_ACCOUNT_WITHDRAW,Web,,마이페이지,인증·온보딩,탈퇴,탈퇴 사유·피드백,탈퇴 모달 입력값 API 전송,이탈 원인 분석,reason,feedback,,user_id,권장(activity_logs+API),현재 UI state만,-,미수집,-,미수집,P1,탈퇴 자체는 user soft delete
+권장,REC_ACCOUNT_LOGOUT,Web,마이페이지,마이페이지,인증·온보딩,로그아웃,계정 설정에서 로그아웃,POST /api/auth/logout 등 세션 종료,의도적 세션 종료 vs 이탈 구분,,,,user_id,권장(activity_logs),Redis refresh 삭제만,-,미수집,-,미수집,P1,탈퇴(REC_ACCOUNT_WITHDRAW)와 구분
+권장,REC_REVIEW_SUBMIT,Web,,마이페이지,마이페이지,리뷰,몰입종료 리뷰 노출→제출,리뷰 노출/제출 전환,리뷰 전환율,action,,,user_id,권장(activity_logs),feedback 테이블은 제출만,-,미수집,-,부분수집,P2,
+기존,MP_PROFILE_UPDATE,Web,,마이페이지,마이페이지,프로필,프로필 수정,닉네임·이미지 변경,프로필 완성도,,,,user_id,DB,user,-,미수집,-,DB저장(파이프라인미수집),P2,변경 이력 없음
+기존,MP_CHARACTER,Web,,마이페이지,마이페이지,캐릭터,캐릭터 변경·보상,대표 캐릭터·check-award,리워드·캐릭터 사용,,,,user_id,DB,user_profile / user_character,-,미수집,-,DB저장(파이프라인미수집),P3,
+권장,REC_FRUIT_DEX_OPEN,Web,마이페이지,마이페이지,마이페이지,캐릭터,과일 도감 열기,내 과일 바구니→과일 도감 모달 오픈,게이미피케이션 관심도,,,,user_id,권장(activity_logs),클라이언트만,-,미수집,-,미수집,P3,MP_CHARACTER(보상·대표캐릭터)와 별개 UI
+권장,REC_NOTI_CLICK,Web,알림,알림,채팅·알림,알림,알림 수신·클릭,집중체크/초대 등 알림 클릭,알림 효과 측정,noti_type,action,,user_id,권장(activity_logs),현재 WebSocket만,-,미수집,-,미수집,P3,
+기존,E_FOCUS_REPORT_VIEW,Web,집중 리포트,집중 리포트,마이페이지,리포트,집중 리포트 조회,집중 리포트/대시보드 열람,자기객관화→재방문 검증,,,,user_id,미수집(조회만),GET API만,-,미수집,-,미수집,P2,예시양식은 수집중이나 실제 조회 로그 없음
+권장,REC_RECORD_VIEW,Web,,집중 리포트,마이페이지,리포트,집중 리포트 조회 로그,리포트 화면 조회,기능 사용률·리텐션,period,,,user_id,권장(activity_logs),조회 API만,-,미수집,-,미수집,P2,E_FOCUS_REPORT_VIEW와 동일 공백
+기존,E_INVITE_KAKAO,Web,초대하기,초대하기,그룹·소셜,초대,카카오톡 초대 링크 접속,카카오톡 초대 링크로 접속,채널별 유입 효율,,,,user_id,GA4,-,-,미수집,-,부분수집(GA만),P1,예시양식 항목
+신규,PIPE_INVITATIONS_CREATED,Web,,초대하기,파이프라인,그룹참여,초대 생성,created_at이 수집일인 초대,초대 발송량,status,inviter_id,invitee_id,user_id,"DB, 파이프라인 (자체)",invitation,-,수집중,invitations_created,수집중,-,data_pipeline 구현완료
+신규,PIPE_INVITATIONS_RESPONDED,Web,,초대하기,파이프라인,그룹참여,초대 수락/거절,updated_at=수집일 AND ACCEPTED/DECLINED,초대 수락·거절률,status,responded_at,,user_id,"DB, 파이프라인 (자체)",invitation,-,수집중,invitations_responded,수집중,-,data_pipeline 구현완료
+기존,DB_INVITATION,Web,,초대하기,그룹·소셜,초대,초대 발송·응답,PENDING→ACCEPTED/DECLINED,초대 퍼널,status,created_at,updated_at,user_id,DB,invitation,-,수집중,"invitations_created, invitations_responded",수집중,-,
+권장,REC_INVITE_LINK_COPY,Web,,초대하기,그룹·소셜,초대,초대 링크 복사,클립보드 복사 행동,공유 행동 측정,,,,user_id,권장(activity_logs),클라이언트만,-,미수집,-,미수집,P0,
+기존,E_POKE_RESPOND,Web,콕 찌르기,콕 찌르기,그룹·소셜,콕찌르기,콕 찌르기 수락/거절,수신 후 수락 또는 거절 선택,그룹 참여 유도 트리거 유효성,action,,,user_id,"GA4, Websocket",-,poke_response,미수집,-,부분수집(GA만),P0,발송 이력은 DB에 없음
+권장,REC_POKE_SEND,Web,,콕 찌르기,그룹·소셜,콕찌르기,콕 찌르기 발송,메이트 poke 발송,찌르기→참여 전환,target_user_id,group_id,,user_id,권장(activity_logs),현재 Redis+WS만,-,미수집,-,미수집,P0,발송 이력 전무
+기존,E_TASK_COMPLETE_CLICK,Web,할 일,할 일,할일,완료,완료 버튼 클릭,할 일 완료 체크,일일 집중 완료 횟수·목표 달성,,,,user_id,"GA4, DB",todo (isCompleted),todo_complete_click,미수집,-,부분수집,P2,예시양식 항목
+기존,DB_TODO,Web,,할 일,할일,CRUD,할일 생성·수정·삭제·완료,할일 CRUD 및 완료 토글,할일 완료율·누적시간,isCompleted,actualTimeInSeconds,,user_id,DB,todo,todo_complete_click(완료만),미수집,-,DB저장(파이프라인미수집),P2,
+기존,DB_CATEGORY,Web,,할 일,할일,카테고리,카테고리 CRUD·정렬,카테고리 관리,카테고리 사용 패턴,,,,user_id,DB,category,-,미수집,-,DB저장(파이프라인미수집),P3,
+기존,GA_ADD_WORK_DURATION,Web,,할 일,할일,생성,할일 생성 시 목표시간 선택,목표 시간 선택 UI,목표시간 설정 패턴,,,,user_id,GA4,-,add_work_form_select_duration,미수집,-,부분수집(GA만),P3,
+권장,REC_AUTH_AGREEMENT,Web,가입,가입,인증·온보딩,약관,약관 동의 제출,필수/선택 약관 제출 시점,동의 퍼널,terms,privacy,marketing,user_id,권장(activity_logs),user flags만,-,미수집,-,부분수집(플래그만),P1,
+기존,AUTH_LOGIN_CLICK,Web,랜딩/로그인,랜딩/로그인,인증·온보딩,로그인,소셜 로그인 시도,Google/Kakao 로그인 버튼 클릭,로그인 시도율,login_type,,,user_id,GA4,OAuth 외부,login,미수집,-,부분수집(GA만),P1,성공/실패 DB 이벤트 없음
+권장,REC_LOGIN_SCROLL_CTA,Web,랜딩/로그인,랜딩/로그인,유입,CTA,로그인 페이지 스크롤 CTA,시작하기/내 몰입 공간 만들기 클릭(소셜 로그인 영역으로 스크롤),랜딩 관심→로그인 버튼 도달 퍼널,cta_type,,,user_id,권장(activity_logs+GA),클라이언트만,-,미수집,-,미수집,P1,AUTH_LOGIN_CLICK(login)과 별개
+기존,E_LANDING_FIRST_CHANNEL,"Web, App",랜딩페이지,랜딩페이지,유입,채널,최초 유입 채널,세션 최초 진입 채널,채널별 유입 효율·마케팅,entry_page,referrer,,user_id,GA4,-,first_entrance,미수집,-,부분수집(GA만),P1,예시양식 항목
+기존,E_LANDING_KAKAO_LINK,"Web, App",,랜딩페이지,유입,채널,카카오톡 배포 링크 접속,카카오톡 서비스 배포 링크로 접속,채널별 유입 효율,,,,user_id,GA4,-,-,미수집,-,부분수집(GA만),P1,예시양식 항목
+기존,E_LANDING_LINK,"Web, App",,랜딩페이지,유입,채널,랜딩페이지 링크 접속,랜딩 링크로 접속,채널별 유입 효율,,,,user_id,GA4,-,-,미수집,-,부분수집(GA만),P1,예시양식 항목
+기존,E_LANDING_SEARCH,"Web, App",,랜딩페이지,유입,채널,포털 검색 접속,검색으로 접속,채널별 유입 효율,,,,user_id,GA4,-,-,미수집,-,부분수집(GA만),P1,예시양식 항목
+기존,E_LANDING_DIRECT,"Web, App",,랜딩페이지,유입,채널,직접 입력/즐겨찾기 접속,주소 직접 입력 또는 즐겨찾기,리텐션·유입경로,,,,user_id,GA4,-,-,미수집,-,부분수집(GA만),P1,예시양식 항목
+기존,E_SIGNUP,"Web, App",,랜딩페이지,인증·온보딩,가입,회원가입,카카오/구글 회원가입 완료,유입 채널별 가입 전환율,signup_method,referral_code,,user_id,"DB, GA4",user / user_provider,login,미수집,-,부분수집,P1,login_type은 GA login 이벤트
+기존,E_SIGNUP_BACK,"Web, App",,랜딩페이지,인증·온보딩,이탈,가입/로그인 중 뒤로가기,랜딩·가입·로그인 도중 뒤로가기,회원가입 퍼널 병목,from_page,,,user_id,GA4,-,page_back_navigation,미수집,-,부분수집(GA만),P1,예시양식 항목
+권장,REC_ONBOARDING_STEP,Web,온보딩,온보딩,인증·온보딩,온보딩,온보딩 단계별 진행/이탈,11단계 튜토리얼 이동·이탈,신규유저 퍼널,step,action,,user_id,권장(activity_logs),현재 localStorage만,-,미수집,-,미수집,P0,DB 완료 API 없음
+기존,AUTH_ONBOARDING_FLAG,Web,,온보딩,인증·온보딩,온보딩,온보딩 첫방문 체크,POST /users/onboarding,온보딩 진입,isOnboard,,,user_id,DB,user,-,미수집,-,부분수집,P0,튜토리얼 완료 전 마킹될 수 있음
+기존,TOOL_GA4,"Web, App",전역,전역,분석도구,외부,Google Analytics 4,페이지뷰·커스텀 이벤트,"유입·행동 분석, 대시보드 보조",,,,user_id,GA4,외부(GA4 콘솔),자동 pageview + 커스텀,미수집,-,수집중(외부콘솔),-,파이프라인 미연동
+기존,TOOL_CLARITY,"Web, App",,전역,분석도구,외부,Microsoft Clarity,세션 녹화·히트맵·클릭,정성 UX 분석,,,,-,Clarity,외부(Clarity 대시보드),-,미수집,-,수집중(외부콘솔),-,파이프라인 미연동
+권장,REC_PAGE_VIEW,Web,,전역,시스템,여정,페이지 이동,홈→할일→그룹→리포트 등 라우트 변경,전체 여정·퍼널,page_name,from_page,,user_id,권장(activity_logs),activity_logs(미구현),자동 pageview만,미수집,-,미수집,P0,현재 커스텀 PAGE_VIEW 없음
+기존,UI_BOWL_VOTE,Web,,전역,마이페이지,외부링크,UI Bowl 투표 FAB,외부 투표 링크 클릭,외부 캠페인 클릭,,,,user_id,GA4,-,ui_bowl_vote_floating_click,미수집,-,부분수집(GA만),P3,
+권장,REC_SUPPORT_CLICK,Web,전역,전역,마이페이지,외부링크,문의/제보 FAB 클릭,SupportModal 열기·Notion FAQ/버그제보 링크,지원·헬프센터 사용률,action,,,user_id,권장(activity_logs),클라이언트만,-,미수집,-,미수집,P2,UI_BOWL_VOTE와 별개 SupportModal
+신규,PIPE_MEMBERSHIP_SNAPSHOT,Web,-,-,파이프라인,그룹참여,그룹 멤버십 일별 스냅샷,매일 전체 user_group 상태 스냅샷,일별 멤버십 변화(diff),role,participation_status,cheer_count,user_id,"DB, 파이프라인 (자체)",user_group + user + mogak_groups,-,수집중,membership_snapshot,수집중,-,data_pipeline 구현완료
+신규,PIPE_DAILY_SUMMARY,Web,-,-,파이프라인,요약,일일 KPI 요약,수집일 집계 카운트·초 단위 합계,대시보드 핵심 지표,membership_count,personal_focus_seconds,group_focus_seconds,-,파이프라인 (자체),daily_snapshot.json summary,-,수집중,summary,수집중,-,latest_summary.md에도 반영
+기존,SYS_USER_ACTIVE,Web,-,-,시스템,상태,사용자 온라인 상태,WS 연결·타이머 시 활동,활성 유저 추정,isActive,lastActivityAt,,user_id,DB+Redis,user + Redis Pub/Sub,-,미수집,-,DB저장(파이프라인미수집),P3,
+기존,SYS_LOGIN_SESSION,Web,-,-,시스템,세션,로그인 세션(refresh token),refresh token 저장,인증 유지,,,,user_id,Redis,Redis refresh_token,-,미수집,-,시스템내부,-,분석용 아님
+기존,DB_CHAT_MESSAGE,Web,채팅,채팅,채팅·알림,메시지,채팅 메시지,그룹/1:1 채팅,커뮤니케이션 활성도,,,,user_id,DB,chat_message + read_status,-,미수집,-,DB저장(파이프라인미수집),P3,용량·개인정보 검토 필요

@@ -1,0 +1,31 @@
+﻿구분,담당 파트,차수,우선순위,중요도,상황/기능,유형,문제 상황 (As-Is),해결 방안 (To-do),비고
+검토,Frontend,ver1,1,상,개인 타이머(사이드 바),Bug,타이머 실행 도중 할 일 수정 막기,타이머 ON → 할일 수정/삭제/DnD 시 차단·에러 UI 확인,고정 회귀·기존 행
+검토,Design,ver1,2,중,그룹방,UI,그룹방 인원 8명 초과 입장 가능에 따른 사이드바 간격 벌어짐,9번째 입장 시 4열 그리드·사이드바 레이아웃 확인,고정 회귀·기존 행
+검토,Frontend,ver1,1,상,그룹방 - 초대하기,Bug,초대 목록에 이미 그룹 참여 중인 유저 포함·초대 실패,참여 중 메이트 목록 제외 + 초대 API 성공·토스트 확인,고정 회귀·기존 행
+검토,Frontend Backend,2차 4차,3,하,개인 타이머(사이드 바),UX,뽀모도로 시간 단위 설정 안됨,모달 UI·BE 목표시간(60~86400초) 경계값 재확인,기존 행·디자인 진행 중
+검토,Frontend Backend,ver1,2,추가,그룹방,Bug,그룹 ID 유효하지 않을 때 체크 로직 없음,존재하지 않는 groupId 접근 시 FE/BE 처리 확인,기존 행
+검토,Frontend,ver1,2,중,그룹방,UX,그룹방 나가기 시 자동 퇴장 처리,session/me 호출·beforeunload keepalive 회귀,CHG-004 시 재검토·기존 행
+검토,Frontend Backend,ver1,2,중,그룹방 - 그룹타이머,Bug,그룹타이머 2명 미만 시작 제한,2인 미만 모달·개인타이머 유도 확인,CHG-004 제거 시 폐기 검토·기존 행
+검토,Frontend Backend,ver1,2,중,그룹방 - 그룹타이머,Bug,running 중 1명 남을 때 auto-finish,참여자≤1 시 FE finish 호출 확인,CHG-004 제거 시 폐기 검토·기존 행
+검토,Frontend,ver1,2,중,개인 타이머(사이드 바),Bug,타이머 종료 후 멤버카드 상태 sync 지연,finish 후 RESTING/end 표시·WS stale 확인,CHG-002 연관·기존 행
+검토,Frontend Backend,3차,3,하,그룹방,Bug,타이머 finish 후 active/rest로 남아 '참여중' 오해,finish 직후 '쉬어갈래요' vs end 표시 규칙 확인,CHG-002·기존 행
+추가,Frontend Backend,ver1,1,상,집중 리포트,Bug,집중리포트·마이페이지·캐릭터 해금 시간 3-way 불일치 가능,타이머 finish 후 리포트/마이페이지/캐릭터 API 숫자 교차 대조,신규
+추가,Frontend Backend,ver1,1,상,그룹방 - 초대하기,Bug,409 ALREADY_GROUP_MEMBER 시 FE 성공 처리 미검증,이미 멤버인 초대 링크 → 그룹방 이동·에러 토스트 없음 확인,신규
+추가,Frontend Backend,ver1,1,상,온보딩,Bug,튜토리얼 중 이탈 시 FE/BE isOnboard 불일치,onboarding API 호출 후 중간 이탈 → 재진입 분기 확인,신규
+추가,Backend,ver1,1,상,공식 라운지,Bug,정원 20명 초과 입장 차단,21번째 입장 시 OFFICIAL_LOUNGE_FULL(409) 모달 확인,신규
+추가,Frontend,ver1,1,상,개인 타이머(사이드 바),Bug,계정당 활성 타이머 1개(409 ACTIVE_SESSION_EXISTS),2탭 동시 start → 409 처리·UI 확인,신규
+추가,Frontend Backend,ver1,2,중,그룹방 - 멤버카드,Bug,멤버카드 시간=세션경과 vs 사이드바=누적(actualTime) 불일치,CHG-001: MC06·SD04 동일 소스인지 확인,신규
+추가,Frontend Backend,ver1,2,중,그룹방,Bug,집중체크 주기 FE UI 1~99 vs BE Max 23 불일치,24시간 이상 설정 시 BE 거부·FE 표시 확인,신규
+추가,Frontend,ver1,2,중,그룹방 - 방장,UX,집중체크 수신=타이머 실행 중만(BE) vs CHG-007,RESTING+opt-in 시 수신 여부(변경 반영 시),신규
+추가,Frontend,ver1,2,중,그룹방,Bug,콕 찌르기 FE isActive만 검사 BE는 멤버십만 검사,미접속 유저 poke 시도·BE 허용 여부 확인,신규
+추가,Frontend Backend,ver1,2,중,할 일,Bug,카테고리 modifyCategory userId 미검증,타 유저 카테고리 수정 API 차단 확인,신규
+추가,Frontend,ver1,2,중,그룹방,UX,WebSocket 재연결 후 멤버 상태·알림 동기화,WS 끊김→재연결 후 poke/cheer/멤버카드 상태,신규
+추가,Frontend,ver1,2,중,홈,UX,모바일 / → /landing vs /todo·/record 직접 접근,모바일 UA 각 경로 접근·리다이렉트 확인,신규
+추가,Frontend Backend,ver1,2,중,그룹방 - 방장,Bug,방장 탈퇴 HOST 이양 vs Swagger '방장 탈퇴 불가' 문구,방장+멤버 있을 때 이양·host-ack 모달 확인,신규
+추가,Frontend,ver1,3,하,그룹방,UI,finish 후에도 active처럼 보이는 UX,CHG-002: end/rest/누적 표시 규칙 확인,신규
+추가,Frontend Backend,ver1,3,하,그룹방 - 초대하기,Bug,초대 링크 7일 만료 미구현·그룹 없으면 FE만 만료 표시,삭제된 그룹 invite URL·BE/FE 메시지 정합,신규
+추가,Frontend,2차,1,상,그룹방,UX,CHG-004: 그룹 공통 타이머 UI/API/WS 제거,groupTimer·alertModal groupTimerLimit 잔여 코드 없음,CHG-004 착수 시
+추가,Frontend Backend,2차,1,상,그룹방,Bug,CHG-004-03: 나가기 분기 groupTimer finish 제거,개인 forceStop + GS02(session/me)만 동작,CHG-004 착수 시
+추가,Frontend Backend,2차,2,중,그룹방 - 그룹타이머,UX,CHG-004-01: 개인 타이머·사이드바 회귀,공통타이머 제거 후 개인 타이머·누적시간 유지,CHG-004 착수 시
+추가,Frontend Backend,2차,2,중,집중 리포트,UX,CHG-004-02: 모각작 몰입=개인타이머 그룹세션,group_focus_session 미포함·집계 유지,CHG-004 착수 시
+추가,Backend,2차,2,중,BE·DB,Bug,CHG-004-06: group_focus_session 레거시,미사용 API/WS/스케줄러 정리·데이터 보존 정책,CHG-004 착수 시
