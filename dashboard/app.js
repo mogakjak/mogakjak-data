@@ -1147,6 +1147,9 @@
     list.innerHTML = state.productEvents
       .map((ev) => renderChangeItemHtml(ev))
       .join("");
+
+    renderOpsQuality();
+    renderGroupLedger();
   }
 
   function refreshProductEventViews() {
@@ -2730,38 +2733,114 @@
   function setExploreTab(tab) {
     state.exploreTab = tab || "compare";
     syncExploreTabs();
-    if (tab === "compare") renderExploreCompare();
+    if (tab === "compare") {
+      renderExploreCompare();
+      renderGaCorrGrid();
+    }
     if (tab === "loop") renderExploreLoop();
     if (tab === "events") renderGa();
     if (tab === "logs") renderLogs();
   }
 
   function renderExploreCompare() {
+    const s = state.summary || {};
     const ga = gaMetricsView();
-    const ready = gaReady();
+    const dayCount = selectionDayCount();
+    const range = dayCount > 1;
+    const periodSum = usePeriodSum();
+    const scale = (n) => (range && !periodSum ? n / dayCount : n);
+    const cmp = comparePeriodRange();
+    const cmpSummary = cmp
+      ? summaryFromManifestRange(cmp.from, cmp.to)
+      : state.prevSummary || {};
+    const cmpGa = cmp ? gaMetricsFromManifestRange(cmp.from, cmp.to) : null;
+
     if ($("exploreCompareMeta")) {
-      $("exploreCompareMeta").textContent = homeMetaLabel();
+      $("exploreCompareMeta").textContent = [comparePeriodLabel(), homeMetaLabel()]
+        .filter(Boolean)
+        .join(" · ");
     }
+
+    const focus = totalFocusSeconds(s);
+    const cmpFocus = totalFocusSeconds(cmpSummary);
+    const entry = Number(s.session_entry_count) || 0;
+    const cmpEntry = Number(cmpSummary.session_entry_count) || 0;
+    const timerRate = timerCompleteRate();
+    const active = gaReady() ? ga.active_users : null;
+    const cmpActive = cmpGa?.active_users ?? null;
+    const newUsers = gaReady() ? ga.new_users : null;
+    const cmpNew = cmpGa?.new_users ?? null;
+    const membership = Number(s.membership_count) || 0;
+    const cmpMembership = Number(cmpSummary.membership_count) || 0;
+    const invites = Number(s.invitations_created_count) || 0;
+    const cmpInvites = Number(cmpSummary.invitations_created_count) || 0;
+
+    const dFocus = calcDelta(scale(focus), scale(cmpFocus));
+    const dEntry = calcDelta(scale(entry), scale(cmpEntry));
+    const dActive = calcDelta(
+      active == null ? null : scale(active),
+      cmpActive == null ? null : scale(cmpActive)
+    );
+    const dNew = calcDelta(
+      newUsers == null ? null : scale(newUsers),
+      cmpNew == null ? null : scale(cmpNew)
+    );
+    const dMembership = calcDelta(scale(membership), scale(cmpMembership));
+    const dInvites = calcDelta(scale(invites), scale(cmpInvites));
+
     renderKpiGrid($("exploreCompareKpis"), [
       {
+        label: "타이머",
+        value: fmtDur(scale(focus)),
+        delta: dFocus?.text,
+        deltaTone: dFocus?.tone,
+        aggKind: "db_duration_sum",
+        help: "개인+그룹 타이머 합 · DB total_duration",
+      },
+      {
+        label: "그룹 입장",
+        value: fmtScaledNum(entry),
+        delta: dEntry?.text,
+        deltaTone: dEntry?.tone,
+        aggKind: "db_count_sum",
+        help: "그날 entered_at 기준 그룹방 입장",
+      },
+      {
+        label: "멤버십",
+        value: fmtScaledNum(membership),
+        delta: dMembership?.text,
+        deltaTone: dMembership?.tone,
+        aggKind: "db_count_sum",
+        help: "그룹방 소속 연결 수(스냅샷)",
+      },
+      {
+        label: "초대 생성",
+        value: fmtScaledNum(invites),
+        delta: dInvites?.text,
+        deltaTone: dInvites?.tone,
+        aggKind: "db_count_sum",
+      },
+      {
+        label: "활성",
+        value: gaReady() ? fmtScaledNum(active) : "—",
+        pending: !gaReady(),
+        delta: dActive?.text,
+        deltaTone: dActive?.tone,
+        aggKind: "ga_users",
+      },
+      {
         label: "신규",
-        value: ready ? fmtScaledNum(ga.new_users) : "—",
-        pending: !ready,
+        value: gaReady() ? fmtScaledNum(newUsers) : "—",
+        pending: !gaReady(),
+        delta: dNew?.text,
+        deltaTone: dNew?.tone,
+        aggKind: "ga_users",
       },
       {
-        label: "활성(DAU)",
-        value: ready ? fmtScaledNum(ga.active_users) : "—",
-        pending: !ready,
-      },
-      {
-        label: "세션",
-        value: ready ? fmtScaledNum(ga.sessions) : "—",
-        pending: !ready,
-      },
-      {
-        label: "타이머 시작",
-        value: fmtNum(eventCount("timer_start")) || "—",
-        pending: eventCount("timer_start") == null,
+        label: "타이머 완료율",
+        value: timerRate == null ? "—" : fmtPct(timerRate),
+        pending: timerRate == null,
+        aggKind: "ga_event_ratio",
       },
     ]);
   }
@@ -3195,21 +3274,80 @@
     if (isGroupSvc) renderGroupLedger();
   }
 
-  function renderGroupLedger() {
+  const GROUP_LEDGER_TARGETS = [
+    {
+      key: "svc",
+      dist: "dbGroupDistChart",
+      invite: "dbInviteChart",
+      inviteKpis: "dbInviteKpis",
+      userCount: "userCount",
+      userBody: "userGroupBody",
+      groupBody: "groupBody",
+      entryBody: "entryBody",
+    },
+    {
+      key: "ops",
+      dist: "opsGroupDistChart",
+      invite: "opsInviteChart",
+      inviteKpis: "opsInviteKpis",
+      userCount: "opsUserCount",
+      userBody: "opsUserGroupBody",
+      groupBody: "opsGroupBody",
+      entryBody: "opsEntryBody",
+    },
+  ];
+
+  function renderOpsQuality() {
     const s = state.summary;
-    const membership =
-      state.snapshot?.group_participation?.membership_snapshot || [];
-    state.userRows = buildUserRows(membership);
-    const dist = {};
-    for (const u of state.userRows) {
-      const k = String(Math.min(u.group_count, 5));
-      dist[k] = (dist[k] || 0) + 1;
+    if ($("opsMeta")) {
+      $("opsMeta").textContent = `스냅샷 수집: ${state.snapshot?.collected_at || "-"} · manifest 최신 ${
+        state.manifest?.latest_date || "-"
+      }`;
     }
-    const labels = ["1", "2", "3", "4", "5+"];
-    const distCanvas = $("dbGroupDistChart");
+    const quality = [];
+    if ((s.membership_count || 0) > 0 && (s.personal_session_count || 0) === 0) {
+      quality.push({
+        done: false,
+        text: "멤버십 > 0 인데 개인 세션 0 (활동 없는 날일 수 있음)",
+      });
+    } else {
+      quality.push({ done: true, text: "세션·멤버십 조합 이상 없음" });
+    }
+    quality.push({
+      done: false,
+      text: "퇴장·입장 이력(매번) 없음 → Phase3 UG_ENTER_HISTORY",
+    });
+    quality.push({
+      done: false,
+      text: "콕 발송 DB 없음 → Phase3 POKE_SEND",
+    });
+    quality.push({
+      done: true,
+      text: "초대·멤버십·타이머 원천은 파이프라인 수집 중",
+    });
+    const el = $("dbQualityList");
+    if (!el) return;
+    el.innerHTML = quality
+      .map(
+        (q) =>
+          `<li class="${q.done ? "done" : "todo"}">${q.done ? "✓" : "○"} ${escapeHtml(
+            q.text
+          )}</li>`
+      )
+      .join("");
+  }
+
+  function renderGroupLedgerTarget(target, s, membership, userRows, groupRows, entries) {
+    const distCanvas = $(target.dist);
     if (distCanvas) {
-      destroyChart("dbGroupDist");
-      state.charts.dbGroupDist = new Chart(distCanvas, {
+      destroyChart(target.key + "GroupDist");
+      const dist = {};
+      for (const u of userRows) {
+        const k = String(Math.min(u.group_count, 5));
+        dist[k] = (dist[k] || 0) + 1;
+      }
+      const labels = ["1", "2", "3", "4", "5+"];
+      state.charts[target.key + "GroupDist"] = new Chart(distCanvas, {
         type: "bar",
         data: {
           labels: labels.map((l) => `${l}개`),
@@ -3232,10 +3370,10 @@
     }
 
     const rate = inviteAcceptRate(s);
-    const inviteCanvas = $("dbInviteChart");
+    const inviteCanvas = $(target.invite);
     if (inviteCanvas) {
-      destroyChart("dbInvite");
-      state.charts.dbInvite = new Chart(inviteCanvas, {
+      destroyChart(target.key + "Invite");
+      state.charts[target.key + "Invite"] = new Chart(inviteCanvas, {
         type: "doughnut",
         data: {
           labels: ["생성", "응답"],
@@ -3257,8 +3395,9 @@
         },
       });
     }
-    if ($("dbInviteKpis")) {
-      renderKpiGrid($("dbInviteKpis"), [
+    const inviteKpisEl = $(target.inviteKpis);
+    if (inviteKpisEl) {
+      renderKpiGrid(inviteKpisEl, [
         {
           label: "생성",
           value: fmtNum(s.invitations_created_count) || "0",
@@ -3279,9 +3418,22 @@
       ]);
     }
 
-    renderUserTable(state.userRows);
-    renderGroupTable(buildGroupRows(membership));
-    renderEntries(state.snapshot?.group_participation?.session_entries || []);
+    renderUserTable(userRows, target);
+    renderGroupTable(groupRows, target.groupBody);
+    renderEntries(entries, target.entryBody);
+  }
+
+  function renderGroupLedger() {
+    const s = state.summary;
+    const membership =
+      state.snapshot?.group_participation?.membership_snapshot || [];
+    state.userRows = buildUserRows(membership);
+    const groupRows = buildGroupRows(membership);
+    const entries = state.snapshot?.group_participation?.session_entries || [];
+    for (const target of GROUP_LEDGER_TARGETS) {
+      if (!$(target.dist) && !$(target.userBody)) continue;
+      renderGroupLedgerTarget(target, s, membership, state.userRows, groupRows, entries);
+    }
   }
 
   /* ===== DB ===== */
@@ -3661,6 +3813,23 @@
         (state.summary.group_focus_seconds || 0)) /
       60;
 
+    renderGaCorrGrid({ poke, stay, entries, focusMin });
+
+    renderGaEventTable($("gaEventFilter")?.value || "");
+  }
+
+  function renderGaCorrGrid(ctx = {}) {
+    const grid = $("gaCorrGrid");
+    if (!grid) return;
+    const poke = ctx.poke ?? eventCount("poke_response");
+    const stay = ctx.stay ?? eventCount("group_stay_duration");
+    const entries = ctx.entries ?? (state.summary?.session_entry_count || 0);
+    const focusMin =
+      ctx.focusMin ??
+      ((state.summary?.personal_focus_seconds || 0) +
+        (state.summary?.group_focus_seconds || 0)) /
+        60;
+
     const corrs = [
       {
         title: "콕 응답 → 그룹 입장",
@@ -3706,7 +3875,7 @@
       },
     ];
 
-    $("gaCorrGrid").innerHTML = corrs
+    grid.innerHTML = corrs
       .map(
         (c) => `<article class="corr-card ${c.pending ? "pending" : ""}">
         <h3>${escapeHtml(c.title)} <span class="muted" style="font-weight:500;font-size:0.75rem">${escapeHtml(
@@ -3717,8 +3886,6 @@
       </article>`
       )
       .join("");
-
-    renderGaEventTable($("gaEventFilter").value || "");
   }
 
   function renderGaEventTable(filter) {
@@ -3977,9 +4144,12 @@
       .sort((a, b) => b.group_count - a.group_count);
   }
 
-  function renderUserTable(rows) {
-    $("userCount").textContent = `${rows.length}명`;
-    $("userGroupBody").innerHTML = rows.length
+  function renderUserTable(rows, target) {
+    const countEl = $(target?.userCount || "userCount");
+    const bodyEl = $(target?.userBody || "userGroupBody");
+    if (!bodyEl) return;
+    if (countEl) countEl.textContent = `${rows.length}명`;
+    bodyEl.innerHTML = rows.length
       ? rows
           .map((u) => {
             const tags = u.groups
@@ -4020,8 +4190,10 @@
       .sort((a, b) => b.members - a.members);
   }
 
-  function renderGroupTable(rows) {
-    $("groupBody").innerHTML = rows.length
+  function renderGroupTable(rows, bodyId = "groupBody") {
+    const bodyEl = $(bodyId);
+    if (!bodyEl) return;
+    bodyEl.innerHTML = rows.length
       ? rows
           .map(
             (g) =>
@@ -4033,8 +4205,10 @@
       : `<tr><td colspan="4" class="empty">없음</td></tr>`;
   }
 
-  function renderEntries(entries) {
-    $("entryBody").innerHTML = entries?.length
+  function renderEntries(entries, bodyId = "entryBody") {
+    const bodyEl = $(bodyId);
+    if (!bodyEl) return;
+    bodyEl.innerHTML = entries?.length
       ? entries
           .map(
             (e) =>
@@ -4726,7 +4900,10 @@
     renderGa();
     renderLogs();
     renderFunnel();
+    renderExploreCompare();
     renderExploreLoop();
+    renderOpsQuality();
+    renderGroupLedger();
     fillCatalogFilters();
     renderCatalogList();
     renderBoard();
@@ -5037,9 +5214,15 @@
   }
   $("userFilter")?.addEventListener("input", (e) => {
     const q = e.target.value.trim().toLowerCase();
-    renderUserTable(
-      q ? state.userRows.filter((r) => r.search.includes(q)) : state.userRows
-    );
+    const rows = q ? state.userRows.filter((r) => r.search.includes(q)) : state.userRows;
+    renderUserTable(rows);
+    renderUserTable(rows, GROUP_LEDGER_TARGETS[1]);
+  });
+  $("opsUserFilter")?.addEventListener("input", (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    const rows = q ? state.userRows.filter((r) => r.search.includes(q)) : state.userRows;
+    renderUserTable(rows, GROUP_LEDGER_TARGETS[1]);
+    renderUserTable(rows);
   });
   $("gaEventFilter").addEventListener("input", (e) => renderGaEventTable(e.target.value));
   if ($("logsEventFilter")) {

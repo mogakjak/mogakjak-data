@@ -59,9 +59,9 @@
       },
     };
   </script>
-  <link rel="stylesheet" href="./styles.css?v=20260810j" />
+  <link rel="stylesheet" href="./styles.css?v=20260810k" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
-  <script src="./app.js?v=20260810j" defer></script>
+  <script src="./app.js?v=20260810k" defer></script>
 </head>
 <body class="app-shell font-sans text-mg-black antialiased">
   <aside id="sidebar" class="sidebar" aria-label="대시보드 메뉴">
@@ -517,6 +517,64 @@
           <ul class="change-list" id="changesList"></ul>
         </div>
       </section>
+
+      <details class="ops-details">
+        <summary class="ops-details__summary">데이터 품질 · 수집 상태</summary>
+        <div class="ops-details__body">
+          <p id="opsMeta" class="text-sm text-mg-500 mb-3"></p>
+          <ul class="checklist" id="dbQualityList"></ul>
+        </div>
+      </details>
+
+      <details class="ops-details">
+        <summary class="ops-details__summary">그룹·입장 원장</summary>
+        <div class="ops-details__body space-y-6">
+          <div class="grid gap-4 lg:grid-cols-2">
+            <div class="panel">
+              <div class="mb-3"><h2 class="text-base font-semibold">그룹 보유 분포</h2></div>
+              <div class="chart-panel short relative"><canvas id="opsGroupDistChart"></canvas></div>
+            </div>
+            <div class="panel">
+              <div class="mb-3"><h2 class="text-base font-semibold">초대</h2></div>
+              <div class="chart-panel short relative"><canvas id="opsInviteChart"></canvas></div>
+              <div class="kpi-grid tight mt-3" id="opsInviteKpis"></div>
+            </div>
+          </div>
+          <section>
+            <div class="mb-3 flex items-center justify-between gap-2">
+              <h2 class="text-base font-semibold">유저별 그룹방</h2>
+              <div class="toolbar flex items-center gap-2">
+                <input id="opsUserFilter" type="search" placeholder="검색" class="control-input min-w-[160px]" />
+                <span id="opsUserCount" class="text-sm text-mg-500"></span>
+              </div>
+            </div>
+            <div class="panel table-wrap overflow-auto max-h-[420px]">
+              <table class="data-table">
+                <thead><tr><th>유저</th><th>보유</th><th>그룹</th><th>최근 입장</th></tr></thead>
+                <tbody id="opsUserGroupBody"></tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="mb-3"><h2 class="text-base font-semibold">그룹방별 멤버</h2></div>
+            <div class="panel table-wrap overflow-auto max-h-[420px]">
+              <table class="data-table">
+                <thead><tr><th>그룹</th><th>멤버</th><th>HOST</th><th>최근 입장</th></tr></thead>
+                <tbody id="opsGroupBody"></tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <div class="mb-3"><h2 class="text-base font-semibold">당일 입장</h2></div>
+            <div class="panel table-wrap overflow-auto max-h-[420px]">
+              <table class="data-table">
+                <thead><tr><th>유저</th><th>그룹</th><th>상태</th><th>시각</th></tr></thead>
+                <tbody id="opsEntryBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </details>
     </div>
 
     <!-- 실험·탐색 -->
