@@ -76,7 +76,7 @@
     explore: {
       eyebrow: "분석",
       title: "실험·탐색",
-      desc: "기간 비교 · 몰입 루프 · 이벤트 · activity_logs",
+      desc: "기간 비교 · 몰입 루프 · 그룹 원장 · 이벤트 · activity_logs",
     },
     ops: {
       eyebrow: "운영",
@@ -670,7 +670,26 @@
   }
 
   function bundledProductEvents() {
-    return (state.manifest?.product_events || []).map(normalizeProductEvent);
+    const fromManifest = state.manifest?.product_events || [];
+    const fromFile = state.bundledProductEventsFile || [];
+    const seen = new Set();
+    const out = [];
+    for (const raw of [...fromManifest, ...fromFile]) {
+      const ev = normalizeProductEvent(raw);
+      if (!ev.id || seen.has(ev.id)) continue;
+      seen.add(ev.id);
+      out.push(ev);
+    }
+    return out;
+  }
+
+  async function loadBundledProductEventsFile() {
+    try {
+      const data = await loadJson("./product_events.json");
+      state.bundledProductEventsFile = data.events || [];
+    } catch (_) {
+      state.bundledProductEventsFile = [];
+    }
   }
 
   function saveProductEventsLocal() {
@@ -688,7 +707,8 @@
     state.productEvents.sort(sortProductEvents);
   }
 
-  function initProductEvents() {
+  async function initProductEvents() {
+    await loadBundledProductEventsFile();
     const bundled = bundledProductEvents();
     try {
       const raw = localStorage.getItem(PRODUCT_EVENTS_KEY);
@@ -1147,9 +1167,6 @@
     list.innerHTML = state.productEvents
       .map((ev) => renderChangeItemHtml(ev))
       .join("");
-
-    renderOpsQuality();
-    renderGroupLedger();
   }
 
   function refreshProductEventViews() {
@@ -2724,7 +2741,7 @@
     document.querySelectorAll("[data-explore-tab]").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.exploreTab === tab);
     });
-    for (const id of ["compare", "loop", "events", "logs"]) {
+    for (const id of ["compare", "loop", "ledger", "events", "logs"]) {
       const panel = $(`explorePanel${id.charAt(0).toUpperCase()}${id.slice(1)}`);
       if (panel) panel.classList.toggle("hidden", id !== tab);
     }
@@ -2738,6 +2755,10 @@
       renderGaCorrGrid();
     }
     if (tab === "loop") renderExploreLoop();
+    if (tab === "ledger") {
+      renderOpsQuality();
+      renderGroupLedger();
+    }
     if (tab === "events") renderGa();
     if (tab === "logs") renderLogs();
   }
@@ -3286,14 +3307,14 @@
       entryBody: "entryBody",
     },
     {
-      key: "ops",
-      dist: "opsGroupDistChart",
-      invite: "opsInviteChart",
-      inviteKpis: "opsInviteKpis",
-      userCount: "opsUserCount",
-      userBody: "opsUserGroupBody",
-      groupBody: "opsGroupBody",
-      entryBody: "opsEntryBody",
+      key: "explore",
+      dist: "exploreGroupDistChart",
+      invite: "exploreInviteChart",
+      inviteKpis: "exploreInviteKpis",
+      userCount: "exploreUserCount",
+      userBody: "exploreUserGroupBody",
+      groupBody: "exploreGroupBody",
+      entryBody: "exploreEntryBody",
     },
   ];
 
@@ -4936,7 +4957,7 @@
       } catch (_) {
         state.catalog = { items: [] };
       }
-      initProductEvents();
+      await initProductEvents();
       state.previewFull = $("phasePreview")?.value === "full";
       const latest = state.manifest.latest_date || selectableMaxDate();
       const [from, to] = quickPeriodRange("yesterday");
@@ -5218,7 +5239,7 @@
     renderUserTable(rows);
     renderUserTable(rows, GROUP_LEDGER_TARGETS[1]);
   });
-  $("opsUserFilter")?.addEventListener("input", (e) => {
+  $("exploreUserFilter")?.addEventListener("input", (e) => {
     const q = e.target.value.trim().toLowerCase();
     const rows = q ? state.userRows.filter((r) => r.search.includes(q)) : state.userRows;
     renderUserTable(rows, GROUP_LEDGER_TARGETS[1]);
@@ -5433,7 +5454,8 @@
     });
   }
   if ($("changesResetBundledBtn")) {
-    $("changesResetBundledBtn").addEventListener("click", () => {
+    $("changesResetBundledBtn").addEventListener("click", async () => {
+      await loadBundledProductEventsFile();
       syncBundledProductEvents(bundledProductEvents());
       saveProductEventsLocal();
       refreshProductEventViews();

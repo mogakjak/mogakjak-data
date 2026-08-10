@@ -9241,6 +9241,8 @@
       "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
     }
   ],
+  "product_events": [],
+  "product_events_path": "./product_events.json",
   "days": [
     {
       "date": "2026-08-08",

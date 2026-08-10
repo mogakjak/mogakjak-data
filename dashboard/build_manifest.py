@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 GA_DIR = DATA_DIR / "ga"
 OUT = Path(__file__).resolve().parent / "manifest.json"
+PRODUCT_EVENTS = Path(__file__).resolve().parent / "product_events.json"
 
 GA_PLACEHOLDER_METRICS = {
     "active_users": None,
@@ -114,6 +115,16 @@ def _scan_ga_days(dates: list[str]) -> list[dict]:
     return days
 
 
+def _load_product_events() -> list[dict]:
+    if not PRODUCT_EVENTS.exists():
+        return []
+    try:
+        payload = json.loads(PRODUCT_EVENTS.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    return payload.get("events") or []
+
+
 def build_manifest() -> dict:
     db_days = _scan_db_days()
     dates = [d["date"] for d in db_days]
@@ -144,6 +155,8 @@ def build_manifest() -> dict:
         "available_dates": sorted_dates,
         "db_days": db_days,
         "ga_days": ga_days,
+        "product_events": _load_product_events(),
+        "product_events_path": "./product_events.json",
         # 하위 호환
         "days": db_days,
         "day_count": len(db_days),
