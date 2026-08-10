@@ -1487,6 +1487,21 @@
     };
   }
 
+  function scaleCount(n) {
+    const { range, periodSum, dayCount } = selectionAggContext();
+    const num = Number(n) || 0;
+    return range && !periodSum ? num / dayCount : num;
+  }
+
+  function fmtScaledNum(n) {
+    if (n == null || Number.isNaN(Number(n))) return "—";
+    const { range, periodSum, dayCount } = selectionAggContext();
+    const v = range && !periodSum ? Number(n) / dayCount : Number(n);
+    return range && !periodSum
+      ? String(Math.round(v))
+      : fmtNum(Math.round(v)) || "0";
+  }
+
   /** KPI 집계 방식 — 카드 짧은 라벨 + 호버(집계 설명) */
   const AGG_KIND = {
     db_duration_sum: {
@@ -1968,14 +1983,7 @@
     const prevFocus = totalFocusSeconds(prev);
     const prevRate = inviteAcceptRate(prev);
 
-    const scale = (n) => (range && !periodSum ? n / dayCount : n);
-    const fmtScaledNum = (n) => {
-      if (n == null || Number.isNaN(Number(n))) return "—";
-      const v = scale(Number(n));
-      return range && !periodSum
-        ? String(Math.round(v))
-        : fmtNum(Math.round(v)) || "0";
-    };
+    const scale = scaleCount;
 
     const quick = detectQuickPeriod();
     const stale = isDataStale();
