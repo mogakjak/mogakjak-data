@@ -1,0 +1,106 @@
+name: Daily Data Collection
+
+on:
+  schedule:
+    # KST 자정 = UTC 15:00
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      SSH_HOST: ${{ secrets.MOGAKJAK_SSH_HOST }}
+      SSH_USER: ${{ secrets.MOGAKJAK_SSH_USER }}
+      TUNNEL_LOCAL_PORT: "13307"
+      TUNNEL_REMOTE_PORT: "3306"
+      MOGAKJAK_DB_HOST: 127.0.0.1
+      MOGAKJAK_DB_PORT: "13307"
+      MOGAKJAK_DB_NAME: ${{ secrets.MOGAKJAK_DB_NAME }}
+      MOGAKJAK_DB_USER: ${{ secrets.MOGAKJAK_DB_USER }}
+      MOGAKJAK_DB_PASSWORD: ${{ secrets.MOGAKJAK_DB_PASSWORD }}
+      MOGAKJAK_DB_TYPE: mysql
+      OUTPUT_DIR: ./data
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Start SSH tunnel
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.MOGAKJAK_SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/mogakjak.key
+          chmod 600 ~/.ssh/mogakjak.key
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/mogakjak.key \
+            -o ExitOnForwardFailure=yes \
+            -o ServerAliveInterval=30 \
+            -N -L "${TUNNEL_LOCAL_PORT}:127.0.0.1:${TUNNEL_REMOTE_PORT}" \
+            "${SSH_USER}@${SSH_HOST}" &
+          echo $! > /tmp/ssh_tunnel.pid
+          for i in $(seq 1 30); do
+            if python -c "import socket; s=socket.socket(); s.settimeout(1); s.connect(('127.0.0.1', int('${TUNNEL_LOCAL_PORT}'))); s.close()"; then
+              echo "SSH tunnel ready on port ${TUNNEL_LOCAL_PORT}"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "SSH tunnel failed to start"
+          exit 1
+
+      - name: Test DB connection
+        run: python test_connection.py
+
+      - name: Run daily collection
+        run: python main.py
+
+      - name: Refresh dashboard catalog/manifest
+        run: |
+          python dashboard/build_manifest.py
+          python dashboard/build_catalog.py
+
+      - name: Commit and push collected data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ dashboard/manifest.json dashboard/metrics_catalog.json
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+            exit 0
+          fi
+          TARGET_DATE=$(python -c "from main import get_target_date; print(get_target_date())")
+          git commit -m "data: daily snapshot ${TARGET_DATE}"
+          git push
+
+      - name: Stop SSH tunnel
+        if: always()
+        run: |
+          if [ -f /tmp/ssh_tunnel.pid ]; then
+            kill "$(cat /tmp/ssh_tunnel.pid)" || true
+          fi
+
+      - name: Upload artifact (backup)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mogakjak-daily-${{ github.run_id }}
+          path: data/
+          retention-days: 90
+          if-no-files-found: ignore

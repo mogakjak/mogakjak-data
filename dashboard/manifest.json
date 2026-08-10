@@ -11,169 +11,6 @@
     }
   },
   "latest_date": "2026-08-08",
-  "available_dates": [
-    "2026-03-03",
-    "2026-03-04",
-    "2026-03-05",
-    "2026-03-06",
-    "2026-03-07",
-    "2026-03-08",
-    "2026-03-09",
-    "2026-03-10",
-    "2026-03-11",
-    "2026-03-12",
-    "2026-03-13",
-    "2026-03-14",
-    "2026-03-15",
-    "2026-03-16",
-    "2026-03-17",
-    "2026-03-18",
-    "2026-03-19",
-    "2026-03-20",
-    "2026-03-21",
-    "2026-03-22",
-    "2026-03-23",
-    "2026-03-24",
-    "2026-03-25",
-    "2026-03-26",
-    "2026-03-27",
-    "2026-03-28",
-    "2026-03-29",
-    "2026-03-30",
-    "2026-03-31",
-    "2026-04-01",
-    "2026-04-02",
-    "2026-04-03",
-    "2026-04-04",
-    "2026-04-05",
-    "2026-04-06",
-    "2026-04-07",
-    "2026-04-08",
-    "2026-04-09",
-    "2026-04-10",
-    "2026-04-11",
-    "2026-04-12",
-    "2026-04-13",
-    "2026-04-14",
-    "2026-04-15",
-    "2026-04-16",
-    "2026-04-17",
-    "2026-04-18",
-    "2026-04-19",
-    "2026-04-20",
-    "2026-04-21",
-    "2026-04-22",
-    "2026-04-23",
-    "2026-04-24",
-    "2026-04-25",
-    "2026-04-26",
-    "2026-04-27",
-    "2026-04-28",
-    "2026-04-29",
-    "2026-04-30",
-    "2026-05-01",
-    "2026-05-02",
-    "2026-05-03",
-    "2026-05-04",
-    "2026-05-05",
-    "2026-05-06",
-    "2026-05-07",
-    "2026-05-08",
-    "2026-05-09",
-    "2026-05-10",
-    "2026-05-11",
-    "2026-05-12",
-    "2026-05-13",
-    "2026-05-14",
-    "2026-05-15",
-    "2026-05-16",
-    "2026-05-17",
-    "2026-05-18",
-    "2026-05-19",
-    "2026-05-20",
-    "2026-05-21",
-    "2026-05-22",
-    "2026-05-23",
-    "2026-05-24",
-    "2026-05-25",
-    "2026-05-26",
-    "2026-05-27",
-    "2026-05-28",
-    "2026-05-29",
-    "2026-05-30",
-    "2026-05-31",
-    "2026-06-01",
-    "2026-06-02",
-    "2026-06-03",
-    "2026-06-04",
-    "2026-06-05",
-    "2026-06-06",
-    "2026-06-07",
-    "2026-06-08",
-    "2026-06-09",
-    "2026-06-10",
-    "2026-06-11",
-    "2026-06-12",
-    "2026-06-13",
-    "2026-06-14",
-    "2026-06-15",
-    "2026-06-16",
-    "2026-06-17",
-    "2026-06-18",
-    "2026-06-19",
-    "2026-06-20",
-    "2026-06-21",
-    "2026-06-22",
-    "2026-06-23",
-    "2026-06-24",
-    "2026-06-25",
-    "2026-06-26",
-    "2026-06-27",
-    "2026-06-28",
-    "2026-06-29",
-    "2026-06-30",
-    "2026-07-01",
-    "2026-07-02",
-    "2026-07-03",
-    "2026-07-04",
-    "2026-07-05",
-    "2026-07-06",
-    "2026-07-07",
-    "2026-07-08",
-    "2026-07-09",
-    "2026-07-10",
-    "2026-07-11",
-    "2026-07-12",
-    "2026-07-13",
-    "2026-07-14",
-    "2026-07-15",
-    "2026-07-16",
-    "2026-07-17",
-    "2026-07-18",
-    "2026-07-19",
-    "2026-07-20",
-    "2026-07-21",
-    "2026-07-22",
-    "2026-07-23",
-    "2026-07-24",
-    "2026-07-25",
-    "2026-07-26",
-    "2026-07-27",
-    "2026-07-28",
-    "2026-07-29",
-    "2026-07-30",
-    "2026-07-31",
-    "2026-08-01",
-    "2026-08-02",
-    "2026-08-03",
-    "2026-08-04",
-    "2026-08-05",
-    "2026-08-06",
-    "2026-08-07",
-    "2026-08-08"
-  ],
-  "min_date": "2026-03-03",
-  "max_date": "2026-08-08",
   "db_days": [
     {
       "date": "2026-08-08",
@@ -187,10 +24,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -205,10 +39,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 43909,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 43909,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -223,10 +54,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -241,10 +69,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -259,10 +84,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 1447,
-        "personal_home_focus_seconds": 1447,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -277,10 +99,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -295,10 +114,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 4662,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 4662,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -313,10 +129,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -331,10 +144,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -349,10 +159,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -367,10 +174,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -385,10 +189,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -403,10 +204,7 @@
         "personal_session_count": 2,
         "group_session_count": 1,
         "personal_focus_seconds": 37,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 37,
-        "group_focus_seconds": 4,
-        "group_stay_seconds": null
+        "group_focus_seconds": 4
       }
     },
     {
@@ -421,10 +219,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -439,10 +234,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -457,10 +249,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 30485,
-        "personal_home_focus_seconds": 30485,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -475,10 +264,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 28702,
-        "personal_home_focus_seconds": 7550,
-        "personal_group_focus_seconds": 21152,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -493,10 +279,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 22949,
-        "personal_home_focus_seconds": 22949,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -511,10 +294,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 28107,
-        "personal_home_focus_seconds": 28107,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -529,10 +309,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -547,10 +324,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -565,10 +339,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -583,10 +354,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -601,10 +369,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -619,10 +384,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -637,10 +399,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -655,10 +414,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 3810,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 3810,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -673,10 +429,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -691,10 +444,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 1025,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 1025,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -709,10 +459,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -727,10 +474,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 3743,
-        "personal_home_focus_seconds": 49,
-        "personal_group_focus_seconds": 3694,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -745,10 +489,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -763,10 +504,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -781,10 +519,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -799,10 +534,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -817,10 +549,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 8081,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 8081,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -835,10 +564,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 9406,
-        "personal_home_focus_seconds": 9406,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -853,10 +579,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 69113,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 69113,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -871,10 +594,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -889,10 +609,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -907,10 +624,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -925,10 +639,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -943,10 +654,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -961,10 +669,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -979,10 +684,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -997,10 +699,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1015,10 +714,7 @@
         "personal_session_count": 11,
         "group_session_count": 1,
         "personal_focus_seconds": 18382,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 18382,
-        "group_focus_seconds": 986,
-        "group_stay_seconds": null
+        "group_focus_seconds": 986
       }
     },
     {
@@ -1033,10 +729,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1051,10 +744,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 4745,
-        "personal_home_focus_seconds": 4745,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1069,10 +759,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1087,10 +774,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1105,10 +789,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 24915,
-        "personal_home_focus_seconds": 23350,
-        "personal_group_focus_seconds": 1565,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1123,10 +804,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 6863,
-        "personal_home_focus_seconds": 6863,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1141,10 +819,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 27380,
-        "personal_home_focus_seconds": 27380,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1159,10 +834,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 17477,
-        "personal_home_focus_seconds": 17477,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1177,10 +849,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 26113,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 26113,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1195,10 +864,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 7203,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 7203,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1213,10 +879,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1231,10 +894,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 867982,
-        "personal_home_focus_seconds": 867982,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1249,10 +909,7 @@
         "personal_session_count": 3,
         "group_session_count": 2,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1267,10 +924,7 @@
         "personal_session_count": 11,
         "group_session_count": 1,
         "personal_focus_seconds": 111088,
-        "personal_home_focus_seconds": 24622,
-        "personal_group_focus_seconds": 86466,
-        "group_focus_seconds": 820,
-        "group_stay_seconds": null
+        "group_focus_seconds": 820
       }
     },
     {
@@ -1285,10 +939,7 @@
         "personal_session_count": 27,
         "group_session_count": 5,
         "personal_focus_seconds": 143633,
-        "personal_home_focus_seconds": 13262,
-        "personal_group_focus_seconds": 130371,
-        "group_focus_seconds": 8851,
-        "group_stay_seconds": null
+        "group_focus_seconds": 8851
       }
     },
     {
@@ -1303,10 +954,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 155001,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 155001,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1321,10 +969,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 3742,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 3742,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1339,10 +984,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 45335,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 45335,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1357,10 +999,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 68324,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 68324,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1375,10 +1014,7 @@
         "personal_session_count": 3,
         "group_session_count": 3,
         "personal_focus_seconds": 209,
-        "personal_home_focus_seconds": 144,
-        "personal_group_focus_seconds": 65,
-        "group_focus_seconds": 12,
-        "group_stay_seconds": null
+        "group_focus_seconds": 12
       }
     },
     {
@@ -1393,10 +1029,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 11378,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 11378,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1411,10 +1044,7 @@
         "personal_session_count": 9,
         "group_session_count": 0,
         "personal_focus_seconds": 95079,
-        "personal_home_focus_seconds": 86321,
-        "personal_group_focus_seconds": 8758,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1429,10 +1059,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 21059,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 21059,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1447,10 +1074,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 15777,
-        "personal_home_focus_seconds": 15777,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1465,10 +1089,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 26375,
-        "personal_home_focus_seconds": 11329,
-        "personal_group_focus_seconds": 15046,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1483,10 +1104,7 @@
         "personal_session_count": 13,
         "group_session_count": 1,
         "personal_focus_seconds": 130428,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 130428,
-        "group_focus_seconds": 2696,
-        "group_stay_seconds": null
+        "group_focus_seconds": 2696
       }
     },
     {
@@ -1501,10 +1119,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 116841,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 116841,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1519,10 +1134,7 @@
         "personal_session_count": 12,
         "group_session_count": 1,
         "personal_focus_seconds": 34441,
-        "personal_home_focus_seconds": 12376,
-        "personal_group_focus_seconds": 22065,
-        "group_focus_seconds": 23,
-        "group_stay_seconds": null
+        "group_focus_seconds": 23
       }
     },
     {
@@ -1537,10 +1149,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 15157,
-        "personal_home_focus_seconds": 15157,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1555,10 +1164,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 7137,
-        "personal_home_focus_seconds": 79,
-        "personal_group_focus_seconds": 7058,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1573,10 +1179,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1591,10 +1194,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 46952,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 46952,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1609,10 +1209,7 @@
         "personal_session_count": 15,
         "group_session_count": 0,
         "personal_focus_seconds": 45058,
-        "personal_home_focus_seconds": 37479,
-        "personal_group_focus_seconds": 7579,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1627,10 +1224,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 5678,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 5678,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1645,10 +1239,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 13034,
-        "personal_home_focus_seconds": 1,
-        "personal_group_focus_seconds": 13033,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1663,10 +1254,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 458,
-        "personal_home_focus_seconds": 5,
-        "personal_group_focus_seconds": 453,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1681,10 +1269,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 10851,
-        "personal_home_focus_seconds": 2071,
-        "personal_group_focus_seconds": 8780,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1699,10 +1284,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1717,10 +1299,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 103,
-        "personal_home_focus_seconds": 42,
-        "personal_group_focus_seconds": 61,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1735,10 +1314,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 31072,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 31072,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1753,10 +1329,7 @@
         "personal_session_count": 25,
         "group_session_count": 0,
         "personal_focus_seconds": 151367,
-        "personal_home_focus_seconds": 1800,
-        "personal_group_focus_seconds": 149567,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1771,10 +1344,7 @@
         "personal_session_count": 15,
         "group_session_count": 1,
         "personal_focus_seconds": 183533,
-        "personal_home_focus_seconds": 17753,
-        "personal_group_focus_seconds": 165780,
-        "group_focus_seconds": 2,
-        "group_stay_seconds": null
+        "group_focus_seconds": 2
       }
     },
     {
@@ -1789,10 +1359,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 32712,
-        "personal_home_focus_seconds": 32712,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1807,10 +1374,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 8433,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 8433,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1825,10 +1389,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1843,10 +1404,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 23954,
-        "personal_home_focus_seconds": 2450,
-        "personal_group_focus_seconds": 21504,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1861,10 +1419,7 @@
         "personal_session_count": 10,
         "group_session_count": 0,
         "personal_focus_seconds": 36828,
-        "personal_home_focus_seconds": 34667,
-        "personal_group_focus_seconds": 2161,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1879,10 +1434,7 @@
         "personal_session_count": 19,
         "group_session_count": 2,
         "personal_focus_seconds": 66909,
-        "personal_home_focus_seconds": 15135,
-        "personal_group_focus_seconds": 51774,
-        "group_focus_seconds": 8523,
-        "group_stay_seconds": null
+        "group_focus_seconds": 8523
       }
     },
     {
@@ -1897,10 +1449,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1915,10 +1464,7 @@
         "personal_session_count": 15,
         "group_session_count": 3,
         "personal_focus_seconds": 324613,
-        "personal_home_focus_seconds": 83,
-        "personal_group_focus_seconds": 324530,
-        "group_focus_seconds": 149333,
-        "group_stay_seconds": null
+        "group_focus_seconds": 149333
       }
     },
     {
@@ -1933,10 +1479,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1951,10 +1494,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1969,10 +1509,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -1987,10 +1524,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 43766,
-        "personal_home_focus_seconds": 28411,
-        "personal_group_focus_seconds": 15355,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2005,10 +1539,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 84570,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 84570,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2023,10 +1554,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 24917,
-        "personal_home_focus_seconds": 24917,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2041,10 +1569,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 952474,
-        "personal_home_focus_seconds": 19396,
-        "personal_group_focus_seconds": 933078,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2059,10 +1584,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 35583,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 35583,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2077,10 +1599,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2095,10 +1614,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 267,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 267,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2113,10 +1629,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2131,10 +1644,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 16952,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 16952,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2149,10 +1659,7 @@
         "personal_session_count": 13,
         "group_session_count": 0,
         "personal_focus_seconds": 91346,
-        "personal_home_focus_seconds": 48384,
-        "personal_group_focus_seconds": 42962,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2167,10 +1674,7 @@
         "personal_session_count": 10,
         "group_session_count": 0,
         "personal_focus_seconds": 49844,
-        "personal_home_focus_seconds": 27220,
-        "personal_group_focus_seconds": 22624,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2185,10 +1689,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 18444,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 18444,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2203,10 +1704,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2221,10 +1719,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 29825,
-        "personal_home_focus_seconds": 10539,
-        "personal_group_focus_seconds": 19286,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2239,10 +1734,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 33712,
-        "personal_home_focus_seconds": 33712,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2257,10 +1749,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 47791,
-        "personal_home_focus_seconds": 6933,
-        "personal_group_focus_seconds": 40858,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2275,10 +1764,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 28658,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 28658,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2293,10 +1779,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 30891,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 30891,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2311,10 +1794,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 281697,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 281697,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2329,10 +1809,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 44277,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 44277,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2347,10 +1824,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 29411,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 29411,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2365,10 +1839,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 53725,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 53725,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2383,10 +1854,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 30892,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 30892,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2401,10 +1869,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 45152,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 45152,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2419,10 +1884,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 27660,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 27660,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2437,10 +1899,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2455,10 +1914,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 18357,
-        "personal_home_focus_seconds": 18357,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2473,10 +1929,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 29054,
-        "personal_home_focus_seconds": 28201,
-        "personal_group_focus_seconds": 853,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2491,10 +1944,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 72418,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 72418,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2509,10 +1959,7 @@
         "personal_session_count": 10,
         "group_session_count": 0,
         "personal_focus_seconds": 29483,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 29483,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2527,10 +1974,7 @@
         "personal_session_count": 11,
         "group_session_count": 0,
         "personal_focus_seconds": 33312,
-        "personal_home_focus_seconds": 3792,
-        "personal_group_focus_seconds": 29520,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2545,10 +1989,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 20447,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 20447,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2563,10 +2004,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2581,10 +2019,7 @@
         "personal_session_count": 7,
         "group_session_count": 1,
         "personal_focus_seconds": 25758,
-        "personal_home_focus_seconds": 12122,
-        "personal_group_focus_seconds": 13636,
-        "group_focus_seconds": 49,
-        "group_stay_seconds": null
+        "group_focus_seconds": 49
       }
     },
     {
@@ -2599,10 +2034,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 40445,
-        "personal_home_focus_seconds": 40422,
-        "personal_group_focus_seconds": 23,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2617,10 +2049,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 39176,
-        "personal_home_focus_seconds": 14547,
-        "personal_group_focus_seconds": 24629,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2635,10 +2064,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2653,10 +2079,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 37967,
-        "personal_home_focus_seconds": 23360,
-        "personal_group_focus_seconds": 14607,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2671,10 +2094,7 @@
         "personal_session_count": 11,
         "group_session_count": 0,
         "personal_focus_seconds": 75204,
-        "personal_home_focus_seconds": 58670,
-        "personal_group_focus_seconds": 16534,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2689,10 +2109,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 21352,
-        "personal_home_focus_seconds": 11379,
-        "personal_group_focus_seconds": 9973,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2707,10 +2124,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2725,10 +2139,7 @@
         "personal_session_count": 12,
         "group_session_count": 0,
         "personal_focus_seconds": -9249,
-        "personal_home_focus_seconds": -9519,
-        "personal_group_focus_seconds": 270,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2743,10 +2154,7 @@
         "personal_session_count": 20,
         "group_session_count": 1,
         "personal_focus_seconds": 997008,
-        "personal_home_focus_seconds": 102711,
-        "personal_group_focus_seconds": 894297,
-        "group_focus_seconds": 1,
-        "group_stay_seconds": null
+        "group_focus_seconds": 1
       }
     },
     {
@@ -2761,10 +2169,7 @@
         "personal_session_count": 8,
         "group_session_count": 1,
         "personal_focus_seconds": 49811,
-        "personal_home_focus_seconds": 33908,
-        "personal_group_focus_seconds": 15903,
-        "group_focus_seconds": 2,
-        "group_stay_seconds": null
+        "group_focus_seconds": 2
       }
     },
     {
@@ -2779,10 +2184,7 @@
         "personal_session_count": 18,
         "group_session_count": 0,
         "personal_focus_seconds": 272461,
-        "personal_home_focus_seconds": 62682,
-        "personal_group_focus_seconds": 209779,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2797,10 +2199,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 187829,
-        "personal_home_focus_seconds": 72583,
-        "personal_group_focus_seconds": 115246,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2815,10 +2214,7 @@
         "personal_session_count": 8,
         "group_session_count": 1,
         "personal_focus_seconds": 21022,
-        "personal_home_focus_seconds": 12,
-        "personal_group_focus_seconds": 21010,
-        "group_focus_seconds": 7124,
-        "group_stay_seconds": null
+        "group_focus_seconds": 7124
       }
     },
     {
@@ -2833,10 +2229,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 6286,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 6286,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2851,10 +2244,7 @@
         "personal_session_count": 16,
         "group_session_count": 0,
         "personal_focus_seconds": 238227,
-        "personal_home_focus_seconds": 8670,
-        "personal_group_focus_seconds": 229557,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2869,10 +2259,7 @@
         "personal_session_count": 25,
         "group_session_count": 7,
         "personal_focus_seconds": 155756,
-        "personal_home_focus_seconds": 14028,
-        "personal_group_focus_seconds": 141728,
-        "group_focus_seconds": 9794,
-        "group_stay_seconds": null
+        "group_focus_seconds": 9794
       }
     },
     {
@@ -2887,10 +2274,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 12842,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 12842,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2905,10 +2289,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 60028,
-        "personal_home_focus_seconds": 54280,
-        "personal_group_focus_seconds": 5748,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2923,10 +2304,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 14501,
-        "personal_home_focus_seconds": 2904,
-        "personal_group_focus_seconds": 11597,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2941,10 +2319,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2959,10 +2334,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2977,10 +2349,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 11368,
-        "personal_home_focus_seconds": 3346,
-        "personal_group_focus_seconds": 8022,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -2995,10 +2364,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -3013,10 +2379,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 6224,
-        "personal_home_focus_seconds": 790,
-        "personal_group_focus_seconds": 5434,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -3031,10 +2394,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 152,
-        "personal_home_focus_seconds": 2,
-        "personal_group_focus_seconds": 150,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     }
   ],
@@ -9731,10 +9091,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9749,10 +9106,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 43909,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 43909,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9767,10 +9121,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9785,10 +9136,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9803,10 +9151,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 1447,
-        "personal_home_focus_seconds": 1447,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9821,10 +9166,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9839,10 +9181,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 4662,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 4662,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9857,10 +9196,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9875,10 +9211,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9893,10 +9226,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9911,10 +9241,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9929,10 +9256,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9947,10 +9271,7 @@
         "personal_session_count": 2,
         "group_session_count": 1,
         "personal_focus_seconds": 37,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 37,
-        "group_focus_seconds": 4,
-        "group_stay_seconds": null
+        "group_focus_seconds": 4
       }
     },
     {
@@ -9965,10 +9286,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -9983,10 +9301,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10001,10 +9316,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 30485,
-        "personal_home_focus_seconds": 30485,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10019,10 +9331,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 28702,
-        "personal_home_focus_seconds": 7550,
-        "personal_group_focus_seconds": 21152,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10037,10 +9346,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 22949,
-        "personal_home_focus_seconds": 22949,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10055,10 +9361,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 28107,
-        "personal_home_focus_seconds": 28107,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10073,10 +9376,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10091,10 +9391,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10109,10 +9406,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10127,10 +9421,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10145,10 +9436,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10163,10 +9451,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10181,10 +9466,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10199,10 +9481,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 3810,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 3810,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10217,10 +9496,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10235,10 +9511,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 1025,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 1025,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10253,10 +9526,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10271,10 +9541,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 3743,
-        "personal_home_focus_seconds": 49,
-        "personal_group_focus_seconds": 3694,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10289,10 +9556,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10307,10 +9571,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10325,10 +9586,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10343,10 +9601,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10361,10 +9616,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 8081,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 8081,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10379,10 +9631,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 9406,
-        "personal_home_focus_seconds": 9406,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10397,10 +9646,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 69113,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 69113,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10415,10 +9661,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10433,10 +9676,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10451,10 +9691,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10469,10 +9706,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10487,10 +9721,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10505,10 +9736,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10523,10 +9751,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10541,10 +9766,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10559,10 +9781,7 @@
         "personal_session_count": 11,
         "group_session_count": 1,
         "personal_focus_seconds": 18382,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 18382,
-        "group_focus_seconds": 986,
-        "group_stay_seconds": null
+        "group_focus_seconds": 986
       }
     },
     {
@@ -10577,10 +9796,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10595,10 +9811,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 4745,
-        "personal_home_focus_seconds": 4745,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10613,10 +9826,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10631,10 +9841,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10649,10 +9856,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 24915,
-        "personal_home_focus_seconds": 23350,
-        "personal_group_focus_seconds": 1565,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10667,10 +9871,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 6863,
-        "personal_home_focus_seconds": 6863,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10685,10 +9886,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 27380,
-        "personal_home_focus_seconds": 27380,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10703,10 +9901,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 17477,
-        "personal_home_focus_seconds": 17477,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10721,10 +9916,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 26113,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 26113,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10739,10 +9931,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 7203,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 7203,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10757,10 +9946,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10775,10 +9961,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 867982,
-        "personal_home_focus_seconds": 867982,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10793,10 +9976,7 @@
         "personal_session_count": 3,
         "group_session_count": 2,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10811,10 +9991,7 @@
         "personal_session_count": 11,
         "group_session_count": 1,
         "personal_focus_seconds": 111088,
-        "personal_home_focus_seconds": 24622,
-        "personal_group_focus_seconds": 86466,
-        "group_focus_seconds": 820,
-        "group_stay_seconds": null
+        "group_focus_seconds": 820
       }
     },
     {
@@ -10829,10 +10006,7 @@
         "personal_session_count": 27,
         "group_session_count": 5,
         "personal_focus_seconds": 143633,
-        "personal_home_focus_seconds": 13262,
-        "personal_group_focus_seconds": 130371,
-        "group_focus_seconds": 8851,
-        "group_stay_seconds": null
+        "group_focus_seconds": 8851
       }
     },
     {
@@ -10847,10 +10021,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 155001,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 155001,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10865,10 +10036,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 3742,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 3742,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10883,10 +10051,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 45335,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 45335,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10901,10 +10066,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 68324,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 68324,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10919,10 +10081,7 @@
         "personal_session_count": 3,
         "group_session_count": 3,
         "personal_focus_seconds": 209,
-        "personal_home_focus_seconds": 144,
-        "personal_group_focus_seconds": 65,
-        "group_focus_seconds": 12,
-        "group_stay_seconds": null
+        "group_focus_seconds": 12
       }
     },
     {
@@ -10937,10 +10096,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 11378,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 11378,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10955,10 +10111,7 @@
         "personal_session_count": 9,
         "group_session_count": 0,
         "personal_focus_seconds": 95079,
-        "personal_home_focus_seconds": 86321,
-        "personal_group_focus_seconds": 8758,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10973,10 +10126,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 21059,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 21059,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -10991,10 +10141,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 15777,
-        "personal_home_focus_seconds": 15777,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11009,10 +10156,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 26375,
-        "personal_home_focus_seconds": 11329,
-        "personal_group_focus_seconds": 15046,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11027,10 +10171,7 @@
         "personal_session_count": 13,
         "group_session_count": 1,
         "personal_focus_seconds": 130428,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 130428,
-        "group_focus_seconds": 2696,
-        "group_stay_seconds": null
+        "group_focus_seconds": 2696
       }
     },
     {
@@ -11045,10 +10186,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 116841,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 116841,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11063,10 +10201,7 @@
         "personal_session_count": 12,
         "group_session_count": 1,
         "personal_focus_seconds": 34441,
-        "personal_home_focus_seconds": 12376,
-        "personal_group_focus_seconds": 22065,
-        "group_focus_seconds": 23,
-        "group_stay_seconds": null
+        "group_focus_seconds": 23
       }
     },
     {
@@ -11081,10 +10216,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 15157,
-        "personal_home_focus_seconds": 15157,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11099,10 +10231,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 7137,
-        "personal_home_focus_seconds": 79,
-        "personal_group_focus_seconds": 7058,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11117,10 +10246,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11135,10 +10261,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 46952,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 46952,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11153,10 +10276,7 @@
         "personal_session_count": 15,
         "group_session_count": 0,
         "personal_focus_seconds": 45058,
-        "personal_home_focus_seconds": 37479,
-        "personal_group_focus_seconds": 7579,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11171,10 +10291,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 5678,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 5678,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11189,10 +10306,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 13034,
-        "personal_home_focus_seconds": 1,
-        "personal_group_focus_seconds": 13033,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11207,10 +10321,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 458,
-        "personal_home_focus_seconds": 5,
-        "personal_group_focus_seconds": 453,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11225,10 +10336,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 10851,
-        "personal_home_focus_seconds": 2071,
-        "personal_group_focus_seconds": 8780,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11243,10 +10351,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11261,10 +10366,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 103,
-        "personal_home_focus_seconds": 42,
-        "personal_group_focus_seconds": 61,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11279,10 +10381,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 31072,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 31072,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11297,10 +10396,7 @@
         "personal_session_count": 25,
         "group_session_count": 0,
         "personal_focus_seconds": 151367,
-        "personal_home_focus_seconds": 1800,
-        "personal_group_focus_seconds": 149567,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11315,10 +10411,7 @@
         "personal_session_count": 15,
         "group_session_count": 1,
         "personal_focus_seconds": 183533,
-        "personal_home_focus_seconds": 17753,
-        "personal_group_focus_seconds": 165780,
-        "group_focus_seconds": 2,
-        "group_stay_seconds": null
+        "group_focus_seconds": 2
       }
     },
     {
@@ -11333,10 +10426,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 32712,
-        "personal_home_focus_seconds": 32712,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11351,10 +10441,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 8433,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 8433,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11369,10 +10456,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11387,10 +10471,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 23954,
-        "personal_home_focus_seconds": 2450,
-        "personal_group_focus_seconds": 21504,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11405,10 +10486,7 @@
         "personal_session_count": 10,
         "group_session_count": 0,
         "personal_focus_seconds": 36828,
-        "personal_home_focus_seconds": 34667,
-        "personal_group_focus_seconds": 2161,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11423,10 +10501,7 @@
         "personal_session_count": 19,
         "group_session_count": 2,
         "personal_focus_seconds": 66909,
-        "personal_home_focus_seconds": 15135,
-        "personal_group_focus_seconds": 51774,
-        "group_focus_seconds": 8523,
-        "group_stay_seconds": null
+        "group_focus_seconds": 8523
       }
     },
     {
@@ -11441,10 +10516,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11459,10 +10531,7 @@
         "personal_session_count": 15,
         "group_session_count": 3,
         "personal_focus_seconds": 324613,
-        "personal_home_focus_seconds": 83,
-        "personal_group_focus_seconds": 324530,
-        "group_focus_seconds": 149333,
-        "group_stay_seconds": null
+        "group_focus_seconds": 149333
       }
     },
     {
@@ -11477,10 +10546,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11495,10 +10561,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11513,10 +10576,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11531,10 +10591,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 43766,
-        "personal_home_focus_seconds": 28411,
-        "personal_group_focus_seconds": 15355,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11549,10 +10606,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 84570,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 84570,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11567,10 +10621,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 24917,
-        "personal_home_focus_seconds": 24917,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11585,10 +10636,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 952474,
-        "personal_home_focus_seconds": 19396,
-        "personal_group_focus_seconds": 933078,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11603,10 +10651,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 35583,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 35583,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11621,10 +10666,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11639,10 +10681,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 267,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 267,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11657,10 +10696,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11675,10 +10711,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 16952,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 16952,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11693,10 +10726,7 @@
         "personal_session_count": 13,
         "group_session_count": 0,
         "personal_focus_seconds": 91346,
-        "personal_home_focus_seconds": 48384,
-        "personal_group_focus_seconds": 42962,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11711,10 +10741,7 @@
         "personal_session_count": 10,
         "group_session_count": 0,
         "personal_focus_seconds": 49844,
-        "personal_home_focus_seconds": 27220,
-        "personal_group_focus_seconds": 22624,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11729,10 +10756,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 18444,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 18444,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11747,10 +10771,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11765,10 +10786,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 29825,
-        "personal_home_focus_seconds": 10539,
-        "personal_group_focus_seconds": 19286,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11783,10 +10801,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 33712,
-        "personal_home_focus_seconds": 33712,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11801,10 +10816,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 47791,
-        "personal_home_focus_seconds": 6933,
-        "personal_group_focus_seconds": 40858,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11819,10 +10831,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 28658,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 28658,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11837,10 +10846,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 30891,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 30891,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11855,10 +10861,7 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 281697,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 281697,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11873,10 +10876,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 44277,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 44277,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11891,10 +10891,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 29411,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 29411,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11909,10 +10906,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 53725,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 53725,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11927,10 +10921,7 @@
         "personal_session_count": 5,
         "group_session_count": 0,
         "personal_focus_seconds": 30892,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 30892,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11945,10 +10936,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 45152,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 45152,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11963,10 +10951,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 27660,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 27660,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11981,10 +10966,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -11999,10 +10981,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 18357,
-        "personal_home_focus_seconds": 18357,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12017,10 +10996,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 29054,
-        "personal_home_focus_seconds": 28201,
-        "personal_group_focus_seconds": 853,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12035,10 +11011,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 72418,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 72418,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12053,10 +11026,7 @@
         "personal_session_count": 10,
         "group_session_count": 0,
         "personal_focus_seconds": 29483,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 29483,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12071,10 +11041,7 @@
         "personal_session_count": 11,
         "group_session_count": 0,
         "personal_focus_seconds": 33312,
-        "personal_home_focus_seconds": 3792,
-        "personal_group_focus_seconds": 29520,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12089,10 +11056,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 20447,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 20447,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12107,10 +11071,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12125,10 +11086,7 @@
         "personal_session_count": 7,
         "group_session_count": 1,
         "personal_focus_seconds": 25758,
-        "personal_home_focus_seconds": 12122,
-        "personal_group_focus_seconds": 13636,
-        "group_focus_seconds": 49,
-        "group_stay_seconds": null
+        "group_focus_seconds": 49
       }
     },
     {
@@ -12143,10 +11101,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 40445,
-        "personal_home_focus_seconds": 40422,
-        "personal_group_focus_seconds": 23,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12161,10 +11116,7 @@
         "personal_session_count": 8,
         "group_session_count": 0,
         "personal_focus_seconds": 39176,
-        "personal_home_focus_seconds": 14547,
-        "personal_group_focus_seconds": 24629,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12179,10 +11131,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12197,10 +11146,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 37967,
-        "personal_home_focus_seconds": 23360,
-        "personal_group_focus_seconds": 14607,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12215,10 +11161,7 @@
         "personal_session_count": 11,
         "group_session_count": 0,
         "personal_focus_seconds": 75204,
-        "personal_home_focus_seconds": 58670,
-        "personal_group_focus_seconds": 16534,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12233,10 +11176,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 21352,
-        "personal_home_focus_seconds": 11379,
-        "personal_group_focus_seconds": 9973,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12251,10 +11191,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12269,10 +11206,7 @@
         "personal_session_count": 12,
         "group_session_count": 0,
         "personal_focus_seconds": -9249,
-        "personal_home_focus_seconds": -9519,
-        "personal_group_focus_seconds": 270,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12287,10 +11221,7 @@
         "personal_session_count": 20,
         "group_session_count": 1,
         "personal_focus_seconds": 997008,
-        "personal_home_focus_seconds": 102711,
-        "personal_group_focus_seconds": 894297,
-        "group_focus_seconds": 1,
-        "group_stay_seconds": null
+        "group_focus_seconds": 1
       }
     },
     {
@@ -12305,10 +11236,7 @@
         "personal_session_count": 8,
         "group_session_count": 1,
         "personal_focus_seconds": 49811,
-        "personal_home_focus_seconds": 33908,
-        "personal_group_focus_seconds": 15903,
-        "group_focus_seconds": 2,
-        "group_stay_seconds": null
+        "group_focus_seconds": 2
       }
     },
     {
@@ -12323,10 +11251,7 @@
         "personal_session_count": 18,
         "group_session_count": 0,
         "personal_focus_seconds": 272461,
-        "personal_home_focus_seconds": 62682,
-        "personal_group_focus_seconds": 209779,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12341,10 +11266,7 @@
         "personal_session_count": 7,
         "group_session_count": 0,
         "personal_focus_seconds": 187829,
-        "personal_home_focus_seconds": 72583,
-        "personal_group_focus_seconds": 115246,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12359,10 +11281,7 @@
         "personal_session_count": 8,
         "group_session_count": 1,
         "personal_focus_seconds": 21022,
-        "personal_home_focus_seconds": 12,
-        "personal_group_focus_seconds": 21010,
-        "group_focus_seconds": 7124,
-        "group_stay_seconds": null
+        "group_focus_seconds": 7124
       }
     },
     {
@@ -12377,10 +11296,7 @@
         "personal_session_count": 1,
         "group_session_count": 0,
         "personal_focus_seconds": 6286,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 6286,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12395,10 +11311,7 @@
         "personal_session_count": 16,
         "group_session_count": 0,
         "personal_focus_seconds": 238227,
-        "personal_home_focus_seconds": 8670,
-        "personal_group_focus_seconds": 229557,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12413,10 +11326,7 @@
         "personal_session_count": 25,
         "group_session_count": 7,
         "personal_focus_seconds": 155756,
-        "personal_home_focus_seconds": 14028,
-        "personal_group_focus_seconds": 141728,
-        "group_focus_seconds": 9794,
-        "group_stay_seconds": null
+        "group_focus_seconds": 9794
       }
     },
     {
@@ -12431,10 +11341,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 12842,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 12842,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12449,10 +11356,7 @@
         "personal_session_count": 3,
         "group_session_count": 0,
         "personal_focus_seconds": 60028,
-        "personal_home_focus_seconds": 54280,
-        "personal_group_focus_seconds": 5748,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12467,10 +11371,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 14501,
-        "personal_home_focus_seconds": 2904,
-        "personal_group_focus_seconds": 11597,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12485,10 +11386,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12503,10 +11401,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12521,10 +11416,7 @@
         "personal_session_count": 6,
         "group_session_count": 0,
         "personal_focus_seconds": 11368,
-        "personal_home_focus_seconds": 3346,
-        "personal_group_focus_seconds": 8022,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12539,10 +11431,7 @@
         "personal_session_count": 0,
         "group_session_count": 0,
         "personal_focus_seconds": 0,
-        "personal_home_focus_seconds": 0,
-        "personal_group_focus_seconds": 0,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12557,10 +11446,7 @@
         "personal_session_count": 4,
         "group_session_count": 0,
         "personal_focus_seconds": 6224,
-        "personal_home_focus_seconds": 790,
-        "personal_group_focus_seconds": 5434,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     },
     {
@@ -12575,803 +11461,648 @@
         "personal_session_count": 2,
         "group_session_count": 0,
         "personal_focus_seconds": 152,
-        "personal_home_focus_seconds": 2,
-        "personal_group_focus_seconds": 150,
-        "group_focus_seconds": 0,
-        "group_stay_seconds": null
+        "group_focus_seconds": 0
       }
     }
   ],
   "day_count": 159,
-  "product_events": [
-    {
-      "id": "evt-20260803-ga254",
-      "date": "2026-08-03",
-      "type": "ga_event",
-      "title": "GA 이벤트 일괄 심기",
-      "note": "PR #254 feat/ga-253 — 가입·그룹·타이머·고객지원 GA",
-      "repos": [
-        "mogakjak-fe"
-      ],
-      "affects": [
-        "ga",
-        "funnel",
-        "timer"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-fe/pull/254"
-    },
-    {
-      "id": "evt-20260713-dashboard",
-      "date": "2026-07-13",
-      "type": "ops",
-      "title": "Analytics 대시보드 Pages 배포",
-      "note": "데이터 파이프라인 GitHub Pages · Overview·전환·데이터 탭",
-      "repos": [
-        "mogakjak-data-pipeline"
-      ],
-      "affects": [
-        "db",
-        "ga"
-      ],
-      "url": "https://github.com/shon-ah-hyun/mogakjak-data-pipeline"
-    },
-    {
-      "id": "evt-20260523-fe251",
-      "date": "2026-05-23",
-      "type": "fe_release",
-      "title": "FE 추가 기능 구현",
-      "note": "PR #251 — 할 일·타이머 등 후속 기능 묶음",
-      "repos": [
-        "mogakjak-fe"
-      ],
-      "affects": [
-        "timer",
-        "funnel"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-fe/pull/251"
-    },
-    {
-      "id": "evt-20260520-fe249",
-      "date": "2026-05-20",
-      "type": "fix",
-      "title": "할 일 추가 직후 반영",
-      "note": "PR #249 — 할 일 페이지에서 추가 후 즉시 목록 반영",
-      "repos": [
-        "mogakjak-fe"
-      ],
-      "affects": [
-        "funnel"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-fe/pull/249"
-    },
-    {
-      "id": "evt-20260518-fe247",
-      "date": "2026-05-18",
-      "type": "feature",
-      "title": "뽀모도로 단계별 알림 (FE)",
-      "note": "PR #247 — 타이머 단계 전환 알림 UI",
-      "repos": [
-        "mogakjak-fe"
-      ],
-      "affects": [
-        "timer"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-fe/pull/247"
-    },
-    {
-      "id": "evt-20260517-be84",
-      "date": "2026-05-17",
-      "type": "be_release",
-      "title": "타이머 탭 순서 설정",
-      "note": "PR #84 MOG-211 — 타이머 모드 탭 순서 사용자 설정",
-      "repos": [
-        "mogakjak-be"
-      ],
-      "affects": [
-        "timer"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-be/pull/84"
-    },
-    {
-      "id": "evt-20260514-be83",
-      "date": "2026-05-14",
-      "type": "be_release",
-      "title": "뽀모도로 단계별 알림 (BE)",
-      "note": "PR #83 MOG-210 — 단계별 알림 API·로직",
-      "repos": [
-        "mogakjak-be"
-      ],
-      "affects": [
-        "timer"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-be/pull/83"
-    },
-    {
-      "id": "evt-20260426-be82",
-      "date": "2026-04-26",
-      "type": "be_release",
-      "title": "그룹 초대 정책 수정",
-      "note": "PR #82 MOG-198 — 초대·멤버십 정책 변경",
-      "repos": [
-        "mogakjak-be"
-      ],
-      "affects": [
-        "group",
-        "funnel"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-be/pull/82"
-    },
-    {
-      "id": "evt-20260417-lounge",
-      "date": "2026-04-17",
-      "type": "feature",
-      "title": "공식 라운지 출시",
-      "note": "FE #244 라운지 화면·연동 + BE #78 라운지 API",
-      "repos": [
-        "mogakjak-fe",
-        "mogakjak-be"
-      ],
-      "affects": [
-        "group",
-        "funnel",
-        "growth"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-fe/pull/244"
-    },
-    {
-      "id": "evt-20260331-fe242",
-      "date": "2026-03-31",
-      "type": "fe_release",
-      "title": "모바일 랜딩페이지 연결",
-      "note": "PR #242 — 모바일 유입·첫 진입 경로",
-      "repos": [
-        "mogakjak-fe"
-      ],
-      "affects": [
-        "growth",
-        "funnel"
-      ],
-      "url": "https://github.com/mogakjak/mogakjak-fe/pull/242"
-    }
-  ],
-  "product_events_path": "./product_events.json",
   "catalog_path": "./metrics_catalog.json",
   "ga_events_days": [
     {
-      "date": "2026-03-03",
-      "path": "../data/ga/2026-03-03_events.json"
-    },
-    {
-      "date": "2026-03-04",
-      "path": "../data/ga/2026-03-04_events.json"
-    },
-    {
-      "date": "2026-03-05",
-      "path": "../data/ga/2026-03-05_events.json"
-    },
-    {
-      "date": "2026-03-06",
-      "path": "../data/ga/2026-03-06_events.json"
-    },
-    {
-      "date": "2026-03-07",
-      "path": "../data/ga/2026-03-07_events.json"
-    },
-    {
-      "date": "2026-03-08",
-      "path": "../data/ga/2026-03-08_events.json"
-    },
-    {
-      "date": "2026-03-09",
-      "path": "../data/ga/2026-03-09_events.json"
-    },
-    {
-      "date": "2026-03-10",
-      "path": "../data/ga/2026-03-10_events.json"
-    },
-    {
-      "date": "2026-03-11",
-      "path": "../data/ga/2026-03-11_events.json"
-    },
-    {
-      "date": "2026-03-12",
-      "path": "../data/ga/2026-03-12_events.json"
-    },
-    {
-      "date": "2026-03-13",
-      "path": "../data/ga/2026-03-13_events.json"
-    },
-    {
-      "date": "2026-03-14",
-      "path": "../data/ga/2026-03-14_events.json"
-    },
-    {
-      "date": "2026-03-15",
-      "path": "../data/ga/2026-03-15_events.json"
-    },
-    {
-      "date": "2026-03-16",
-      "path": "../data/ga/2026-03-16_events.json"
-    },
-    {
-      "date": "2026-03-17",
-      "path": "../data/ga/2026-03-17_events.json"
-    },
-    {
-      "date": "2026-03-18",
-      "path": "../data/ga/2026-03-18_events.json"
-    },
-    {
-      "date": "2026-03-19",
-      "path": "../data/ga/2026-03-19_events.json"
-    },
-    {
-      "date": "2026-03-20",
-      "path": "../data/ga/2026-03-20_events.json"
-    },
-    {
-      "date": "2026-03-21",
-      "path": "../data/ga/2026-03-21_events.json"
-    },
-    {
-      "date": "2026-03-22",
-      "path": "../data/ga/2026-03-22_events.json"
-    },
-    {
-      "date": "2026-03-23",
-      "path": "../data/ga/2026-03-23_events.json"
-    },
-    {
-      "date": "2026-03-24",
-      "path": "../data/ga/2026-03-24_events.json"
-    },
-    {
-      "date": "2026-03-25",
-      "path": "../data/ga/2026-03-25_events.json"
-    },
-    {
-      "date": "2026-03-26",
-      "path": "../data/ga/2026-03-26_events.json"
-    },
-    {
-      "date": "2026-03-27",
-      "path": "../data/ga/2026-03-27_events.json"
-    },
-    {
-      "date": "2026-03-28",
-      "path": "../data/ga/2026-03-28_events.json"
-    },
-    {
-      "date": "2026-03-29",
-      "path": "../data/ga/2026-03-29_events.json"
-    },
-    {
-      "date": "2026-03-30",
-      "path": "../data/ga/2026-03-30_events.json"
-    },
-    {
-      "date": "2026-03-31",
-      "path": "../data/ga/2026-03-31_events.json"
-    },
-    {
-      "date": "2026-04-01",
-      "path": "../data/ga/2026-04-01_events.json"
-    },
-    {
-      "date": "2026-04-02",
-      "path": "../data/ga/2026-04-02_events.json"
-    },
-    {
-      "date": "2026-04-03",
-      "path": "../data/ga/2026-04-03_events.json"
-    },
-    {
-      "date": "2026-04-04",
-      "path": "../data/ga/2026-04-04_events.json"
-    },
-    {
-      "date": "2026-04-05",
-      "path": "../data/ga/2026-04-05_events.json"
-    },
-    {
-      "date": "2026-04-06",
-      "path": "../data/ga/2026-04-06_events.json"
-    },
-    {
-      "date": "2026-04-07",
-      "path": "../data/ga/2026-04-07_events.json"
-    },
-    {
-      "date": "2026-04-08",
-      "path": "../data/ga/2026-04-08_events.json"
-    },
-    {
-      "date": "2026-04-09",
-      "path": "../data/ga/2026-04-09_events.json"
-    },
-    {
-      "date": "2026-04-10",
-      "path": "../data/ga/2026-04-10_events.json"
-    },
-    {
-      "date": "2026-04-11",
-      "path": "../data/ga/2026-04-11_events.json"
-    },
-    {
-      "date": "2026-04-12",
-      "path": "../data/ga/2026-04-12_events.json"
-    },
-    {
-      "date": "2026-04-13",
-      "path": "../data/ga/2026-04-13_events.json"
-    },
-    {
-      "date": "2026-04-14",
-      "path": "../data/ga/2026-04-14_events.json"
-    },
-    {
-      "date": "2026-04-15",
-      "path": "../data/ga/2026-04-15_events.json"
-    },
-    {
-      "date": "2026-04-16",
-      "path": "../data/ga/2026-04-16_events.json"
-    },
-    {
-      "date": "2026-04-17",
-      "path": "../data/ga/2026-04-17_events.json"
-    },
-    {
-      "date": "2026-04-18",
-      "path": "../data/ga/2026-04-18_events.json"
-    },
-    {
-      "date": "2026-04-19",
-      "path": "../data/ga/2026-04-19_events.json"
-    },
-    {
-      "date": "2026-04-20",
-      "path": "../data/ga/2026-04-20_events.json"
-    },
-    {
-      "date": "2026-04-21",
-      "path": "../data/ga/2026-04-21_events.json"
-    },
-    {
-      "date": "2026-04-22",
-      "path": "../data/ga/2026-04-22_events.json"
-    },
-    {
-      "date": "2026-04-23",
-      "path": "../data/ga/2026-04-23_events.json"
-    },
-    {
-      "date": "2026-04-24",
-      "path": "../data/ga/2026-04-24_events.json"
-    },
-    {
-      "date": "2026-04-25",
-      "path": "../data/ga/2026-04-25_events.json"
-    },
-    {
-      "date": "2026-04-26",
-      "path": "../data/ga/2026-04-26_events.json"
-    },
-    {
-      "date": "2026-04-27",
-      "path": "../data/ga/2026-04-27_events.json"
-    },
-    {
-      "date": "2026-04-28",
-      "path": "../data/ga/2026-04-28_events.json"
-    },
-    {
-      "date": "2026-04-29",
-      "path": "../data/ga/2026-04-29_events.json"
-    },
-    {
-      "date": "2026-04-30",
-      "path": "../data/ga/2026-04-30_events.json"
-    },
-    {
-      "date": "2026-05-01",
-      "path": "../data/ga/2026-05-01_events.json"
-    },
-    {
-      "date": "2026-05-02",
-      "path": "../data/ga/2026-05-02_events.json"
-    },
-    {
-      "date": "2026-05-03",
-      "path": "../data/ga/2026-05-03_events.json"
-    },
-    {
-      "date": "2026-05-04",
-      "path": "../data/ga/2026-05-04_events.json"
-    },
-    {
-      "date": "2026-05-05",
-      "path": "../data/ga/2026-05-05_events.json"
-    },
-    {
-      "date": "2026-05-06",
-      "path": "../data/ga/2026-05-06_events.json"
-    },
-    {
-      "date": "2026-05-07",
-      "path": "../data/ga/2026-05-07_events.json"
-    },
-    {
-      "date": "2026-05-08",
-      "path": "../data/ga/2026-05-08_events.json"
-    },
-    {
-      "date": "2026-05-09",
-      "path": "../data/ga/2026-05-09_events.json"
-    },
-    {
-      "date": "2026-05-10",
-      "path": "../data/ga/2026-05-10_events.json"
-    },
-    {
-      "date": "2026-05-11",
-      "path": "../data/ga/2026-05-11_events.json"
-    },
-    {
-      "date": "2026-05-12",
-      "path": "../data/ga/2026-05-12_events.json"
-    },
-    {
-      "date": "2026-05-13",
-      "path": "../data/ga/2026-05-13_events.json"
-    },
-    {
-      "date": "2026-05-14",
-      "path": "../data/ga/2026-05-14_events.json"
-    },
-    {
-      "date": "2026-05-15",
-      "path": "../data/ga/2026-05-15_events.json"
-    },
-    {
-      "date": "2026-05-16",
-      "path": "../data/ga/2026-05-16_events.json"
-    },
-    {
-      "date": "2026-05-17",
-      "path": "../data/ga/2026-05-17_events.json"
-    },
-    {
-      "date": "2026-05-18",
-      "path": "../data/ga/2026-05-18_events.json"
-    },
-    {
-      "date": "2026-05-19",
-      "path": "../data/ga/2026-05-19_events.json"
-    },
-    {
-      "date": "2026-05-20",
-      "path": "../data/ga/2026-05-20_events.json"
-    },
-    {
-      "date": "2026-05-21",
-      "path": "../data/ga/2026-05-21_events.json"
-    },
-    {
-      "date": "2026-05-22",
-      "path": "../data/ga/2026-05-22_events.json"
-    },
-    {
-      "date": "2026-05-23",
-      "path": "../data/ga/2026-05-23_events.json"
-    },
-    {
-      "date": "2026-05-24",
-      "path": "../data/ga/2026-05-24_events.json"
-    },
-    {
-      "date": "2026-05-25",
-      "path": "../data/ga/2026-05-25_events.json"
-    },
-    {
-      "date": "2026-05-26",
-      "path": "../data/ga/2026-05-26_events.json"
-    },
-    {
-      "date": "2026-05-27",
-      "path": "../data/ga/2026-05-27_events.json"
-    },
-    {
-      "date": "2026-05-28",
-      "path": "../data/ga/2026-05-28_events.json"
-    },
-    {
-      "date": "2026-05-29",
-      "path": "../data/ga/2026-05-29_events.json"
-    },
-    {
-      "date": "2026-05-30",
-      "path": "../data/ga/2026-05-30_events.json"
-    },
-    {
-      "date": "2026-05-31",
-      "path": "../data/ga/2026-05-31_events.json"
-    },
-    {
-      "date": "2026-06-01",
-      "path": "../data/ga/2026-06-01_events.json"
-    },
-    {
-      "date": "2026-06-02",
-      "path": "../data/ga/2026-06-02_events.json"
-    },
-    {
-      "date": "2026-06-03",
-      "path": "../data/ga/2026-06-03_events.json"
-    },
-    {
-      "date": "2026-06-04",
-      "path": "../data/ga/2026-06-04_events.json"
-    },
-    {
-      "date": "2026-06-05",
-      "path": "../data/ga/2026-06-05_events.json"
-    },
-    {
-      "date": "2026-06-06",
-      "path": "../data/ga/2026-06-06_events.json"
-    },
-    {
-      "date": "2026-06-07",
-      "path": "../data/ga/2026-06-07_events.json"
-    },
-    {
-      "date": "2026-06-08",
-      "path": "../data/ga/2026-06-08_events.json"
-    },
-    {
-      "date": "2026-06-09",
-      "path": "../data/ga/2026-06-09_events.json"
-    },
-    {
-      "date": "2026-06-10",
-      "path": "../data/ga/2026-06-10_events.json"
-    },
-    {
-      "date": "2026-06-11",
-      "path": "../data/ga/2026-06-11_events.json"
-    },
-    {
-      "date": "2026-06-12",
-      "path": "../data/ga/2026-06-12_events.json"
-    },
-    {
-      "date": "2026-06-13",
-      "path": "../data/ga/2026-06-13_events.json"
-    },
-    {
-      "date": "2026-06-14",
-      "path": "../data/ga/2026-06-14_events.json"
-    },
-    {
-      "date": "2026-06-15",
-      "path": "../data/ga/2026-06-15_events.json"
-    },
-    {
-      "date": "2026-06-16",
-      "path": "../data/ga/2026-06-16_events.json"
-    },
-    {
-      "date": "2026-06-17",
-      "path": "../data/ga/2026-06-17_events.json"
-    },
-    {
-      "date": "2026-06-18",
-      "path": "../data/ga/2026-06-18_events.json"
-    },
-    {
-      "date": "2026-06-19",
-      "path": "../data/ga/2026-06-19_events.json"
-    },
-    {
-      "date": "2026-06-20",
-      "path": "../data/ga/2026-06-20_events.json"
-    },
-    {
-      "date": "2026-06-21",
-      "path": "../data/ga/2026-06-21_events.json"
-    },
-    {
-      "date": "2026-06-22",
-      "path": "../data/ga/2026-06-22_events.json"
-    },
-    {
-      "date": "2026-06-23",
-      "path": "../data/ga/2026-06-23_events.json"
-    },
-    {
-      "date": "2026-06-24",
-      "path": "../data/ga/2026-06-24_events.json"
-    },
-    {
-      "date": "2026-06-25",
-      "path": "../data/ga/2026-06-25_events.json"
-    },
-    {
-      "date": "2026-06-26",
-      "path": "../data/ga/2026-06-26_events.json"
-    },
-    {
-      "date": "2026-06-27",
-      "path": "../data/ga/2026-06-27_events.json"
-    },
-    {
-      "date": "2026-06-28",
-      "path": "../data/ga/2026-06-28_events.json"
-    },
-    {
-      "date": "2026-06-29",
-      "path": "../data/ga/2026-06-29_events.json"
-    },
-    {
-      "date": "2026-06-30",
-      "path": "../data/ga/2026-06-30_events.json"
-    },
-    {
-      "date": "2026-07-01",
-      "path": "../data/ga/2026-07-01_events.json"
-    },
-    {
-      "date": "2026-07-02",
-      "path": "../data/ga/2026-07-02_events.json"
-    },
-    {
-      "date": "2026-07-03",
-      "path": "../data/ga/2026-07-03_events.json"
-    },
-    {
-      "date": "2026-07-04",
-      "path": "../data/ga/2026-07-04_events.json"
-    },
-    {
-      "date": "2026-07-05",
-      "path": "../data/ga/2026-07-05_events.json"
-    },
-    {
-      "date": "2026-07-06",
-      "path": "../data/ga/2026-07-06_events.json"
-    },
-    {
-      "date": "2026-07-07",
-      "path": "../data/ga/2026-07-07_events.json"
-    },
-    {
-      "date": "2026-07-08",
-      "path": "../data/ga/2026-07-08_events.json"
-    },
-    {
-      "date": "2026-07-09",
-      "path": "../data/ga/2026-07-09_events.json"
-    },
-    {
-      "date": "2026-07-10",
-      "path": "../data/ga/2026-07-10_events.json"
-    },
-    {
-      "date": "2026-07-11",
-      "path": "../data/ga/2026-07-11_events.json"
-    },
-    {
-      "date": "2026-07-12",
-      "path": "../data/ga/2026-07-12_events.json"
-    },
-    {
-      "date": "2026-07-13",
-      "path": "../data/ga/2026-07-13_events.json"
-    },
-    {
-      "date": "2026-07-14",
-      "path": "../data/ga/2026-07-14_events.json"
-    },
-    {
-      "date": "2026-07-15",
-      "path": "../data/ga/2026-07-15_events.json"
-    },
-    {
-      "date": "2026-07-16",
-      "path": "../data/ga/2026-07-16_events.json"
-    },
-    {
-      "date": "2026-07-17",
-      "path": "../data/ga/2026-07-17_events.json"
-    },
-    {
-      "date": "2026-07-18",
-      "path": "../data/ga/2026-07-18_events.json"
-    },
-    {
-      "date": "2026-07-19",
-      "path": "../data/ga/2026-07-19_events.json"
-    },
-    {
-      "date": "2026-07-20",
-      "path": "../data/ga/2026-07-20_events.json"
-    },
-    {
-      "date": "2026-07-21",
-      "path": "../data/ga/2026-07-21_events.json"
-    },
-    {
-      "date": "2026-07-22",
-      "path": "../data/ga/2026-07-22_events.json"
-    },
-    {
-      "date": "2026-07-23",
-      "path": "../data/ga/2026-07-23_events.json"
-    },
-    {
-      "date": "2026-07-24",
-      "path": "../data/ga/2026-07-24_events.json"
-    },
-    {
-      "date": "2026-07-25",
-      "path": "../data/ga/2026-07-25_events.json"
-    },
-    {
-      "date": "2026-07-26",
-      "path": "../data/ga/2026-07-26_events.json"
-    },
-    {
-      "date": "2026-07-27",
-      "path": "../data/ga/2026-07-27_events.json"
-    },
-    {
-      "date": "2026-07-28",
-      "path": "../data/ga/2026-07-28_events.json"
-    },
-    {
-      "date": "2026-07-29",
-      "path": "../data/ga/2026-07-29_events.json"
-    },
-    {
-      "date": "2026-07-30",
-      "path": "../data/ga/2026-07-30_events.json"
-    },
-    {
-      "date": "2026-07-31",
-      "path": "../data/ga/2026-07-31_events.json"
-    },
-    {
-      "date": "2026-08-01",
-      "path": "../data/ga/2026-08-01_events.json"
-    },
-    {
-      "date": "2026-08-02",
-      "path": "../data/ga/2026-08-02_events.json"
-    },
-    {
-      "date": "2026-08-03",
-      "path": "../data/ga/2026-08-03_events.json"
-    },
-    {
-      "date": "2026-08-04",
-      "path": "../data/ga/2026-08-04_events.json"
-    },
-    {
-      "date": "2026-08-05",
-      "path": "../data/ga/2026-08-05_events.json"
-    },
-    {
-      "date": "2026-08-06",
-      "path": "../data/ga/2026-08-06_events.json"
+      "date": "2026-08-08",
+      "path": "../data/ga/2026-08-08_events.json"
     },
     {
       "date": "2026-08-07",
       "path": "../data/ga/2026-08-07_events.json"
     },
     {
-      "date": "2026-08-08",
-      "path": "../data/ga/2026-08-08_events.json"
+      "date": "2026-08-06",
+      "path": "../data/ga/2026-08-06_events.json"
+    },
+    {
+      "date": "2026-08-05",
+      "path": "../data/ga/2026-08-05_events.json"
+    },
+    {
+      "date": "2026-08-04",
+      "path": "../data/ga/2026-08-04_events.json"
+    },
+    {
+      "date": "2026-08-03",
+      "path": "../data/ga/2026-08-03_events.json"
+    },
+    {
+      "date": "2026-08-02",
+      "path": "../data/ga/2026-08-02_events.json"
+    },
+    {
+      "date": "2026-08-01",
+      "path": "../data/ga/2026-08-01_events.json"
+    },
+    {
+      "date": "2026-07-31",
+      "path": "../data/ga/2026-07-31_events.json"
+    },
+    {
+      "date": "2026-07-30",
+      "path": "../data/ga/2026-07-30_events.json"
+    },
+    {
+      "date": "2026-07-29",
+      "path": "../data/ga/2026-07-29_events.json"
+    },
+    {
+      "date": "2026-07-28",
+      "path": "../data/ga/2026-07-28_events.json"
+    },
+    {
+      "date": "2026-07-27",
+      "path": "../data/ga/2026-07-27_events.json"
+    },
+    {
+      "date": "2026-07-26",
+      "path": "../data/ga/2026-07-26_events.json"
+    },
+    {
+      "date": "2026-07-25",
+      "path": "../data/ga/2026-07-25_events.json"
+    },
+    {
+      "date": "2026-07-24",
+      "path": "../data/ga/2026-07-24_events.json"
+    },
+    {
+      "date": "2026-07-23",
+      "path": "../data/ga/2026-07-23_events.json"
+    },
+    {
+      "date": "2026-07-22",
+      "path": "../data/ga/2026-07-22_events.json"
+    },
+    {
+      "date": "2026-07-21",
+      "path": "../data/ga/2026-07-21_events.json"
+    },
+    {
+      "date": "2026-07-20",
+      "path": "../data/ga/2026-07-20_events.json"
+    },
+    {
+      "date": "2026-07-19",
+      "path": "../data/ga/2026-07-19_events.json"
+    },
+    {
+      "date": "2026-07-18",
+      "path": "../data/ga/2026-07-18_events.json"
+    },
+    {
+      "date": "2026-07-17",
+      "path": "../data/ga/2026-07-17_events.json"
+    },
+    {
+      "date": "2026-07-16",
+      "path": "../data/ga/2026-07-16_events.json"
+    },
+    {
+      "date": "2026-07-15",
+      "path": "../data/ga/2026-07-15_events.json"
+    },
+    {
+      "date": "2026-07-14",
+      "path": "../data/ga/2026-07-14_events.json"
+    },
+    {
+      "date": "2026-07-13",
+      "path": "../data/ga/2026-07-13_events.json"
+    },
+    {
+      "date": "2026-07-12",
+      "path": "../data/ga/2026-07-12_events.json"
+    },
+    {
+      "date": "2026-07-11",
+      "path": "../data/ga/2026-07-11_events.json"
+    },
+    {
+      "date": "2026-07-10",
+      "path": "../data/ga/2026-07-10_events.json"
+    },
+    {
+      "date": "2026-07-09",
+      "path": "../data/ga/2026-07-09_events.json"
+    },
+    {
+      "date": "2026-07-08",
+      "path": "../data/ga/2026-07-08_events.json"
+    },
+    {
+      "date": "2026-07-07",
+      "path": "../data/ga/2026-07-07_events.json"
+    },
+    {
+      "date": "2026-07-06",
+      "path": "../data/ga/2026-07-06_events.json"
+    },
+    {
+      "date": "2026-07-05",
+      "path": "../data/ga/2026-07-05_events.json"
+    },
+    {
+      "date": "2026-07-04",
+      "path": "../data/ga/2026-07-04_events.json"
+    },
+    {
+      "date": "2026-07-03",
+      "path": "../data/ga/2026-07-03_events.json"
+    },
+    {
+      "date": "2026-07-02",
+      "path": "../data/ga/2026-07-02_events.json"
+    },
+    {
+      "date": "2026-07-01",
+      "path": "../data/ga/2026-07-01_events.json"
+    },
+    {
+      "date": "2026-06-30",
+      "path": "../data/ga/2026-06-30_events.json"
+    },
+    {
+      "date": "2026-06-29",
+      "path": "../data/ga/2026-06-29_events.json"
+    },
+    {
+      "date": "2026-06-28",
+      "path": "../data/ga/2026-06-28_events.json"
+    },
+    {
+      "date": "2026-06-27",
+      "path": "../data/ga/2026-06-27_events.json"
+    },
+    {
+      "date": "2026-06-26",
+      "path": "../data/ga/2026-06-26_events.json"
+    },
+    {
+      "date": "2026-06-25",
+      "path": "../data/ga/2026-06-25_events.json"
+    },
+    {
+      "date": "2026-06-24",
+      "path": "../data/ga/2026-06-24_events.json"
+    },
+    {
+      "date": "2026-06-23",
+      "path": "../data/ga/2026-06-23_events.json"
+    },
+    {
+      "date": "2026-06-22",
+      "path": "../data/ga/2026-06-22_events.json"
+    },
+    {
+      "date": "2026-06-21",
+      "path": "../data/ga/2026-06-21_events.json"
+    },
+    {
+      "date": "2026-06-20",
+      "path": "../data/ga/2026-06-20_events.json"
+    },
+    {
+      "date": "2026-06-19",
+      "path": "../data/ga/2026-06-19_events.json"
+    },
+    {
+      "date": "2026-06-18",
+      "path": "../data/ga/2026-06-18_events.json"
+    },
+    {
+      "date": "2026-06-17",
+      "path": "../data/ga/2026-06-17_events.json"
+    },
+    {
+      "date": "2026-06-16",
+      "path": "../data/ga/2026-06-16_events.json"
+    },
+    {
+      "date": "2026-06-15",
+      "path": "../data/ga/2026-06-15_events.json"
+    },
+    {
+      "date": "2026-06-14",
+      "path": "../data/ga/2026-06-14_events.json"
+    },
+    {
+      "date": "2026-06-13",
+      "path": "../data/ga/2026-06-13_events.json"
+    },
+    {
+      "date": "2026-06-12",
+      "path": "../data/ga/2026-06-12_events.json"
+    },
+    {
+      "date": "2026-06-11",
+      "path": "../data/ga/2026-06-11_events.json"
+    },
+    {
+      "date": "2026-06-10",
+      "path": "../data/ga/2026-06-10_events.json"
+    },
+    {
+      "date": "2026-06-09",
+      "path": "../data/ga/2026-06-09_events.json"
+    },
+    {
+      "date": "2026-06-08",
+      "path": "../data/ga/2026-06-08_events.json"
+    },
+    {
+      "date": "2026-06-07",
+      "path": "../data/ga/2026-06-07_events.json"
+    },
+    {
+      "date": "2026-06-06",
+      "path": "../data/ga/2026-06-06_events.json"
+    },
+    {
+      "date": "2026-06-05",
+      "path": "../data/ga/2026-06-05_events.json"
+    },
+    {
+      "date": "2026-06-04",
+      "path": "../data/ga/2026-06-04_events.json"
+    },
+    {
+      "date": "2026-06-03",
+      "path": "../data/ga/2026-06-03_events.json"
+    },
+    {
+      "date": "2026-06-02",
+      "path": "../data/ga/2026-06-02_events.json"
+    },
+    {
+      "date": "2026-06-01",
+      "path": "../data/ga/2026-06-01_events.json"
+    },
+    {
+      "date": "2026-05-31",
+      "path": "../data/ga/2026-05-31_events.json"
+    },
+    {
+      "date": "2026-05-30",
+      "path": "../data/ga/2026-05-30_events.json"
+    },
+    {
+      "date": "2026-05-29",
+      "path": "../data/ga/2026-05-29_events.json"
+    },
+    {
+      "date": "2026-05-28",
+      "path": "../data/ga/2026-05-28_events.json"
+    },
+    {
+      "date": "2026-05-27",
+      "path": "../data/ga/2026-05-27_events.json"
+    },
+    {
+      "date": "2026-05-26",
+      "path": "../data/ga/2026-05-26_events.json"
+    },
+    {
+      "date": "2026-05-25",
+      "path": "../data/ga/2026-05-25_events.json"
+    },
+    {
+      "date": "2026-05-24",
+      "path": "../data/ga/2026-05-24_events.json"
+    },
+    {
+      "date": "2026-05-23",
+      "path": "../data/ga/2026-05-23_events.json"
+    },
+    {
+      "date": "2026-05-22",
+      "path": "../data/ga/2026-05-22_events.json"
+    },
+    {
+      "date": "2026-05-21",
+      "path": "../data/ga/2026-05-21_events.json"
+    },
+    {
+      "date": "2026-05-20",
+      "path": "../data/ga/2026-05-20_events.json"
+    },
+    {
+      "date": "2026-05-19",
+      "path": "../data/ga/2026-05-19_events.json"
+    },
+    {
+      "date": "2026-05-18",
+      "path": "../data/ga/2026-05-18_events.json"
+    },
+    {
+      "date": "2026-05-17",
+      "path": "../data/ga/2026-05-17_events.json"
+    },
+    {
+      "date": "2026-05-16",
+      "path": "../data/ga/2026-05-16_events.json"
+    },
+    {
+      "date": "2026-05-15",
+      "path": "../data/ga/2026-05-15_events.json"
+    },
+    {
+      "date": "2026-05-14",
+      "path": "../data/ga/2026-05-14_events.json"
+    },
+    {
+      "date": "2026-05-13",
+      "path": "../data/ga/2026-05-13_events.json"
+    },
+    {
+      "date": "2026-05-12",
+      "path": "../data/ga/2026-05-12_events.json"
+    },
+    {
+      "date": "2026-05-11",
+      "path": "../data/ga/2026-05-11_events.json"
+    },
+    {
+      "date": "2026-05-10",
+      "path": "../data/ga/2026-05-10_events.json"
+    },
+    {
+      "date": "2026-05-09",
+      "path": "../data/ga/2026-05-09_events.json"
+    },
+    {
+      "date": "2026-05-08",
+      "path": "../data/ga/2026-05-08_events.json"
+    },
+    {
+      "date": "2026-05-07",
+      "path": "../data/ga/2026-05-07_events.json"
+    },
+    {
+      "date": "2026-05-06",
+      "path": "../data/ga/2026-05-06_events.json"
+    },
+    {
+      "date": "2026-05-05",
+      "path": "../data/ga/2026-05-05_events.json"
+    },
+    {
+      "date": "2026-05-04",
+      "path": "../data/ga/2026-05-04_events.json"
+    },
+    {
+      "date": "2026-05-03",
+      "path": "../data/ga/2026-05-03_events.json"
+    },
+    {
+      "date": "2026-05-02",
+      "path": "../data/ga/2026-05-02_events.json"
+    },
+    {
+      "date": "2026-05-01",
+      "path": "../data/ga/2026-05-01_events.json"
+    },
+    {
+      "date": "2026-04-30",
+      "path": "../data/ga/2026-04-30_events.json"
+    },
+    {
+      "date": "2026-04-29",
+      "path": "../data/ga/2026-04-29_events.json"
+    },
+    {
+      "date": "2026-04-28",
+      "path": "../data/ga/2026-04-28_events.json"
+    },
+    {
+      "date": "2026-04-27",
+      "path": "../data/ga/2026-04-27_events.json"
+    },
+    {
+      "date": "2026-04-26",
+      "path": "../data/ga/2026-04-26_events.json"
+    },
+    {
+      "date": "2026-04-25",
+      "path": "../data/ga/2026-04-25_events.json"
+    },
+    {
+      "date": "2026-04-24",
+      "path": "../data/ga/2026-04-24_events.json"
+    },
+    {
+      "date": "2026-04-23",
+      "path": "../data/ga/2026-04-23_events.json"
+    },
+    {
+      "date": "2026-04-22",
+      "path": "../data/ga/2026-04-22_events.json"
+    },
+    {
+      "date": "2026-04-21",
+      "path": "../data/ga/2026-04-21_events.json"
+    },
+    {
+      "date": "2026-04-20",
+      "path": "../data/ga/2026-04-20_events.json"
+    },
+    {
+      "date": "2026-04-19",
+      "path": "../data/ga/2026-04-19_events.json"
+    },
+    {
+      "date": "2026-04-18",
+      "path": "../data/ga/2026-04-18_events.json"
+    },
+    {
+      "date": "2026-04-17",
+      "path": "../data/ga/2026-04-17_events.json"
+    },
+    {
+      "date": "2026-04-16",
+      "path": "../data/ga/2026-04-16_events.json"
+    },
+    {
+      "date": "2026-04-15",
+      "path": "../data/ga/2026-04-15_events.json"
+    },
+    {
+      "date": "2026-04-14",
+      "path": "../data/ga/2026-04-14_events.json"
+    },
+    {
+      "date": "2026-04-13",
+      "path": "../data/ga/2026-04-13_events.json"
+    },
+    {
+      "date": "2026-04-12",
+      "path": "../data/ga/2026-04-12_events.json"
+    },
+    {
+      "date": "2026-04-11",
+      "path": "../data/ga/2026-04-11_events.json"
+    },
+    {
+      "date": "2026-04-10",
+      "path": "../data/ga/2026-04-10_events.json"
+    },
+    {
+      "date": "2026-04-09",
+      "path": "../data/ga/2026-04-09_events.json"
+    },
+    {
+      "date": "2026-04-08",
+      "path": "../data/ga/2026-04-08_events.json"
+    },
+    {
+      "date": "2026-04-07",
+      "path": "../data/ga/2026-04-07_events.json"
+    },
+    {
+      "date": "2026-04-06",
+      "path": "../data/ga/2026-04-06_events.json"
+    },
+    {
+      "date": "2026-04-05",
+      "path": "../data/ga/2026-04-05_events.json"
+    },
+    {
+      "date": "2026-04-04",
+      "path": "../data/ga/2026-04-04_events.json"
+    },
+    {
+      "date": "2026-04-03",
+      "path": "../data/ga/2026-04-03_events.json"
+    },
+    {
+      "date": "2026-04-02",
+      "path": "../data/ga/2026-04-02_events.json"
+    },
+    {
+      "date": "2026-04-01",
+      "path": "../data/ga/2026-04-01_events.json"
+    },
+    {
+      "date": "2026-03-31",
+      "path": "../data/ga/2026-03-31_events.json"
+    },
+    {
+      "date": "2026-03-30",
+      "path": "../data/ga/2026-03-30_events.json"
+    },
+    {
+      "date": "2026-03-29",
+      "path": "../data/ga/2026-03-29_events.json"
+    },
+    {
+      "date": "2026-03-28",
+      "path": "../data/ga/2026-03-28_events.json"
+    },
+    {
+      "date": "2026-03-27",
+      "path": "../data/ga/2026-03-27_events.json"
+    },
+    {
+      "date": "2026-03-26",
+      "path": "../data/ga/2026-03-26_events.json"
+    },
+    {
+      "date": "2026-03-25",
+      "path": "../data/ga/2026-03-25_events.json"
+    },
+    {
+      "date": "2026-03-24",
+      "path": "../data/ga/2026-03-24_events.json"
+    },
+    {
+      "date": "2026-03-23",
+      "path": "../data/ga/2026-03-23_events.json"
+    },
+    {
+      "date": "2026-03-22",
+      "path": "../data/ga/2026-03-22_events.json"
+    },
+    {
+      "date": "2026-03-21",
+      "path": "../data/ga/2026-03-21_events.json"
+    },
+    {
+      "date": "2026-03-20",
+      "path": "../data/ga/2026-03-20_events.json"
+    },
+    {
+      "date": "2026-03-19",
+      "path": "../data/ga/2026-03-19_events.json"
+    },
+    {
+      "date": "2026-03-18",
+      "path": "../data/ga/2026-03-18_events.json"
+    },
+    {
+      "date": "2026-03-17",
+      "path": "../data/ga/2026-03-17_events.json"
+    },
+    {
+      "date": "2026-03-16",
+      "path": "../data/ga/2026-03-16_events.json"
+    },
+    {
+      "date": "2026-03-15",
+      "path": "../data/ga/2026-03-15_events.json"
+    },
+    {
+      "date": "2026-03-14",
+      "path": "../data/ga/2026-03-14_events.json"
+    },
+    {
+      "date": "2026-03-13",
+      "path": "../data/ga/2026-03-13_events.json"
+    },
+    {
+      "date": "2026-03-12",
+      "path": "../data/ga/2026-03-12_events.json"
+    },
+    {
+      "date": "2026-03-11",
+      "path": "../data/ga/2026-03-11_events.json"
+    },
+    {
+      "date": "2026-03-10",
+      "path": "../data/ga/2026-03-10_events.json"
+    },
+    {
+      "date": "2026-03-09",
+      "path": "../data/ga/2026-03-09_events.json"
+    },
+    {
+      "date": "2026-03-08",
+      "path": "../data/ga/2026-03-08_events.json"
+    },
+    {
+      "date": "2026-03-07",
+      "path": "../data/ga/2026-03-07_events.json"
+    },
+    {
+      "date": "2026-03-06",
+      "path": "../data/ga/2026-03-06_events.json"
+    },
+    {
+      "date": "2026-03-05",
+      "path": "../data/ga/2026-03-05_events.json"
+    },
+    {
+      "date": "2026-03-04",
+      "path": "../data/ga/2026-03-04_events.json"
+    },
+    {
+      "date": "2026-03-03",
+      "path": "../data/ga/2026-03-03_events.json"
     }
   ]
 }

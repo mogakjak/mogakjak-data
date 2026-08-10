@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>모각작 인사이트 대시보드</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./favicon.svg" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Pretendard Variable"', "Pretendard", "system-ui", "sans-serif"],
+          },
+          colors: {
+            mg: {
+              black: "#121212",
+              white: "#fafafa",
+              50: "#f7f8fa",
+              100: "#f2f4f7",
+              200: "#e6e8eb",
+              300: "#cacdd2",
+              400: "#a8aeb2",
+              500: "#7e8389",
+              600: "#585d63",
+              700: "#47484d",
+              800: "#323437",
+              red: {
+                50: "#ffeeeb",
+                100: "#ffd6ce",
+                200: "#fdb8ab",
+                400: "#fb7055",
+                500: "#fa5332",
+                600: "#af3a23",
+                700: "#8f2c19",
+              },
+              green: "#00770e",
+              positive: "#44d93a",
+              negative: "#ff5151",
+            },
+          },
+          boxShadow: {
+            card: "0 1px 2px rgba(18,18,18,0.04), 0 4px 12px rgba(18,18,18,0.04)",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body class="app-shell font-sans bg-mg-50 text-mg-black antialiased">
+  <aside id="sidebar" class="sidebar" aria-label="대시보드 메뉴">
+    <div class="px-3 pt-1 pb-4">
+      <p class="text-[11px] font-semibold tracking-[0.14em] uppercase text-mg-500">Mogakjak</p>
+      <h1 class="mt-1 text-xl font-bold tracking-tight text-mg-black">데이터</h1>
+    </div>
+
+    <p class="nav-label">공통 대시보드</p>
+    <nav class="side-nav px-1">
+      <button type="button" class="side-link active" data-view="home">
+        <span class="ico">⌂</span>
+        <span>홈 · 성장</span>
+        <span class="hint">Growth KPI</span>
+      </button>
+      <button type="button" class="side-link" data-view="funnel">
+        <span class="ico">⇢</span>
+        <span>여정 · UX</span>
+        <span class="hint">퍼널 4단계</span>
+      </button>
+      <button type="button" class="side-link" data-view="db">
+        <span class="ico">▣</span>
+        <span>DB · 핵심</span>
+        <span class="hint">몰입·그룹·초대</span>
+      </button>
+      <button type="button" class="side-link" data-view="ga">
+        <span class="ico">◎</span>
+        <span>GA · Tech</span>
+        <span class="hint">유입·이벤트</span>
+      </button>
+    </nav>
+
+    <p class="nav-label">내 분석 뷰</p>
+    <nav class="side-nav px-1">
+      <button type="button" class="side-link" data-view="compose">
+        <span class="ico">✎</span>
+        <span>보드 편집</span>
+        <span class="hint">지표 조립</span>
+      </button>
+    </nav>
+    <div class="saved-boards px-1" id="savedBoardsList"></div>
+    <button type="button" class="side-action mx-1" id="newBoardBtn">+ 새 보드</button>
+
+    <div class="sidebar-foot px-3">
+      <p class="text-xs text-mg-500 leading-relaxed">공통 = 팀 기준<br />내 뷰 = 실험</p>
+    </div>
+  </aside>
+
+  <div class="main min-w-0 flex-1">
+    <header class="top top-main mb-4 flex flex-wrap items-start justify-between gap-4">
+      <button type="button" class="menu-btn" id="openSidebar" aria-label="메뉴 열기">☰</button>
+      <div class="min-w-0">
+        <p class="text-[11px] font-semibold tracking-[0.12em] uppercase text-mg-red-500" id="viewEyebrow">공통 대시보드</p>
+        <h1 class="mt-1 text-3xl font-bold tracking-tight text-mg-black sm:text-4xl" id="viewTitle">홈</h1>
+        <p class="mt-1 text-sm text-mg-500" id="viewDesc">오늘 성장·몰입 한눈에</p>
+      </div>
+      <div class="controls flex flex-wrap items-end gap-2">
+        <label class="field flex flex-col gap-1 text-xs text-mg-500">
+          <span>기준일</span>
+          <select id="dateSelect" class="control-input"></select>
+        </label>
+        <label class="field flex flex-col gap-1 text-xs text-mg-500">
+          <span>미리보기</span>
+          <select id="phasePreview" class="control-input">
+            <option value="auto">자동 (실데이터)</option>
+            <option value="full">Phase 1+2+3 채운 모습</option>
+          </select>
+        </label>
+        <button type="button" id="refreshBtn" class="btn-primary">새로고침</button>
+        <button type="button" id="shareHelpBtn" class="btn-secondary">공유 방법</button>
+      </div>
+    </header>
+
+    <p id="status" class="status mb-4 text-sm text-mg-500" role="status"></p>
+
+    <!-- HOME -->
+    <div id="view-home" class="view active space-y-8">
+      <section>
+        <div class="mb-3 flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <h2 class="text-lg font-semibold text-mg-black">오늘, 성장·몰입이 됐나?</h2>
+            <p id="homeMeta" class="mt-0.5 text-sm text-mg-500"></p>
+          </div>
+        </div>
+        <div class="mb-3 flex flex-wrap gap-2" id="homeBadges"></div>
+        <div class="insight-banner mb-4" id="homeInsight"></div>
+        <div class="kpi-grid" id="homeKpiGrid"></div>
+      </section>
+
+      <section class="grid gap-4 lg:grid-cols-2">
+        <div class="panel">
+          <div class="mb-3">
+            <h2 class="text-base font-semibold text-mg-black">몰입 엔진</h2>
+            <p class="text-sm text-mg-500">개인 vs 그룹 (분)</p>
+          </div>
+          <div class="chart-panel short relative"><canvas id="homeFocusChart"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="mb-3">
+            <h2 class="text-base font-semibold text-mg-black">방문 → 몰입</h2>
+            <p class="text-sm text-mg-500">입장 vs 집중</p>
+          </div>
+          <div class="chart-panel short relative"><canvas id="homeEntryFocusChart"></canvas></div>
+        </div>
+      </section>
+
+      <section class="grid gap-4 lg:grid-cols-2">
+        <div class="panel">
+          <div class="mb-3">
+            <h2 class="text-base font-semibold text-mg-black">초대 성장 루프</h2>
+          </div>
+          <div class="chart-panel short relative"><canvas id="homeInviteChart"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="mb-3">
+            <h2 class="text-base font-semibold text-mg-black">유입·리텐션</h2>
+            <p class="text-sm text-mg-500">Phase 2</p>
+          </div>
+          <div class="chart-panel short relative">
+            <canvas id="homeGaGrowthChart"></canvas>
+            <p id="homeGaOverlay" class="empty-overlay phase-tag">Phase 2 · GA API 후</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="mb-3">
+          <h2 class="text-base font-semibold text-mg-black">추이</h2>
+        </div>
+        <div class="chart-panel relative"><canvas id="homeTrendChart" height="120"></canvas></div>
+      </section>
+
+      <section>
+        <div class="mb-3">
+          <h2 class="text-base font-semibold text-mg-black">여정에서 막힌 곳</h2>
+        </div>
+        <div class="funnel-strip" id="homeFunnelStrip"></div>
+      </section>
+    </div>
+
+    <!-- DB -->
+    <div id="view-db" class="view space-y-8">
+      <section>
+        <div class="mb-3 flex flex-wrap items-end justify-between gap-2">
+          <h2 class="text-lg font-semibold text-mg-black">A. 몰입 엔진</h2>
+          <p id="dbMeta" class="text-sm text-mg-500"></p>
+        </div>
+        <div class="kpi-grid" id="dbFocusKpis"></div>
+        <div class="panel mt-4">
+          <div class="chart-panel relative"><canvas id="dbFocusChart" height="100"></canvas></div>
+        </div>
+      </section>
+      <section class="grid gap-4 lg:grid-cols-2">
+        <div class="panel">
+          <div class="mb-3"><h2 class="text-base font-semibold">B. 그룹 네트워크</h2></div>
+          <div class="chart-panel short relative"><canvas id="dbGroupDistChart"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="mb-3"><h2 class="text-base font-semibold">C. 초대 퍼널</h2></div>
+          <div class="chart-panel short relative"><canvas id="dbInviteChart"></canvas></div>
+          <div class="kpi-grid tight mt-3" id="dbInviteKpis"></div>
+        </div>
+      </section>
+      <section>
+        <div class="mb-3 flex items-center justify-between gap-2">
+          <h2 class="text-base font-semibold">유저별 그룹방</h2>
+          <div class="toolbar flex items-center gap-2">
+            <input id="userFilter" type="search" placeholder="검색" class="control-input min-w-[160px]" />
+            <span id="userCount" class="text-sm text-mg-500"></span>
+          </div>
+        </div>
+        <div class="panel table-wrap overflow-auto max-h-[420px]">
+          <table class="data-table">
+            <thead><tr><th>유저</th><th>보유</th><th>그룹</th><th>최근 입장</th></tr></thead>
+            <tbody id="userGroupBody"></tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <div class="mb-3"><h2 class="text-base font-semibold">그룹방별 멤버</h2></div>
+        <div class="panel table-wrap overflow-auto max-h-[420px]">
+          <table class="data-table">
+            <thead><tr><th>그룹</th><th>멤버</th><th>HOST</th><th>최근 입장</th></tr></thead>
+            <tbody id="groupBody"></tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <div class="mb-3"><h2 class="text-base font-semibold">당일 입장</h2></div>
+        <div class="panel table-wrap overflow-auto max-h-[420px]">
+          <table class="data-table">
+            <thead><tr><th>유저</th><th>그룹</th><th>상태</th><th>시각</th></tr></thead>
+            <tbody id="entryBody"></tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <div class="mb-3"><h2 class="text-base font-semibold">D. 데이터 품질</h2></div>
+        <ul class="checklist" id="dbQualityList"></ul>
+      </section>
+    </div>
+
+    <!-- GA -->
+    <div id="view-ga" class="view space-y-8">
+      <section>
+        <div class="mb-3">
+          <h2 class="text-lg font-semibold">Phase 2 · 기본 성장 지표</h2>
+          <p id="gaMeta" class="text-sm text-mg-500"></p>
+        </div>
+        <div class="kpi-grid" id="gaBasicKpis"></div>
+      </section>
+      <section class="grid gap-4 lg:grid-cols-2">
+        <div class="panel">
+          <div class="mb-3"><h2 class="text-base font-semibold">신규 vs 활성</h2></div>
+          <div class="chart-panel short relative">
+            <canvas id="gaUsersChart"></canvas>
+            <p id="gaUsersOverlay" class="empty-overlay phase-tag">Phase 2</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="mb-3"><h2 class="text-base font-semibold">리텐션</h2></div>
+          <div class="chart-panel short relative">
+            <canvas id="gaRetentionChart"></canvas>
+            <p id="gaRetentionOverlay" class="empty-overlay phase-tag">Phase 2</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="mb-3"><h2 class="text-base font-semibold">상관 인사이트</h2></div>
+        <div class="corr-grid" id="gaCorrGrid"></div>
+      </section>
+      <section>
+        <div class="mb-3 flex items-center justify-between gap-2">
+          <h2 class="text-base font-semibold">FE에 심어 둔 이벤트</h2>
+          <div class="flex items-center gap-2">
+            <input id="gaEventFilter" type="search" placeholder="검색" class="control-input" />
+            <span id="gaEventCount" class="text-sm text-mg-500"></span>
+          </div>
+        </div>
+        <div class="panel table-wrap overflow-auto max-h-[420px]">
+          <table class="data-table">
+            <thead><tr><th>이벤트</th><th>한글</th><th>파라미터</th><th>계측</th><th>건수</th><th>상태</th></tr></thead>
+            <tbody id="gaEventBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- FUNNEL -->
+    <div id="view-funnel" class="view space-y-8">
+      <section>
+        <div class="mb-3"><h2 class="text-lg font-semibold">유저 여정 퍼널</h2></div>
+        <div class="callout mb-4">점선/빈 구간 = 로그 보강 필요. 미리보기에서 채워진 모습을 확인하세요.</div>
+        <div class="panel"><div class="chart-panel relative"><canvas id="funnelChart" height="140"></canvas></div></div>
+      </section>
+      <section>
+        <div class="mb-3"><h2 class="text-base font-semibold">단계별 상태</h2></div>
+        <div class="stage-cards" id="funnelStages"></div>
+      </section>
+      <section class="grid gap-4 lg:grid-cols-2">
+        <div class="panel">
+          <div class="mb-3"><h2 class="text-base font-semibold">콕 풀퍼널</h2><p class="text-sm text-mg-500">Phase 3</p></div>
+          <div class="chart-panel short relative">
+            <canvas id="pokeFunnelChart"></canvas>
+            <p id="pokeOverlay" class="empty-overlay phase-tag">Phase 3</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="mb-3"><h2 class="text-base font-semibold">온보딩</h2><p class="text-sm text-mg-500">Phase 3</p></div>
+          <div class="chart-panel short relative">
+            <canvas id="onboardingChart"></canvas>
+            <p id="onboardOverlay" class="empty-overlay phase-tag">Phase 3</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- COMPOSE -->
+    <div id="view-compose" class="view space-y-4">
+      <div>
+        <h2 class="text-lg font-semibold">내 분석 뷰 편집</h2>
+        <p class="text-sm text-mg-500">공통 뷰와 분리 · 관점(Lens)×여정(Journey)으로 지표 조립 · JSON 공유</p>
+      </div>
+      <div class="share-bar panel flex flex-wrap items-start justify-between gap-4">
+        <div class="min-w-0 flex-1">
+          <strong class="text-sm font-semibold">협업 아키텍처</strong>
+          <p class="mt-1 text-xs text-mg-500 leading-relaxed">
+            <span class="text-mg-black font-medium">공통</span> = 코드에 고정된 팀 공식 KPI
+            · <span class="text-mg-black font-medium">개인</span> = 이 PC 저장 + JSON 내보내기/불러오기.
+            검증된 지표만 공통으로 승격합니다.
+          </p>
+        </div>
+        <button type="button" class="btn-secondary shrink-0" id="copyShareTipBtn">공유 문구 복사</button>
+      </div>
+      <div class="compose-layout">
+        <aside class="compose-palette panel">
+          <div class="toolbar stacked flex flex-col gap-3">
+            <div>
+              <p class="filter-label">관점 (퀵 필터)</p>
+              <div class="quick-filters" id="lensFilters" role="group" aria-label="관점 필터">
+                <button type="button" class="quick-filter active" data-lens="">전체</button>
+                <button type="button" class="quick-filter" data-lens="growth">성장</button>
+                <button type="button" class="quick-filter" data-lens="ux">퍼널·UX</button>
+                <button type="button" class="quick-filter" data-lens="tech">개발</button>
+              </div>
+            </div>
+            <div>
+              <p class="filter-label">여정 (Journey)</p>
+              <select id="catalogJourney" class="control-input w-full">
+                <option value="">전체 여정</option>
+                <option value="onboarding">1 · 온보딩</option>
+                <option value="core">2 · 핵심기능</option>
+                <option value="social">3 · 소셜</option>
+                <option value="system">4 · 시스템</option>
+              </select>
+            </div>
+            <input id="catalogFilter" type="search" placeholder="지표 검색 (이름·코드·대분류)" class="control-input w-full" />
+            <select id="catalogStatus" class="control-input w-full">
+              <option value="">수집 상태 · 전체</option>
+              <option value="has_value">값 있음</option>
+              <option value="ga_fe">GA 심은 이벤트</option>
+              <option value="pending">대기/미수집</option>
+            </select>
+          </div>
+          <p id="catalogCount" class="mt-2 text-xs text-mg-500"></p>
+          <div id="catalogList" class="catalog-list mt-2"></div>
+        </aside>
+        <div class="compose-board min-w-0">
+          <div class="compose-toolbar mb-2 flex flex-wrap items-center gap-2">
+            <input id="boardTitle" type="text" value="내 실험 보드" class="control-input flex-1 min-w-[140px]" />
+            <button type="button" id="saveBoardBtn" class="btn-primary">저장</button>
+            <button type="button" id="exportBoardBtn" class="btn-secondary">내보내기</button>
+            <button type="button" id="importBoardBtn" class="btn-secondary">불러오기</button>
+            <button type="button" id="clearBoardBtn" class="btn-secondary">비우기</button>
+            <button type="button" id="deleteBoardBtn" class="btn-secondary text-mg-negative">삭제</button>
+            <input id="importFile" type="file" accept="application/json,.json" hidden />
+          </div>
+          <div id="boardMeta" class="mb-2 text-xs text-mg-500"></div>
+          <div id="boardGrid" class="board-grid"></div>
+          <p id="boardEmpty" class="empty">왼쪽에서 지표를 추가하세요</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-board" class="view space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 class="text-lg font-semibold" id="boardViewTitle">저장된 보드</h2>
+          <p class="text-sm text-mg-500">내 분석 뷰 · 읽기 모드</p>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" class="btn-secondary" id="editCurrentBoardBtn">편집으로 이동</button>
+          <button type="button" class="btn-secondary" id="exportCurrentBoardBtn">내보내기</button>
+        </div>
+      </div>
+      <div id="boardViewGrid" class="board-grid"></div>
+    </div>
+
+    <footer class="mt-10 border-t border-mg-200 pt-4 text-xs text-mg-500">
+      공통 뷰 = 팀 기준 · 개인 보드 = 실험 · <code class="text-mg-600">docs/대시보드_협업가이드.md</code>
+    </footer>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
+  <dialog id="shareDialog" class="share-dialog rounded-2xl border border-mg-200 bg-mg-white p-0 shadow-card max-w-md w-[calc(100%-2rem)]">
+    <form method="dialog" class="p-6">
+      <h2 class="text-lg font-bold text-mg-black">팀과 공유하는 방법</h2>
+      <ol class="share-steps mt-3 list-decimal pl-5 text-sm text-mg-700 leading-relaxed space-y-2">
+        <li><strong>공통</strong>은 홈·여정·DB·GA (팀 공식)</li>
+        <li><strong>개인</strong>은 보드에서 Lens×Journey로 조립</li>
+        <li><strong>공유</strong>는 내보내기 JSON → 슬랙·노션</li>
+        <li>localStorage는 PC마다 다름 → 파일로 공유</li>
+        <li>검증되면 PM이 공통 KPI로 승격</li>
+      </ol>
+      <div class="mt-5 flex justify-end">
+        <button type="submit" class="btn-primary" value="ok">확인</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
