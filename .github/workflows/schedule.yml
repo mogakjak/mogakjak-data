@@ -17,10 +17,10 @@ jobs:
     env:
       SSH_HOST: ${{ secrets.MOGAKJAK_SSH_HOST }}
       SSH_USER: ${{ secrets.MOGAKJAK_SSH_USER }}
-      TUNNEL_LOCAL_PORT: "13307"
-      TUNNEL_REMOTE_PORT: "3306"
+      TUNNEL_LOCAL_PORT: "13308"
+      TUNNEL_REMOTE_PORT: "3308"
       MOGAKJAK_DB_HOST: 127.0.0.1
-      MOGAKJAK_DB_PORT: "13307"
+      MOGAKJAK_DB_PORT: "13308"
       MOGAKJAK_DB_NAME: ${{ secrets.MOGAKJAK_DB_NAME }}
       MOGAKJAK_DB_USER: ${{ secrets.MOGAKJAK_DB_USER }}
       MOGAKJAK_DB_PASSWORD: ${{ secrets.MOGAKJAK_DB_PASSWORD }}
@@ -38,6 +38,19 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Validate secrets
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.MOGAKJAK_SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "${{ secrets.MOGAKJAK_SSH_HOST }}"
+          test -n "${{ secrets.MOGAKJAK_SSH_USER }}"
+          test -n "${SSH_PRIVATE_KEY}"
+          test -n "${{ secrets.MOGAKJAK_DB_NAME }}"
+          test -n "${{ secrets.MOGAKJAK_DB_USER }}"
+          test -n "${{ secrets.MOGAKJAK_DB_PASSWORD }}"
+          echo "Required secrets present"
 
       - name: Start SSH tunnel
         env:

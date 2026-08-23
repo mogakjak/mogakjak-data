@@ -1,0 +1,63 @@
+# GitHub Actions — 일일 데이터 수집 설정
+
+`Daily Data Collection` 워크플로가 매일 KST 00:00에 DB 스냅샷을 수집하고 `main`에 push합니다.  
+push되면 `Deploy Dashboard (GitHub Pages)`가 자동 실행되어 [대시보드](https://mogakjak.github.io/mogakjak-data/dashboard/) 숫자가 갱신됩니다.
+
+## 현재 상태 점검
+
+1. [Actions → Daily Data Collection](https://github.com/mogakjak/mogakjak-data/actions/workflows/schedule.yml)
+2. 최근 실행이 **초록(성공)** 인지 확인
+3. 실패 시 로그에서 단계 확인:
+   - `Validate secrets` → Secrets 미등록
+   - `Start SSH tunnel` → SSH 키/호스트 오류
+   - `Test DB connection` → DB 포트·계정 오류 (원격 MySQL 포트 **3308**)
+
+## Secrets 등록 (최초 1회)
+
+저장소: **mogakjak/mogakjak-data** → Settings → Secrets and variables → Actions
+
+| Secret | 값 |
+|--------|-----|
+| `MOGAKJAK_SSH_HOST` | `146.56.130.53` |
+| `MOGAKJAK_SSH_USER` | `ubuntu` |
+| `MOGAKJAK_SSH_PRIVATE_KEY` | `mogakjak-private.key` 파일 **전체** (BEGIN/END 포함) |
+| `MOGAKJAK_DB_NAME` | 로컬 `.env`와 동일 |
+| `MOGAKJAK_DB_USER` | 로컬 `.env`와 동일 |
+| `MOGAKJAK_DB_PASSWORD` | 로컬 `.env`와 동일 |
+
+SSH private key 붙여넣기 시 줄바꿈이 유지되어야 합니다.
+
+## 수동 실행 (테스트)
+
+Actions → **Daily Data Collection** → **Run workflow** → Run
+
+성공하면 `data/YYYY-MM-DD/` 커밋이 생기고 Pages가 재배포됩니다.
+
+## 로컬 수동 backfill (누락 구간)
+
+```powershell
+# 1) 터널 (3308 — plan B)
+connect_tunnel_3308.bat
+
+# 2) DB backfill
+.venv\Scripts\python.exe scripts\backfill_db.py --from 2026-08-09
+
+# 3) GA backfill (선택, .env GA 자격증명 필요)
+.venv\Scripts\python.exe scripts\backfill_ga.py --from 2026-08-09
+
+# 4) manifest + push
+.venv\Scripts\python.exe dashboard\build_manifest.py
+git add data/ dashboard/manifest.json
+git commit -m "data: backfill through yesterday"
+git push mogakjak main
+```
+
+## DB 포트 참고
+
+| 환경 | 로컬 포트 | 원격 포트 |
+|------|-----------|-----------|
+| 로컬 `connect_tunnel.bat` | 13307 | 3306 (현재 미사용) |
+| 로컬 `connect_tunnel_3308.bat` | 13308 | **3308 (운영)** |
+| GitHub Actions | 13308 | **3308** |
+
+`.env`의 `MOGAKJAK_DB_PORT`는 사용하는 터널과 맞춰야 합니다.
