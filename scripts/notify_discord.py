@@ -10,6 +10,14 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(ROOT / ".env")
+except ImportError:
+    pass
+
 MANIFEST = ROOT / "dashboard" / "manifest.json"
 GA_DIR = ROOT / "data" / "ga"
 DASHBOARD_URL = "https://mogakjak.github.io/mogakjak-data/dashboard/"
@@ -102,7 +110,11 @@ def post_webhook(url: str, payload: dict) -> None:
     req = urllib.request.Request(
         url,
         data=data,
-        headers={"Content-Type": "application/json; charset=utf-8"},
+        headers={
+            "Content-Type": "application/json; charset=utf-8",
+            # Discord blocks urllib default requests without User-Agent (403).
+            "User-Agent": "mogakjak-data-pipeline/1.0 (GitHub Actions)",
+        },
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=15) as resp:
