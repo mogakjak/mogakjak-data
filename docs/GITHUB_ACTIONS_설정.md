@@ -24,8 +24,40 @@ push되면 `Deploy Dashboard (GitHub Pages)`가 자동 실행되어 [대시보�
 | `MOGAKJAK_DB_NAME` | 로컬 `.env`와 동일 |
 | `MOGAKJAK_DB_USER` | 로컬 `.env`와 동일 |
 | `MOGAKJAK_DB_PASSWORD` | 로컬 `.env`와 동일 |
+| `DISCORD_WEBHOOK_URL` | (선택) Discord 채널 웹훅 URL — 일일 수집 결과 알림 |
 
 SSH private key 붙여넣기 시 줄바꿈이 유지되어야 합니다.
+
+## Discord 알림 (선택)
+
+수집 **성공/실패** 시 Discord 채널로 KPI 요약이 옵니다.
+
+### 웹훅 만들기
+
+1. Discord 서버 → 알림 받을 **채널** → 톱니바퀴 → **연동** → **웹후크**
+2. **새 웹후크** → 이름 예: `모각작 데이터` → **웹후크 URL 복사**
+3. GitHub Secrets에 `DISCORD_WEBHOOK_URL` = 복사한 URL
+
+### 알림 예시 (성공)
+
+```
+모각작 일일 수집 완료 (2026-09-11)
+· 그룹 멤버십 111건
+· 개인 집중 0분
+· GA 활성 사용자 6명
+→ 대시보드 링크
+```
+
+Secret을 넣지 않으면 알림 step은 **조용히 건너뜁니다** (수집은 그대로).
+
+### 로컬 테스트
+
+backfill 후 `.env`에 `DISCORD_WEBHOOK_URL=...` 추가하고:
+
+```powershell
+.venv\Scripts\python.exe dashboard\build_manifest.py
+.venv\Scripts\python.exe scripts\notify_discord.py --status success
+```
 
 ## 수동 실행 (테스트)
 
