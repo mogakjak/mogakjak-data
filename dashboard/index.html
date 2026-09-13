@@ -59,9 +59,9 @@
       },
     };
   </script>
-  <link rel="stylesheet" href="./styles.css?v=20260810m" />
+  <link rel="stylesheet" href="./styles.css?v=20260913c" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
-  <script src="./app.js?v=20260810m" defer></script>
+  <script src="./app.js?v=20260913c" defer></script>
 </head>
 <body class="app-shell font-sans text-mg-black antialiased">
   <aside id="sidebar" class="sidebar" aria-label="대시보드 메뉴">
@@ -270,9 +270,9 @@
         <div class="panel">
           <div class="mb-3">
             <h2 class="text-base font-semibold">이용</h2>
-            <p id="homeUseMeta" class="text-sm text-mg-500">활성 · 타이머 · 타이머 완료율</p>
+            <p id="homeUseMeta" class="text-sm text-mg-500">방문(UV) · 세션 · PV · 타이머 · 타이머 완료율</p>
           </div>
-          <div class="kpi-grid module-kpi" id="homeUseKpis"></div>
+          <div class="kpi-grid module-kpi module-kpi--5" id="homeUseKpis"></div>
           <p class="metric-note hidden" id="homeChartReleaseNote"></p>
           <p id="homeUseChartMeta" class="chart-trend-label"></p>
           <div class="chart-panel trend relative mt-2"><canvas id="homeTrendChart"></canvas></div>

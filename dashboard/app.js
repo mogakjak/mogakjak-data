@@ -1592,6 +1592,9 @@
     "그룹 집중": "db_duration_sum",
     "총 집중": "db_duration_sum",
     활성: "ga_users",
+    "방문(UV)": "ga_users",
+    PV: "db_count_sum",
+    페이지뷰: "db_count_sum",
     신규: "ga_users",
     "신규 사용자": "ga_users",
     "타이머 완료율": "ga_event_ratio",
@@ -1712,6 +1715,8 @@
         invitesResponded: Number(s.invitations_responded_count) || 0,
         newUsers: ga?.metrics?.new_users ?? null,
         activeUsers: ga?.metrics?.active_users ?? null,
+        sessions: ga?.metrics?.sessions ?? null,
+        pageViews: ga?.metrics?.screen_page_views ?? null,
       };
     });
   }
@@ -1869,6 +1874,9 @@
     "신규 사용자": "GA 기준 그날 처음 방문한 사용자 수",
     신규: "GA 기준 그날(또는 기간 합) 처음 방문한 사용자 수",
     활성: "GA 기준 그날 앱을 켠 사람 수 (DAU)",
+    "방문(UV)": "GA active_users · 하루 unique visitor (DAU). 신규와 별개",
+    PV: "GA screen_page_views · 화면 조회 수 (page_view 등)",
+    페이지뷰: "GA screen_page_views · 화면 조회 수",
     "D1 리텐션": "어제 활성 사용자가 오늘도 활성인 비율",
     "개인 세션": "혼자 타이머 켠 횟수",
     "그룹 세션": "그룹방 입장~퇴장 체류(미수집). 예전 ‘그룹 세션 수’와 다름",
@@ -1885,7 +1893,7 @@
     생성: "그날 보낸 초대 수",
     응답: "그날 초대에 답한 수",
     "응답/생성": "보낸 초대 중 답한 비율",
-    세션: "그날 앱을 켠 횟수",
+    세션: "GA sessions · 방문 횟수 (UV보다 크거나 같음, 중복 포함)",
     D1: "어제 온 사람이 오늘도 왔는지",
     D7: "가입 7일 뒤에도 왔는지",
     D30: "가입 30일 뒤에도 왔는지",
@@ -2056,6 +2064,8 @@
     const entryRaw = Number(s.session_entry_count) || 0;
     const newUsers = gaReady() ? ga.new_users : null;
     const activeUsers = gaReady() ? ga.active_users : null;
+    const pageViews = gaReady() ? ga.screen_page_views : null;
+    const sessions = gaReady() ? ga.sessions : null;
 
     const cmpRange = comparePeriodRange();
     const cmpSummary = cmpRange
@@ -2067,6 +2077,8 @@
     const cmpEntry = Number(cmpSummary.session_entry_count) || 0;
     const cmpNew = cmpGa?.new_users ?? null;
     const cmpActive = cmpGa?.active_users ?? null;
+    const cmpPv = cmpGa?.screen_page_views ?? null;
+    const cmpSessions = cmpGa?.sessions ?? null;
 
     // 카드 숫자는 표시값 기준으로 비교 (일평균이면 일평균끼리)
     const currFocusShow = scale(focusSec);
@@ -2093,12 +2105,38 @@
         : range && !periodSum
           ? cmpActive / (cmpRange?.dayCount || 1)
           : cmpActive;
+    const currPvShow =
+      pageViews == null
+        ? null
+        : range && !periodSum
+          ? pageViews / dayCount
+          : pageViews;
+    const prevPvShow =
+      cmpPv == null
+        ? null
+        : range && !periodSum
+          ? cmpPv / (cmpRange?.dayCount || 1)
+          : cmpPv;
+    const currSessionsShow =
+      sessions == null
+        ? null
+        : range && !periodSum
+          ? sessions / dayCount
+          : sessions;
+    const prevSessionsShow =
+      cmpSessions == null
+        ? null
+        : range && !periodSum
+          ? cmpSessions / (cmpRange?.dayCount || 1)
+          : cmpSessions;
 
     const dFocus = calcDelta(currFocusShow, prevFocusShow);
     const dEntry = calcDelta(currEntryShow, prevEntryShow);
     const dRate = calcDelta(rate, cmpRate);
     const dNew = calcDelta(currNewShow, prevNewShow);
     const dActive = calcDelta(currActiveShow, prevActiveShow);
+    const dPv = calcDelta(currPvShow, prevPvShow);
+    const dSessions = calcDelta(currSessionsShow, prevSessionsShow);
 
     const personalTotal = homeSec + roomSec;
     const startedInGroupShare =
@@ -2106,7 +2144,7 @@
 
     renderKpiGrid($("homeUseKpis"), [
       {
-        label: "활성",
+        label: "방문(UV)",
         value: gaReady() ? fmtScaledNum(activeUsers) : "—",
         pending: !gaReady(),
         accent: gaReady(),
@@ -2114,6 +2152,26 @@
         deltaTone: dActive?.tone,
         aggKind: "ga_users",
         help: `GA active_users · ${compareLabel}`,
+      },
+      {
+        label: "세션",
+        value: gaReady() && sessions != null ? fmtScaledNum(sessions) : "—",
+        pending: !gaReady() || sessions == null,
+        accent: gaReady() && sessions != null,
+        delta: dSessions?.text,
+        deltaTone: dSessions?.tone,
+        aggKind: "db_count_sum",
+        help: `GA sessions · ${compareLabel}`,
+      },
+      {
+        label: "PV",
+        value: gaReady() && pageViews != null ? fmtScaledNum(pageViews) : "—",
+        pending: !gaReady() || pageViews == null,
+        accent: gaReady() && pageViews != null,
+        delta: dPv?.text,
+        deltaTone: dPv?.tone,
+        aggKind: "db_count_sum",
+        help: `GA screen_page_views · ${compareLabel}`,
       },
       {
         label: "타이머",
@@ -2266,10 +2324,18 @@
       responsive: true,
       maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
+      layout: {
+        padding: { top: 8, right: 16, bottom: 4, left: 10 },
+      },
       plugins: {
         legend: {
           position: "bottom",
-          labels: { boxWidth: 10, usePointStyle: true, pointStyle: "circle" },
+          labels: {
+            boxWidth: 10,
+            usePointStyle: true,
+            pointStyle: "circle",
+            padding: 16,
+          },
         },
       },
     };
@@ -2283,7 +2349,7 @@
           labels: trend.map((d) => d.date.slice(5)),
           datasets: [
             {
-              label: "활성",
+              label: "방문(UV)",
               data: trend.map((d) => d.activeUsers),
               borderColor: CHART.red,
               backgroundColor: chartFill(ctx, "rgba(250,83,50,0.12)", "rgba(250,83,50,0)"),
@@ -2293,6 +2359,32 @@
               pointRadius: 0,
               pointHoverRadius: 3,
               borderWidth: 1.75,
+              yAxisID: "yCount",
+            },
+            {
+              label: "세션",
+              data: trend.map((d) => d.sessions),
+              borderColor: CHART.dark,
+              backgroundColor: "transparent",
+              tension: 0.35,
+              spanGaps: true,
+              pointRadius: 0,
+              pointHoverRadius: 3,
+              borderWidth: 1.75,
+              borderDash: [2, 3],
+              yAxisID: "yCount",
+            },
+            {
+              label: "PV",
+              data: trend.map((d) => d.pageViews),
+              borderColor: CHART.peach,
+              backgroundColor: "transparent",
+              tension: 0.35,
+              spanGaps: true,
+              pointRadius: 0,
+              pointHoverRadius: 3,
+              borderWidth: 1.75,
+              borderDash: [4, 4],
               yAxisID: "yCount",
             },
             {
@@ -2327,17 +2419,15 @@
               type: "linear",
               position: "left",
               beginAtZero: true,
-              ticks: { precision: 0, color: CHART.gray },
+              ticks: { precision: 0, color: CHART.gray, padding: 6 },
               grid: { color: "rgba(139,147,161,0.12)" },
-              title: { display: true, text: "명", color: CHART.gray },
             },
             yMin: {
               type: "linear",
               position: "right",
               beginAtZero: true,
               grid: { drawOnChartArea: false },
-              ticks: { color: CHART.gray },
-              title: { display: true, text: "분", color: CHART.gray },
+              ticks: { color: CHART.gray, padding: 6 },
             },
           },
         },
@@ -2718,17 +2808,25 @@
         responsive: true,
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
+        layout: {
+          padding: { top: 8, right: 12, bottom: 4, left: 10 },
+        },
         plugins: {
           legend: {
             position: "bottom",
-            labels: { boxWidth: 10, usePointStyle: true, pointStyle: "circle" },
+            labels: {
+              boxWidth: 10,
+              usePointStyle: true,
+              pointStyle: "circle",
+              padding: 16,
+            },
           },
         },
         scales: {
           x: { grid: { display: false }, ticks: { color: CHART.gray } },
           y: {
             beginAtZero: true,
-            ticks: { color: CHART.gray },
+            ticks: { color: CHART.gray, padding: 6 },
             grid: { color: "rgba(139,147,161,0.12)" },
           },
         },
