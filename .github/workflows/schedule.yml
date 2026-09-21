@@ -43,13 +43,20 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.MOGAKJAK_SSH_PRIVATE_KEY }}
         run: |
-          set -euo pipefail
-          test -n "${{ secrets.MOGAKJAK_SSH_HOST }}"
-          test -n "${{ secrets.MOGAKJAK_SSH_USER }}"
-          test -n "${SSH_PRIVATE_KEY}"
-          test -n "${{ secrets.MOGAKJAK_DB_NAME }}"
-          test -n "${{ secrets.MOGAKJAK_DB_USER }}"
-          test -n "${{ secrets.MOGAKJAK_DB_PASSWORD }}"
+          set -uo pipefail
+          missing=()
+          test -n "${{ secrets.MOGAKJAK_SSH_HOST }}" || missing+=("MOGAKJAK_SSH_HOST")
+          test -n "${{ secrets.MOGAKJAK_SSH_USER }}" || missing+=("MOGAKJAK_SSH_USER")
+          test -n "${SSH_PRIVATE_KEY}" || missing+=("MOGAKJAK_SSH_PRIVATE_KEY")
+          test -n "${{ secrets.MOGAKJAK_DB_NAME }}" || missing+=("MOGAKJAK_DB_NAME")
+          test -n "${{ secrets.MOGAKJAK_DB_USER }}" || missing+=("MOGAKJAK_DB_USER")
+          test -n "${{ secrets.MOGAKJAK_DB_PASSWORD }}" || missing+=("MOGAKJAK_DB_PASSWORD")
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::Missing GitHub Secrets: ${missing[*]}"
+            echo "Register at: https://github.com/mogakjak/mogakjak-data/settings/secrets/actions"
+            echo "See docs/GITHUB_ACTIONS_설정.md"
+            exit 1
+          fi
           echo "Required secrets present"
 
       - name: Start SSH tunnel
@@ -82,6 +89,27 @@ jobs:
 
       - name: Run daily collection
         run: python main.py
+
+      - name: Run GA collection (optional)
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/ga-service-account.json
+        run: |
+          set -euo pipefail
+          if [ -z "${GA4_PROPERTY_ID:-}" ] || [ -z "${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}" ]; then
+            echo "GA secrets not set — skip GA collection (DB only)"
+            exit 0
+          fi
+          printf '%s' "${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}" > /tmp/ga-service-account.json
+          python - <<'PY'
+          from main import get_target_date
+          from collectors.ga_metrics import collect_ga_metrics
+
+          target = get_target_date()
+          print(f"GA 수집: {target}")
+          payload = collect_ga_metrics(target)
+          print(f"GA status: {payload.get('status')}")
+          PY
 
       - name: Refresh dashboard catalog/manifest
         run: |
@@ -131,6 +159,11 @@ jobs:
           if [ "${{ job.status }}" != "success" ]; then
             STATUS="failure"
           fi
+          MSG=""
+          if [ "$STATUS" = "failure" ]; then
+            MSG="수집 실패. Actions에서 Test DB connection 로그를 확인하세요. SSH는 됐는데 DB 로그인이 실패한 경우가 많습니다. Secret MOGAKJAK_DB_NAME / USER / PASSWORD는 .env의 = 오른쪽 값만 넣어야 합니다."
+          fi
           python scripts/notify_discord.py \
             --status "$STATUS" \
+            --message "$MSG" \
             --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

@@ -7,8 +7,9 @@ push되면 `Deploy Dashboard (GitHub Pages)`가 자동 실행되어 [대시보�
 
 1. [Actions → Daily Data Collection](https://github.com/mogakjak/mogakjak-data/actions/workflows/schedule.yml)
 2. 최근 실행이 **초록(성공)** 인지 확인
-3. 실패 시 로그에서 단계 확인:
-   - `Validate secrets` → Secrets 미등록
+3. **42회 연속 실패(2026-09-19 기준)** — 대부분 `Validate secrets` 단계에서 중단 → **Secrets 미등록**
+4. 실패 시 로그에서 단계 확인:
+   - `Validate secrets` → Secrets 미등록 (로그에 `Missing GitHub Secrets: ...` 표시)
    - `Start SSH tunnel` → SSH 키/호스트 오류
    - `Test DB connection` → DB 포트·계정 오류 (원격 MySQL 포트 **3308**)
 
@@ -25,8 +26,13 @@ push되면 `Deploy Dashboard (GitHub Pages)`가 자동 실행되어 [대시보�
 | `MOGAKJAK_DB_USER` | 로컬 `.env`와 동일 |
 | `MOGAKJAK_DB_PASSWORD` | 로컬 `.env`와 동일 |
 | `DISCORD_WEBHOOK_URL` | (선택) Discord 채널 웹훅 URL — 일일 수집 결과 알림 |
+| `GA4_PROPERTY_ID` | (선택) GA4 Property ID — 없으면 GA 수집 건너뜀 |
+| `GA4_SERVICE_ACCOUNT_JSON` | (선택) GA 서비스 계정 JSON **전체** — `GOOGLE_APPLICATION_CREDENTIALS` 대용 |
 
 SSH private key 붙여넣기 시 줄바꿈이 유지되어야 합니다.
+
+> **중요:** Secrets는 **mogakjak/mogakjak-data** 저장소에 등록해야 합니다.  
+> 개인 fork(`shon-ah-hyun/...`)에만 넣으면 스케줄이 돌아가도 수집되지 않습니다.
 
 ## Discord 알림 (선택)
 
@@ -48,7 +54,8 @@ SSH private key 붙여넣기 시 줄바꿈이 유지되어야 합니다.
 → 대시보드 링크
 ```
 
-Secret을 넣지 않으면 알림 step은 **조용히 건너뜁니다** (수집은 그대로).
+Secret을 넣지 않으면 알림 step은 **조용히 건너뜁니다** (수집은 그대로).  
+Discord 알림이 전혀 안 온다면 `DISCORD_WEBHOOK_URL`도 아직 등록되지 않은 상태입니다.
 
 ### 로컬 테스트
 
