@@ -85,7 +85,9 @@ jobs:
           exit 1
 
       - name: Test DB connection
-        run: python test_connection.py
+        run: |
+          set -o pipefail
+          python test_connection.py | tee /tmp/db_test.log
 
       - name: Run daily collection
         run: python main.py
@@ -161,7 +163,20 @@ jobs:
           fi
           MSG=""
           if [ "$STATUS" = "failure" ]; then
-            MSG="수집 실패. Actions에서 Test DB connection 로그를 확인하세요. SSH는 됐는데 DB 로그인이 실패한 경우가 많습니다. Secret MOGAKJAK_DB_NAME / USER / PASSWORD는 .env의 = 오른쪽 값만 넣어야 합니다."
+            if [ -f /tmp/db_test.log ]; then
+              MSG=$(python - <<'PY'
+from pathlib import Path
+text = Path("/tmp/db_test.log").read_text(encoding="utf-8", errors="replace")
+# Keep the useful tail, drop huge SQLAlchemy stack if present
+lines = [ln for ln in text.splitlines() if ln.strip()]
+useful = [ln for ln in lines if ln.startswith(("실패:", "원인:", "  host=", "  port=", "  name=", "  user=", "  password_"))]
+if not useful:
+    useful = lines[-8:]
+print("\n".join(useful)[:900])
+PY
+)
+            else:
+              MSG="수집 실패. Actions 로그에서 빨간 단계를 확인하세요."
           fi
           python scripts/notify_discord.py \
             --status "$STATUS" \

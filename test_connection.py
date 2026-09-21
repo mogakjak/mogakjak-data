@@ -23,22 +23,22 @@ def main() -> int:
         print(f"성공: {dict(row._mapping)}")
         return 0
     except Exception as e:
-        print(f"실패: {e}")
+        msg = str(e)
+        print(f"실패: {msg}")
         print()
-        msg = str(e).lower()
-        if "access denied" in msg:
-            print("원인: DB 사용자/비밀번호가 서버와 다릅니다.")
-            print("GitHub Secret MOGAKJAK_DB_USER / MOGAKJAK_DB_PASSWORD를 .env와 동일하게 Update 하세요.")
-            print("Secret에는 등호(=) 오른쪽 값만 넣습니다. 예: mogakjak_user")
-        elif "unknown database" in msg:
-            print("원인: DB 이름이 서버와 다릅니다.")
-            print("GitHub Secret MOGAKJAK_DB_NAME을 .env와 동일하게 Update 하세요. 예: mogakjak")
-        elif "can't connect" in msg or "connection refused" in msg:
+        low = msg.lower()
+        if "access denied" in low:
+            print("원인: MySQL이 계정/비밀번호를 거부했습니다. USER 또는 PASSWORD Secret이 서버와 다릅니다.")
+        elif "unknown database" in low:
+            print("원인: DB 이름(MOGAKJAK_DB_NAME)이 서버에 없습니다.")
+        elif "cryptography" in low:
+            print("원인: MySQL 8 인증에 cryptography 패키지가 필요합니다.")
+        elif "ssl" in low:
+            print("원인: SSL/인증 핸드셰이크 문제입니다.")
+        elif "can't connect" in low or "connection refused" in low:
             print("원인: SSH 터널 또는 DB 포트 문제입니다.")
         else:
-            print("체크리스트:")
-            print("1) 로컬이면 connect_tunnel_3308.bat 창이 열려 있는지")
-            print("2) GitHub이면 Secret 3개(NAME/USER/PASSWORD)가 .env와 같은지")
+            print("원인: DB 연결 실패. 위 실패 메시지를 확인하세요.")
         return 1
 
 

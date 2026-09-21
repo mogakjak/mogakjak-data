@@ -20,6 +20,15 @@ def get_readonly_engine() -> Engine:
             f"mysql+pymysql://{user}:{password}"
             f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"
         )
+        return create_engine(
+            url,
+            pool_pre_ping=True,
+            connect_args={
+                "connect_timeout": 10,
+                "charset": "utf8mb4",
+                "ssl_disabled": True,
+            },
+        )
     else:
         url = (
             f"postgresql+psycopg2://{user}:{password}"
