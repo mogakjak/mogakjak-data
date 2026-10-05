@@ -2,11 +2,11 @@
   "sources": {
     "db": {
       "connected": true,
-      "day_count": 194
+      "day_count": 216
     },
     "ga4": {
       "connected": true,
-      "day_count": 194,
+      "day_count": 216,
       "status": "ok"
     }
   },
@@ -207,6 +207,28 @@
     "2026-09-09",
     "2026-09-10",
     "2026-09-11",
+    "2026-09-12",
+    "2026-09-13",
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-19",
+    "2026-09-20",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24",
+    "2026-09-25",
+    "2026-09-26",
+    "2026-09-27",
+    "2026-09-28",
+    "2026-09-29",
+    "2026-09-30",
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-03",
     "2026-10-04"
   ],
   "db_days": [
@@ -217,6 +239,336 @@
       "summary": {
         "membership_count": 111,
         "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "path": "../data/2026-10-03/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:53.614343+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "path": "../data/2026-10-02/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:49.002202+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "path": "../data/2026-10-01/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:44.972878+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "path": "../data/2026-09-30/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:41.121555+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-29",
+      "path": "../data/2026-09-29/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:36.734369+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "path": "../data/2026-09-28/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:32.131429+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "path": "../data/2026-09-27/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:27.821175+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "path": "../data/2026-09-26/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:23.826532+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "path": "../data/2026-09-25/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:19.479974+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "path": "../data/2026-09-24/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:15.596249+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "path": "../data/2026-09-23/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:12.093340+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "path": "../data/2026-09-22/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:08.136930+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "path": "../data/2026-09-21/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:04.575105+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 3,
+        "group_session_count": 0,
+        "personal_focus_seconds": 9502,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-20",
+      "path": "../data/2026-09-20/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:00.937909+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-19",
+      "path": "../data/2026-09-19/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:56.628423+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-18",
+      "path": "../data/2026-09-18/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:51.884105+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "path": "../data/2026-09-17/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:47.139242+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-16",
+      "path": "../data/2026-09-16/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:42.820098+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-15",
+      "path": "../data/2026-09-15/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:39.202094+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "path": "../data/2026-09-14/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:35.093126+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-13",
+      "path": "../data/2026-09-13/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:31.212275+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 3,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 2,
+        "group_session_count": 0,
+        "personal_focus_seconds": 38338,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-12",
+      "path": "../data/2026-09-12/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:27.141334+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
         "invitations_created_count": 0,
         "invitations_responded_count": 0,
         "personal_session_count": 0,
@@ -3158,6 +3510,930 @@
         }
       ],
       "note": "연동 전 placeholder. 실제 연동 후 metrics가 채워집니다."
+    },
+    {
+      "date": "2026-10-03",
+      "path": "../data/ga/2026-10-03.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:49.373413+09:00",
+      "metrics": {
+        "active_users": 3,
+        "new_users": 4,
+        "sessions": 3,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 174.235542,
+        "bounce_rate": 0.3333333333333333,
+        "engagement_rate": 0.6666666666666666,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 22,
+        "event_count_total": 112,
+        "user_engagement_duration_sec": 236,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-10-02",
+      "path": "../data/ga/2026-10-02.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:45.274057+09:00",
+      "metrics": {
+        "active_users": 4,
+        "new_users": 6,
+        "sessions": 4,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 935.4303795,
+        "bounce_rate": 0.5,
+        "engagement_rate": 0.5,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 26,
+        "event_count_total": 80,
+        "user_engagement_duration_sec": 91,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-10-01",
+      "path": "../data/ga/2026-10-01.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:41.720250+09:00",
+      "metrics": {
+        "active_users": 3,
+        "new_users": 6,
+        "sessions": 4,
+        "engaged_sessions": 3,
+        "average_engagement_time_sec": 1315.422877,
+        "bounce_rate": 0.25,
+        "engagement_rate": 0.75,
+        "sessions_per_user": 1.3333333333333333,
+        "screen_page_views": 16,
+        "event_count_total": 5052,
+        "user_engagement_duration_sec": 90,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-30",
+      "path": "../data/ga/2026-09-30.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:37.780588+09:00",
+      "metrics": {
+        "active_users": 8,
+        "new_users": 14,
+        "sessions": 10,
+        "engaged_sessions": 8,
+        "average_engagement_time_sec": 112.18691450000001,
+        "bounce_rate": 0.2,
+        "engagement_rate": 0.8,
+        "sessions_per_user": 1.25,
+        "screen_page_views": 30,
+        "event_count_total": 116,
+        "user_engagement_duration_sec": 198,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-29",
+      "path": "../data/ga/2026-09-29.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:32.677496+09:00",
+      "metrics": {
+        "active_users": 4,
+        "new_users": 8,
+        "sessions": 4,
+        "engaged_sessions": 4,
+        "average_engagement_time_sec": 78.33531,
+        "bounce_rate": 0.0,
+        "engagement_rate": 1.0,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 14,
+        "event_count_total": 60,
+        "user_engagement_duration_sec": 208,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-28",
+      "path": "../data/ga/2026-09-28.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:28.288979+09:00",
+      "metrics": {
+        "active_users": 3,
+        "new_users": 4,
+        "sessions": 7,
+        "engaged_sessions": 3,
+        "average_engagement_time_sec": 125.19398185714286,
+        "bounce_rate": 0.5714285714285714,
+        "engagement_rate": 0.42857142857142855,
+        "sessions_per_user": 2.3333333333333335,
+        "screen_page_views": 22,
+        "event_count_total": 126,
+        "user_engagement_duration_sec": 580,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-27",
+      "path": "../data/ga/2026-09-27.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:24.532041+09:00",
+      "metrics": {
+        "active_users": 1,
+        "new_users": 2,
+        "sessions": 1,
+        "engaged_sessions": 0,
+        "average_engagement_time_sec": 10.347773,
+        "bounce_rate": 1.0,
+        "engagement_rate": 0.0,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 2,
+        "event_count_total": 8,
+        "user_engagement_duration_sec": null,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-26",
+      "path": "../data/ga/2026-09-26.json",
+      "status": "ok",
+      "connected": false,
+      "collected_at": "2026-10-05T19:40:20.130515+09:00",
+      "metrics": {
+        "active_users": null,
+        "new_users": null,
+        "sessions": null,
+        "engaged_sessions": null,
+        "average_engagement_time_sec": null,
+        "bounce_rate": null,
+        "engagement_rate": null,
+        "sessions_per_user": null,
+        "screen_page_views": null,
+        "event_count_total": null,
+        "user_engagement_duration_sec": null,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-25",
+      "path": "../data/ga/2026-09-25.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:17.284740+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 4,
+        "sessions": 2,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 90.539379,
+        "bounce_rate": 0.0,
+        "engagement_rate": 1.0,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 8,
+        "event_count_total": 30,
+        "user_engagement_duration_sec": 135,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-24",
+      "path": "../data/ga/2026-09-24.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:13.526029+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 4,
+        "sessions": 2,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 39.121346,
+        "bounce_rate": 0.0,
+        "engagement_rate": 1.0,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 4,
+        "event_count_total": 18,
+        "user_engagement_duration_sec": 40,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-23",
+      "path": "../data/ga/2026-09-23.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:10.455242+09:00",
+      "metrics": {
+        "active_users": 3,
+        "new_users": 6,
+        "sessions": 3,
+        "engaged_sessions": 1,
+        "average_engagement_time_sec": 18.38209133333333,
+        "bounce_rate": 0.6666666666666666,
+        "engagement_rate": 0.3333333333333333,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 6,
+        "event_count_total": 30,
+        "user_engagement_duration_sec": 48,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-22",
+      "path": "../data/ga/2026-09-22.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:07.148351+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 2,
+        "sessions": 2,
+        "engaged_sessions": 1,
+        "average_engagement_time_sec": 27.491832499999997,
+        "bounce_rate": 0.5,
+        "engagement_rate": 0.5,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 4,
+        "event_count_total": 20,
+        "user_engagement_duration_sec": 50,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-21",
+      "path": "../data/ga/2026-09-21.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:03.317311+09:00",
+      "metrics": {
+        "active_users": 6,
+        "new_users": 8,
+        "sessions": 11,
+        "engaged_sessions": 7,
+        "average_engagement_time_sec": 916.9727628181819,
+        "bounce_rate": 0.36363636363636365,
+        "engagement_rate": 0.6363636363636364,
+        "sessions_per_user": 1.8333333333333333,
+        "screen_page_views": 48,
+        "event_count_total": 264,
+        "user_engagement_duration_sec": 534,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-20",
+      "path": "../data/ga/2026-09-20.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:40:00.155739+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 2,
+        "sessions": 3,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 40.525939666666666,
+        "bounce_rate": 0.3333333333333333,
+        "engagement_rate": 0.6666666666666666,
+        "sessions_per_user": 1.5,
+        "screen_page_views": 6,
+        "event_count_total": 28,
+        "user_engagement_duration_sec": 92,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-19",
+      "path": "../data/ga/2026-09-19.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:55.870881+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 2,
+        "sessions": 3,
+        "engaged_sessions": 1,
+        "average_engagement_time_sec": 121.77772099999999,
+        "bounce_rate": 0.6666666666666666,
+        "engagement_rate": 0.3333333333333333,
+        "sessions_per_user": 1.5,
+        "screen_page_views": 16,
+        "event_count_total": 102,
+        "user_engagement_duration_sec": 239,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-18",
+      "path": "../data/ga/2026-09-18.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:51.467968+09:00",
+      "metrics": {
+        "active_users": 5,
+        "new_users": 10,
+        "sessions": 7,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 42.53787571428571,
+        "bounce_rate": 0.7142857142857143,
+        "engagement_rate": 0.2857142857142857,
+        "sessions_per_user": 1.4,
+        "screen_page_views": 18,
+        "event_count_total": 124,
+        "user_engagement_duration_sec": 116,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-17",
+      "path": "../data/ga/2026-09-17.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:47.487973+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 4,
+        "sessions": 4,
+        "engaged_sessions": 1,
+        "average_engagement_time_sec": 26.411426,
+        "bounce_rate": 0.75,
+        "engagement_rate": 0.25,
+        "sessions_per_user": 2.0,
+        "screen_page_views": 8,
+        "event_count_total": 32,
+        "user_engagement_duration_sec": 74,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-16",
+      "path": "../data/ga/2026-09-16.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:43.743826+09:00",
+      "metrics": {
+        "active_users": 3,
+        "new_users": 6,
+        "sessions": 4,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 40.361298999999995,
+        "bounce_rate": 0.5,
+        "engagement_rate": 0.5,
+        "sessions_per_user": 1.3333333333333333,
+        "screen_page_views": 20,
+        "event_count_total": 118,
+        "user_engagement_duration_sec": 95,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-15",
+      "path": "../data/ga/2026-09-15.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:39.856773+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 4,
+        "sessions": 3,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 44.54524166666667,
+        "bounce_rate": 0.3333333333333333,
+        "engagement_rate": 0.6666666666666666,
+        "sessions_per_user": 1.5,
+        "screen_page_views": 4,
+        "event_count_total": 26,
+        "user_engagement_duration_sec": 126,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-14",
+      "path": "../data/ga/2026-09-14.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:36.052771+09:00",
+      "metrics": {
+        "active_users": 0,
+        "new_users": 0,
+        "sessions": 2,
+        "engaged_sessions": 0,
+        "average_engagement_time_sec": 4.9224105,
+        "bounce_rate": 1.0,
+        "engagement_rate": 0.0,
+        "sessions_per_user": 0.0,
+        "screen_page_views": 2,
+        "event_count_total": 10,
+        "user_engagement_duration_sec": null,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-13",
+      "path": "../data/ga/2026-09-13.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:32.818970+09:00",
+      "metrics": {
+        "active_users": 6,
+        "new_users": 8,
+        "sessions": 7,
+        "engaged_sessions": 6,
+        "average_engagement_time_sec": 227.78159028571426,
+        "bounce_rate": 0.14285714285714285,
+        "engagement_rate": 0.8571428571428571,
+        "sessions_per_user": 1.1666666666666667,
+        "screen_page_views": 42,
+        "event_count_total": 144,
+        "user_engagement_duration_sec": 210,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
+    },
+    {
+      "date": "2026-09-12",
+      "path": "../data/ga/2026-09-12.json",
+      "status": "ok",
+      "connected": true,
+      "collected_at": "2026-10-05T19:39:29.080764+09:00",
+      "metrics": {
+        "active_users": 2,
+        "new_users": 0,
+        "sessions": 2,
+        "engaged_sessions": 2,
+        "average_engagement_time_sec": 1280.3571745,
+        "bounce_rate": 0.0,
+        "engagement_rate": 1.0,
+        "sessions_per_user": 1.0,
+        "screen_page_views": 8,
+        "event_count_total": 34,
+        "user_engagement_duration_sec": 254,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": true
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": true
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": true
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "GA4 Data API 수집. 리텐션(D1/D7/D30)은 추후 보강."
     },
     {
       "date": "2026-09-11",
@@ -11435,6 +12711,336 @@
       }
     },
     {
+      "date": "2026-10-03",
+      "path": "../data/2026-10-03/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:53.614343+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "path": "../data/2026-10-02/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:49.002202+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "path": "../data/2026-10-01/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:44.972878+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "path": "../data/2026-09-30/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:41.121555+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-29",
+      "path": "../data/2026-09-29/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:36.734369+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "path": "../data/2026-09-28/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:32.131429+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "path": "../data/2026-09-27/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:27.821175+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "path": "../data/2026-09-26/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:23.826532+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "path": "../data/2026-09-25/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:19.479974+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "path": "../data/2026-09-24/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:15.596249+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "path": "../data/2026-09-23/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:12.093340+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "path": "../data/2026-09-22/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:08.136930+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "path": "../data/2026-09-21/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:04.575105+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 3,
+        "group_session_count": 0,
+        "personal_focus_seconds": 9502,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-20",
+      "path": "../data/2026-09-20/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:40:00.937909+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-19",
+      "path": "../data/2026-09-19/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:56.628423+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-18",
+      "path": "../data/2026-09-18/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:51.884105+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "path": "../data/2026-09-17/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:47.139242+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-16",
+      "path": "../data/2026-09-16/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:42.820098+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-15",
+      "path": "../data/2026-09-15/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:39.202094+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "path": "../data/2026-09-14/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:35.093126+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-13",
+      "path": "../data/2026-09-13/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:31.212275+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 3,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 2,
+        "group_session_count": 0,
+        "personal_focus_seconds": 38338,
+        "group_focus_seconds": 0
+      }
+    },
+    {
+      "date": "2026-09-12",
+      "path": "../data/2026-09-12/daily_snapshot.json",
+      "collected_at": "2026-10-05T19:39:27.141334+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 0,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 0,
+        "group_session_count": 0,
+        "personal_focus_seconds": 0,
+        "group_focus_seconds": 0
+      }
+    },
+    {
       "date": "2026-09-11",
       "path": "../data/2026-09-11/daily_snapshot.json",
       "collected_at": "2026-09-12T22:10:03.801547+09:00",
@@ -14330,12 +15936,100 @@
       }
     }
   ],
-  "day_count": 194,
+  "day_count": 216,
   "catalog_path": "./metrics_catalog.json",
   "ga_events_days": [
     {
       "date": "2026-10-04",
       "path": "../data/ga/2026-10-04_events.json"
+    },
+    {
+      "date": "2026-10-03",
+      "path": "../data/ga/2026-10-03_events.json"
+    },
+    {
+      "date": "2026-10-02",
+      "path": "../data/ga/2026-10-02_events.json"
+    },
+    {
+      "date": "2026-10-01",
+      "path": "../data/ga/2026-10-01_events.json"
+    },
+    {
+      "date": "2026-09-30",
+      "path": "../data/ga/2026-09-30_events.json"
+    },
+    {
+      "date": "2026-09-29",
+      "path": "../data/ga/2026-09-29_events.json"
+    },
+    {
+      "date": "2026-09-28",
+      "path": "../data/ga/2026-09-28_events.json"
+    },
+    {
+      "date": "2026-09-27",
+      "path": "../data/ga/2026-09-27_events.json"
+    },
+    {
+      "date": "2026-09-26",
+      "path": "../data/ga/2026-09-26_events.json"
+    },
+    {
+      "date": "2026-09-25",
+      "path": "../data/ga/2026-09-25_events.json"
+    },
+    {
+      "date": "2026-09-24",
+      "path": "../data/ga/2026-09-24_events.json"
+    },
+    {
+      "date": "2026-09-23",
+      "path": "../data/ga/2026-09-23_events.json"
+    },
+    {
+      "date": "2026-09-22",
+      "path": "../data/ga/2026-09-22_events.json"
+    },
+    {
+      "date": "2026-09-21",
+      "path": "../data/ga/2026-09-21_events.json"
+    },
+    {
+      "date": "2026-09-20",
+      "path": "../data/ga/2026-09-20_events.json"
+    },
+    {
+      "date": "2026-09-19",
+      "path": "../data/ga/2026-09-19_events.json"
+    },
+    {
+      "date": "2026-09-18",
+      "path": "../data/ga/2026-09-18_events.json"
+    },
+    {
+      "date": "2026-09-17",
+      "path": "../data/ga/2026-09-17_events.json"
+    },
+    {
+      "date": "2026-09-16",
+      "path": "../data/ga/2026-09-16_events.json"
+    },
+    {
+      "date": "2026-09-15",
+      "path": "../data/ga/2026-09-15_events.json"
+    },
+    {
+      "date": "2026-09-14",
+      "path": "../data/ga/2026-09-14_events.json"
+    },
+    {
+      "date": "2026-09-13",
+      "path": "../data/ga/2026-09-13_events.json"
+    },
+    {
+      "date": "2026-09-12",
+      "path": "../data/ga/2026-09-12_events.json"
     },
     {
       "date": "2026-09-11",
