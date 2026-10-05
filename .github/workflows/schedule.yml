@@ -164,19 +164,11 @@ jobs:
           MSG=""
           if [ "$STATUS" = "failure" ]; then
             if [ -f /tmp/db_test.log ]; then
-              MSG=$(python - <<'PY'
-from pathlib import Path
-text = Path("/tmp/db_test.log").read_text(encoding="utf-8", errors="replace")
-# Keep the useful tail, drop huge SQLAlchemy stack if present
-lines = [ln for ln in text.splitlines() if ln.strip()]
-useful = [ln for ln in lines if ln.startswith(("실패:", "원인:", "  host=", "  port=", "  name=", "  user=", "  password_"))]
-if not useful:
-    useful = lines[-8:]
-print("\n".join(useful)[:900])
-PY
-)
-            else:
+              MSG="$(grep -E '^(실패:|원인:|  host=|  port=|  name=|  user=|  password_)' /tmp/db_test.log | tail -n 12)"
+            fi
+            if [ -z "$MSG" ]; then
               MSG="수집 실패. Actions 로그에서 빨간 단계를 확인하세요."
+            fi
           fi
           python scripts/notify_discord.py \
             --status "$STATUS" \
