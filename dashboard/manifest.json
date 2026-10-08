@@ -2,16 +2,16 @@
   "sources": {
     "db": {
       "connected": true,
-      "day_count": 219
+      "day_count": 220
     },
     "ga4": {
       "connected": true,
-      "day_count": 219,
+      "day_count": 220,
       "status": "ok"
     }
   },
-  "latest_date": "2026-10-07",
-  "max_date": "2026-10-07",
+  "latest_date": "2026-10-08",
+  "max_date": "2026-10-08",
   "min_date": "2026-03-03",
   "available_dates": [
     "2026-03-03",
@@ -232,9 +232,25 @@
     "2026-10-04",
     "2026-10-05",
     "2026-10-06",
-    "2026-10-07"
+    "2026-10-07",
+    "2026-10-08"
   ],
   "db_days": [
+    {
+      "date": "2026-10-08",
+      "path": "../data/2026-10-08/daily_snapshot.json",
+      "collected_at": "2026-10-09T05:29:09.647399+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 4,
+        "group_session_count": 0,
+        "personal_focus_seconds": 8855,
+        "group_focus_seconds": 0
+      }
+    },
     {
       "date": "2026-10-07",
       "path": "../data/2026-10-07/daily_snapshot.json",
@@ -3522,6 +3538,43 @@
     }
   ],
   "ga_days": [
+    {
+      "date": "2026-10-08",
+      "path": "../data/ga/2026-10-08.json",
+      "status": "pending_integration",
+      "connected": false,
+      "collected_at": null,
+      "metrics": {
+        "active_users": null,
+        "new_users": null,
+        "sessions": null,
+        "engaged_sessions": null,
+        "average_engagement_time_sec": null,
+        "bounce_rate": null,
+        "retention_d1": null,
+        "retention_d7": null,
+        "retention_d30": null
+      },
+      "checklist": [
+        {
+          "item": "GA4 Property ID / 측정 ID 확인",
+          "done": false
+        },
+        {
+          "item": "서비스 계정 + Data API 권한",
+          "done": false
+        },
+        {
+          "item": "파이프라인 ga collector 구현",
+          "done": false
+        },
+        {
+          "item": "Secrets에 GA 인증정보 등록",
+          "done": false
+        }
+      ],
+      "note": "연동 전 placeholder. 실제 연동 후 metrics가 채워집니다."
+    },
     {
       "date": "2026-10-07",
       "path": "../data/ga/2026-10-07.json",
@@ -12855,6 +12908,21 @@
   "product_events_path": "./product_events.json",
   "days": [
     {
+      "date": "2026-10-08",
+      "path": "../data/2026-10-08/daily_snapshot.json",
+      "collected_at": "2026-10-09T05:29:09.647399+09:00",
+      "summary": {
+        "membership_count": 111,
+        "session_entry_count": 1,
+        "invitations_created_count": 0,
+        "invitations_responded_count": 0,
+        "personal_session_count": 4,
+        "group_session_count": 0,
+        "personal_focus_seconds": 8855,
+        "group_focus_seconds": 0
+      }
+    },
+    {
       "date": "2026-10-07",
       "path": "../data/2026-10-07/daily_snapshot.json",
       "collected_at": "2026-10-08T05:24:13.468742+09:00",
@@ -16140,9 +16208,13 @@
       }
     }
   ],
-  "day_count": 219,
+  "day_count": 220,
   "catalog_path": "./metrics_catalog.json",
   "ga_events_days": [
+    {
+      "date": "2026-10-08",
+      "path": "../data/ga/2026-10-08_events.json"
+    },
     {
       "date": "2026-10-07",
       "path": "../data/ga/2026-10-07_events.json"
